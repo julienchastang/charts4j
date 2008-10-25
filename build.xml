@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<project name="charts4j" default="compile">
+
+	<property environment="env" />
+	<property file="build.properties" />
+	<property name="junit.jar" value="lib/junit-4.4.jar" />
+
+	<path id="compile.classpath">
+		<pathelement location="${junit.jar}" />
+	</path>
+
+	<path id="test.classpath">
+		<pathelement location="${junit.jar}" />
+		<pathelement location="${build.dir}/classes" />
+		<pathelement location="${build.dir}/test" />
+		<pathelement location="${build.dir}/example" />
+	</path>
+
+	<target name="compile" description="Compile Java source.">
+		<mkdir dir="${build.dir}/classes" />
+		<javac srcdir="${src.dir}" debug="on" destdir="${build.dir}/classes">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<target name="test.compile" depends="compile" description="Compile test source.">
+		<mkdir dir="${build.dir}/test" />
+		<javac srcdir="${test.dir}" debug="on" destdir="${build.dir}/test">
+			<classpath refid="test.classpath" />
+		</javac>
+	</target>
+
+	<target name="example.compile" depends="compile" description="Compile example source.">
+		<mkdir dir="${build.dir}/example" />
+		<javac srcdir="${example.dir}" debug="on" destdir="${build.dir}/example">
+			<classpath refid="test.classpath" />
+		</javac>
+	</target>
+
+	<target name="test" depends="test.compile, example.compile" description="Tests">
+		<junit showoutput="no" fork="yes" printsummary="no" haltonerror="yes" haltonfailure="yes">
+			<classpath refid="test.classpath" />
+			<formatter usefile="no" type="brief" />
+			<batchtest fork="yes">
+				<fileset dir="${test.dir}">
+					<include name="**/*Test*.java" />
+					<exclude name="**/*Tests.java" />
+				</fileset>
+				<fileset dir="${example.dir}">
+					<include name="**/*Example*.java" />
+					<exclude name="**/*Examples.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="clean" description="Remove generated files.">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="jar" depends="compile" description="Build jar.">
+		<mkdir dir="${build.dir}/dist/${app.name}-${version}/lib" />
+		<jar jarfile="${build.dir}/dist/${app.name}-${version}/lib/${app.name}-${version}.jar">
+			<fileset dir="${build.dir}/classes" />
+		</jar>
+	</target>
+
+	<target name="dist" depends="clean,test, jar, javadoc" description="Build entire distribution.">
+		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="COPYING" />
+		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="README" />
+		<copy toDir="${build.dir}/dist/${app.name}-${version}">
+			<fileset dir="${build.dir}" includes="javadoc/**/*" />
+			<fileset dir="${root.dir}" includes="src/**/*" />
+			<fileset dir="${root.dir}" includes="test/**/*" />
+			<fileset dir="${root.dir}" includes="example/**/*" />
+			<fileset dir="${root.dir}" includes="lib/**/*" />
+		</copy>
+
+		<zip destfile="${build.dir}/${app.name}-${version}.zip" basedir="${build.dir}/dist" />
+	</target>
+
+	<target name="javadoc" description="Generate Javadocs.">
+		<delete dir="${build.dir}/javadoc" />
+		<mkdir dir="${build.dir}/javadoc" />
+		<javadoc packagenames="${javadoc.packagenames}" excludepackagenames="com.googlecode.charts4j.parameters.*, com.googlecode.charts4j.collection.*," overview="${src.dir}/overview.html" destdir="${build.dir}/javadoc" author="true" public="true" windowtitle="charts4j - ${version}">
+			<sourcepath>
+				<pathelement location="${env.JAVA_HOME}/src/" />
+				<pathelement location="${src.dir}" />
+			</sourcepath>
+			<link href="http://java.sun.com/j2se/1.5/docs/api/" />
+			<classpath refid="compile.classpath" />
+			<doctitle>
+				<![CDATA[<h1>charts4j API documentation</h1>]]></doctitle>
+	</javadoc>
+</target>
+</project>
