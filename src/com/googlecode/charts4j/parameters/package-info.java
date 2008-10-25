@@ -24,7 +24,7 @@
  */
 
 /**
- * <b>com.googlecode.charts4j.parameters package for Charts4j internal use only.</b>
+ * <b>com.googlecode.charts4j.parameters package for Charts4J internal use only.</b>
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */

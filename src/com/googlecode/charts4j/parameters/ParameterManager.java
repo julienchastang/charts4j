@@ -46,7 +46,7 @@ import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.collect.Maps;
 
 /**
- * <b>For Charts4j internal use only.</b> The ParameterManager contains all
+ * <b>For Charts4J internal use only.</b> The ParameterManager contains all
  * the parameters for a given chart that is being built up. These parameters
  * will eventually be serialized to a string.
  *

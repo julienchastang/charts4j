@@ -24,7 +24,7 @@
  */
 
 /**
- * <b>com.googlecode.charts4j.parameters package for Charts4j internal use only.</b>
+ * <b>com.googlecode.charts4j.parameters package for Charts4J internal use only.</b>
  * Heavily inspired by Kevin Bourrillion's google-collections library.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)

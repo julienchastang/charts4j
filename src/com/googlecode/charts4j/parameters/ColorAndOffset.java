@@ -29,7 +29,7 @@ import com.googlecode.charts4j.Color;
 import com.googlecode.charts4j.Data;
 
 /**
- * <b>For Charts4j internal use only.</b> Class to encapsulate colors and
+ * <b>For Charts4J internal use only.</b> Class to encapsulate colors and
  * offsets for {@link com.googlecode.charts4j.LinearStripesFill}
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)

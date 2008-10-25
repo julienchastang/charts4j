@@ -26,7 +26,7 @@
 package com.googlecode.charts4j.parameters;
 
 /**
- * <b>For Charts4j internal use only.</b> Enumeration for axis types.
+ * <b>For Charts4J internal use only.</b> Enumeration for axis types.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
