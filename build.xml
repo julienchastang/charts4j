@@ -92,5 +92,8 @@
 			<doctitle>
 				<![CDATA[<h1>charts4j API documentation</h1>]]></doctitle>
 	</javadoc>
+	<copy toDir="${root.dir}/doc">
+		<fileset dir="${build.dir}/javadoc"  />
+	</copy>
 </target>
 </project>
