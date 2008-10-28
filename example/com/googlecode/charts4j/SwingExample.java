@@ -34,12 +34,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import org.junit.Ignore;
+
 /**
  * Example code for displaying a chart via Swing. This is an alternative
  * to displaying charts via JSP and Servlet technology.
  * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
+@Ignore("not a unit test, just a Java Swing example")
 public class SwingExample {
     
     /**
