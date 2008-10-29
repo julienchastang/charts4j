@@ -37,7 +37,7 @@ import com.googlecode.charts4j.collect.ImmutableList;
  */
 public final class RadarChart implements GChart, GraphChart, TitledChart {
 
-    /** This class simply forwards all calls to the PrivateRadarChart class.**/
+    /** This class simply forwards all calls to the PrivateRadarChart class. **/
     private final PrivateRadarChart radarChart;
 
     /**
@@ -142,6 +142,52 @@ public final class RadarChart implements GChart, GraphChart, TitledChart {
      */
     public void setSpline(final boolean isSpline) {
         radarChart.setSpline(isSpline);
+    }
+
+    /**
+     * Define a grid for this chart.
+     *
+     * @param xAxisStepSize
+     *            x step size. must be > 0.
+     * @param yAxisStepSize
+     *            y step size. must be > 0.
+     * @param lengthOfLineSegment
+     *            length of line segment. must be >= 0.
+     * @param lengthOfBlankSegment
+     *            length of blank segment. must be > 0.
+     */
+    public void setGrid(final double xAxisStepSize, final double yAxisStepSize, final int lengthOfLineSegment, final int lengthOfBlankSegment) {
+        radarChart.setGrid(xAxisStepSize, yAxisStepSize, lengthOfLineSegment, lengthOfBlankSegment);
+    }
+
+    /**
+     * Add a radial axis range marker.
+     *
+     * @param startPoint
+     *            the 0 position is at 12 o'clock, 50 is 6 o'clock, and 100 is at 12 o'clock.
+     * @param endPoint
+     *            the 0 position is at 12 o'clock, 50 is 6 o'clock, and 100 is at 12 o'clock.
+     * @param color
+     *            color of range marker. Cannot be null.
+     */
+    public final void addRadialAxisRangeMarker(final double startPoint, final double endPoint, final Color color) {
+        radarChart.addRadialAxisRangeMarker(startPoint, endPoint, color);
+    }
+
+    /**
+     * Add a concentric axis range marker.
+     *
+     * @param startPoint
+     *            the 0 position is at the center of the radar chart and 100 is
+     *            at the outside limit.
+     * @param endPoint
+     *            the 0 position is at the center of the radar chart and 100 is
+     *            at the outside limit.
+     * @param color
+     *            color of range marker. Cannot be null.
+     */
+    public final void addConcentricAxisRangeMarker(final double startPoint, final double endPoint, final Color color) {
+        radarChart.addHorizontalRangeMarker(startPoint, endPoint, color);
     }
 
     /**

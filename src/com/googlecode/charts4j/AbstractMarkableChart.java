@@ -71,6 +71,25 @@ public abstract class AbstractMarkableChart extends AbstractAxisChart {
     }
 
     /**
+     * Add a radial axis range marker. Package private method to be accessed by
+     * {@link RadarChart} class only.
+     *
+     * @param startPoint
+     *            the 0 position is at 12 o'clock, 50 is at 6 o'clock, and 100
+     *            is at 12 o'clock.
+     * @param endPoint
+     *            the 0 position is at 12 o'clock, 50 is at 6 o'clock, and 100
+     *            is at 12 o'clock.
+     * @param color
+     *            color of range marker. Cannot be null.
+     */
+    final void addRadialAxisRangeMarker(final double startPoint, final double endPoint, final Color color) {
+        checkRangeArgs(startPoint, endPoint);
+        checkNotNull(color, "Color cannot be null.");
+        // Curiously radial axis range markers for radar charts are from 0 to 800.
+        verticalRangeMarkers.add(new VerticalRangeMarker(color, startPoint * 8, endPoint * 8));
+    }
+    /**
      * Add a horizontal range marker.
      *
      * @param startPoint
@@ -80,7 +99,7 @@ public abstract class AbstractMarkableChart extends AbstractAxisChart {
      *            the position on the y-axis at which the range ends where 0 is
      *            the bottom and 100 is the top.
      * @param color
-     *            color of range marker. Cannot be  null.
+     *            color of range marker. Cannot be null.
      */
     public final void addHorizontalRangeMarker(final double startPoint, final double endPoint, final Color color) {
         checkRangeArgs(startPoint, endPoint);
@@ -93,8 +112,8 @@ public abstract class AbstractMarkableChart extends AbstractAxisChart {
      * Check the range arguments.
      *
      * @param startPoint
-     *            the position on the axis at which the range starts where 0
-     *            is the bottom and 100 is the top.
+     *            the position on the axis at which the range starts where 0 is
+     *            the bottom and 100 is the top.
      * @param endPoint
      *            the position on the axis at which the range ends where 0 is
      *            the bottom and 100 is the top.
@@ -126,13 +145,13 @@ public abstract class AbstractMarkableChart extends AbstractAxisChart {
      *
      */
     private static class RangeMarker {
-        /** Range maker color.**/
+        /** Range maker color. **/
         private final Color  color;
 
-        /** Range marker start.**/
+        /** Range marker start. **/
         private final double startPoint;
 
-        /** Range marker end.**/
+        /** Range marker end. **/
         private final double endPoint;
 
         /**
@@ -208,6 +227,7 @@ public abstract class AbstractMarkableChart extends AbstractAxisChart {
      * @author Julien Chastang (julien.c.chastang at gmail dot com)
      *
      */
+    
     private static final class HorizontalRangeMarker extends RangeMarker {
 
         /**
