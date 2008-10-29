@@ -35,7 +35,7 @@ import com.googlecode.charts4j.collect.ImmutableList;
  * @see RadarPlot
  * @see GCharts
  */
-public final class RadarChart implements GChart, GraphChart, TitledChart {
+public final class RadarChart implements GChart, GraphChart, TitledChart, GridChart {
 
     /** This class simply forwards all calls to the PrivateRadarChart class. **/
     private final PrivateRadarChart radarChart;
@@ -145,16 +145,7 @@ public final class RadarChart implements GChart, GraphChart, TitledChart {
     }
 
     /**
-     * Define a grid for this chart.
-     *
-     * @param xAxisStepSize
-     *            x step size. must be > 0.
-     * @param yAxisStepSize
-     *            y step size. must be > 0.
-     * @param lengthOfLineSegment
-     *            length of line segment. must be >= 0.
-     * @param lengthOfBlankSegment
-     *            length of blank segment. must be > 0.
+     * {@inheritDoc}
      */
     public void setGrid(final double xAxisStepSize, final double yAxisStepSize, final int lengthOfLineSegment, final int lengthOfBlankSegment) {
         radarChart.setGrid(xAxisStepSize, yAxisStepSize, lengthOfLineSegment, lengthOfBlankSegment);

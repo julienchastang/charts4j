@@ -41,7 +41,7 @@ import com.googlecode.charts4j.parameters.AxisTypes;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-public abstract class AbstractAxisChart extends AbstractGraphChart {
+public abstract class AbstractAxisChart extends AbstractGraphChart implements GridChart {
 
     /** List of X axis labels. **/
     private final List<AxisLabelsImpl> xAxisLabels     = Lists.newLinkedList();
@@ -123,16 +123,7 @@ public abstract class AbstractAxisChart extends AbstractGraphChart {
     }
 
     /**
-     * Define a grid for this chart.
-     *
-     * @param xAxisStepSize
-     *            x step size. must be > 0.
-     * @param yAxisStepSize
-     *            y step size. must be > 0.
-     * @param lengthOfLineSegment
-     *            length of line segment. must be >= 0.
-     * @param lengthOfBlankSegment
-     *            length of blank segment. must be > 0.
+     * {@inheritDoc}
      */
     public final void setGrid(final double xAxisStepSize, final double yAxisStepSize, final int lengthOfLineSegment, final int lengthOfBlankSegment) {
         checkArgument(xAxisStepSize > 0, "xAxisStepSize must be positive: %s", xAxisStepSize);
