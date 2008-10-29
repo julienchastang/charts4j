@@ -209,5 +209,16 @@ public class LineChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chco=008000&chd=e:AAgA..&chdl=myLegend&chf=a,s,FFFFFF7F&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-
+    
+    /**
+     * Testing plotting one point.
+     */
+    @Test
+    public void test9() {
+        final Line line = Plots.newLine(Data.newData(50));
+        final LineChart chart = GCharts.newLineChart(line);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?cht=lc&chd=e:gA&chs=200x125";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
 }

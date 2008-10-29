@@ -99,7 +99,10 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     PlotImpl(final Data data) {
         this.yData = data;
         //Below, the * / 100 is to prevent ill-onditioned math.
-        final int inc = ((int)Data.MAX_VALUE) * 100 / (data.getSize() - 1);
+        int inc = 0;
+        if (data.getSize() > 1){
+            inc = ((int)Data.MAX_VALUE) * 100 / (data.getSize() - 1);
+        }
         final List<Number> xVals = Lists.newLinkedList();
         double x = Data.MIN_VALUE;
         for (int i = (int) Data.MIN_VALUE; i < data.getSize(); i++) {
