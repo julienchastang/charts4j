@@ -82,11 +82,40 @@ public class RadarChartTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=r&chs=500x500&chd=e:GaMzTNZmgAmZszzM5m";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+    
+    /**
+     * Testing radar charts with grids
+     */
+    @Test
+    public void testGrid() {
+        Data data = Data.newData(10, 20, 30, 40, 50, 60, 70, 80, 90);
+        final RadarChart chart = GCharts.newRadarChart(Plots.newRadarPlot(data));
+        chart.setSize(500, 500);
+        chart.setGrid(10, 10, 2, 2);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:GaMzTNZmgAmZszzM5m&chg=10.0,10.0,2,2&chs=500x500&cht=r";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+    
+    /**
+     * Testing radar charts with range markers
+     */
+    @Test
+    public void testRangeMarker() {
+        Data data = Data.newData(10, 20, 30, 40, 50, 60, 70, 80, 90);
+        final RadarChart chart = GCharts.newRadarChart(Plots.newRadarPlot(data));
+        chart.setSize(500, 500);
+        chart.addRadialAxisRangeMarker(0, 50, RED);
+        chart.addConcentricAxisRangeMarker(10, 90, GREEN);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:GaMzTNZmgAmZszzM5m&chm=r,008000,0,0.10,0.90|R,FF0000,0,0.00,4.00&chs=500x500&cht=r";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
 
     /**
      * Testing radar charts
      */
-    // @Test
+    @Test
     public void test1() {
         final RadarPlot plot1 = Plots.newRadarPlot(Data.newData(10, 20, 30, 40, 50, 60, 70, 80, 90), GREEN);
         final RadarPlot plot2 = Plots.newRadarPlot(Data.newData(90, 80, 70, 60, 50, 40, 30, 20, 10), RED);
@@ -102,7 +131,7 @@ public class RadarChartTest {
     /**
      * Testing radar charts
      */
-    // @Test
+    @Test
     public void test2() {
         final RadarPlot plot1 = Plots.newRadarPlot(Data.newData(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100), MAROON);
         plot1.setLineStyle(LineStyle.newLineStyle(5, 1, 0));
@@ -117,7 +146,7 @@ public class RadarChartTest {
     /**
      * Testing radar charts
      */
-    // @Test
+    @Test
     public void test3() {
         final RadarPlot plot1 = Plots.newRadarPlot(Data.newData(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100), MAROON);
         plot1.setLineStyle(LineStyle.newLineStyle(5, 1, 0));
@@ -134,7 +163,7 @@ public class RadarChartTest {
     /**
      * Testing radar charts
      */
-    // @Test
+    @Test
     public void test4() {
         final RadarPlot plot1 = Plots.newRadarPlot(Data.newData(0, 20, 30, 40, 50, 60, 70, 80, 0), ORANGERED);
         Color color = Color.newColor(BLUE.toString(), 55);
