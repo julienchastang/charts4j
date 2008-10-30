@@ -80,6 +80,8 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
      * @param axisLabels
      *            x axis labels. Cannot be null. axisLabels parameter is
      *            defensively copied.
+     *
+     * @see AxisLabelsFactory
      */
     public final void addXAxisLabels(final AxisLabels axisLabels) {
         checkNotNull(axisLabels, "axisLabel cannnot be null");
@@ -92,6 +94,8 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
      * @param axisLabels
      *            y axis information. Cannot be null. axisLabel parameter is
      *            defensively copied.
+     *
+     * @see AxisLabelsFactory
      */
     public final void addYAxisLabels(final AxisLabels axisLabels) {
         checkNotNull(axisLabels, "axisLabel cannnot be null");
@@ -104,6 +108,8 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
      * @param axisLabels
      *            top axis information. Cannot be null. axisLabel parameter is
      *            defensively copied.
+     *
+     * @see AxisLabelsFactory
      */
     public final void addTopAxisLabels(final AxisLabels axisLabels) {
         checkNotNull(axisLabels, "axisLabel cannnot be null");
@@ -116,6 +122,8 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
      * @param axisLabels
      *            right axis information. Cannot be null. axisLabels parameter
      *            is defensively copied.
+     *
+     * @see AxisLabelsFactory
      */
     public final void addRightAxisLabels(final AxisLabels axisLabels) {
         checkNotNull(axisLabels, "axisLabels cannnot be null");
