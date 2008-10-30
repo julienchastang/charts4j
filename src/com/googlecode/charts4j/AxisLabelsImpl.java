@@ -37,7 +37,7 @@ import com.googlecode.charts4j.collect.Lists;
  * @see AxisStyle
  * @see AxisLabelsFactory
  */
-class AxisLabelsImpl implements AxisLabels {
+class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
 
     /** Axis style for this axis.  **/
     private AxisStyle          axisStyle;
@@ -92,6 +92,13 @@ class AxisLabelsImpl implements AxisLabels {
      */
     public void setAxisStyle(final AxisStyle axisStyle) {
         this.axisStyle = axisStyle;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setRadialAxisStyle(final Color color, final int fontSize) {
+        this.axisStyle = AxisStyle.newAxisStyle(color, fontSize, AxisTextAlignment.CENTER);
     }
 
     /**

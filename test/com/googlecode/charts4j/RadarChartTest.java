@@ -121,7 +121,7 @@ public class RadarChartTest {
         final RadarPlot plot2 = Plots.newRadarPlot(Data.newData(90, 80, 70, 60, 50, 40, 30, 20, 10), RED);
         final RadarChart chart = GCharts.newRadarChart(plot1, plot2);
         chart.setSize(500, 500);
-        chart.addRadialAxisLabels(AxisLabelsFactory.newAxisLabels("0", "45", "90", "135", "180", "225", "270", "315"));
+        chart.addRadialAxisLabels(AxisLabelsFactory.newRadialAxisLabels("0", "45", "90", "135", "180", "225", "270", "315"));
         chart.setTitle("Cardioid");
         Logger.global.info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=r&chs=500x500&chxt=x&chco=008000,FF0000&chd=e:GaMzTNZmgAmZszzM5m,5mzMszmZgAZmTNMzGa&chxl=0:|0|45|90|135|180|225|270|315&chtt=Cardioid";
@@ -172,7 +172,7 @@ public class RadarChartTest {
         chart.setSpline(true);
         chart.setTitle("A shell");
         chart.setSize(500, 500);
-        chart.addRadialAxisLabels(AxisLabelsFactory.newAxisLabels("0", "45", "90", "135", "180", "225", "270", "315"));
+        chart.addRadialAxisLabels(AxisLabelsFactory.newRadialAxisLabels("0", "45", "90", "135", "180", "225", "270", "315"));
         Logger.global.info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=rs&chs=500x500&chxt=x&chco=FF4500&chm=B,0000FF8C,0,0,0&chd=e:AAMzTNZmgAmZszzMAA&chxl=0:|0|45|90|135|180|225|270|315&chtt=A+shell";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));

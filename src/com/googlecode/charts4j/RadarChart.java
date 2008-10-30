@@ -113,13 +113,13 @@ public final class RadarChart implements GChart, GraphChart, TitledChart, GridCh
     /**
      * Add "spoke" labels to radar plot.
      *
-     * @param axisLabels
+     * @param radialAxisLabels
      *            Axis label information containing "spoke" labels.
      *
-     * @see AxisLabels
+     * @see AxisLabelsFactory
      */
-    public void addRadialAxisLabels(final AxisLabels axisLabels) {
-        radarChart.addXAxisLabels(axisLabels);
+    public void addRadialAxisLabels(final RadialAxisLabels radialAxisLabels) {
+        radarChart.addXAxisLabels((AxisLabels)radialAxisLabels);
     }
 
     /**

@@ -97,18 +97,17 @@ public class RadarChartExample {
         RadarChart chart = GCharts.newRadarChart(plot);
         chart.setTitle("Simple Radar Chart", BLACK, 20);
         chart.setSize(400, 400);
-        AxisLabels radialAxisLabels = AxisLabelsFactory.newAxisLabels("Maths", "Arts", "French", "German", "Music");
-        AxisStyle axisStyle = AxisStyle.newAxisStyle(BLACK, 12, AxisTextAlignment.RIGHT);
-        radialAxisLabels.setAxisStyle(axisStyle);
+        RadialAxisLabels radialAxisLabels = AxisLabelsFactory.newRadialAxisLabels("Maths", "Arts", "French", "German", "Music");
+        radialAxisLabels.setRadialAxisStyle(BLACK, 12);
         chart.addRadialAxisLabels(radialAxisLabels);
         AxisLabels contrentricAxisLabels = AxisLabelsFactory.newNumericAxisLabels(Arrays.asList(0, 20, 40, 60, 80, 100));
-        contrentricAxisLabels.setAxisStyle(axisStyle);
+        contrentricAxisLabels.setAxisStyle(AxisStyle.newAxisStyle(BLACK, 12, AxisTextAlignment.RIGHT));
         chart.addConcentricAxisLabels(contrentricAxisLabels);
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
         Logger.global.info(url);
-        String expectedString = "http://chart.apis.google.com/chart?chco=CC3366&chd=e:zMgAgAzMmZzM&chls=4,1,0&chm=s,CC3366,0,-1,12,0|s,FFFFFF,0,-1,8,0&chs=400x400&cht=r&chts=000000,20&chtt=Simple+Radar+Chart&chxl=1:|Maths|Arts|French|German|Music&chxp=0,0,20,40,60,80,100&chxr=0,0.0,100.0&chxs=0,000000,12,1|1,000000,12,1&chxt=y,x";
+        String expectedString = "http://chart.apis.google.com/chart?cht=r&chxt=y,x&chls=4,1,0&chco=CC3366&chs=400x400&chts=000000,20&chxr=0,0.0,100.0&chd=e:zMgAgAzMmZzM&chtt=Simple+Radar+Chart&chxp=0,0,20,40,60,80,100&chxs=0,000000,12,1|1,000000,12,0&chxl=1:|Maths|Arts|French|German|Music&chm=s,CC3366,0,-1,12,0|s,FFFFFF,0,-1,8,0";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }    
 }
