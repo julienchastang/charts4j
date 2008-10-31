@@ -21,24 +21,24 @@ import java.util.Collection;
 /**
  * Simple static methods to be called at the start of your own methods to verify
  * correct arguments and state. This allows constructs such as
- * 
+ *
  * <pre>
  * if (count &lt;= 0) {
  *     throw new IllegalArgumentException(&quot;must be positive: &quot; + count);
  * }
  * </pre>
- * 
+ *
  * to be replaced with the more compact
- * 
+ *
  * <pre>
  * checkArgument(count &gt; 0, &quot;must be positive: %s&quot;, count);
  * </pre>
- * 
+ *
  * Note that the sense of the expression is inverted; with {@code Preconditions}
  * you declare what you expect to be <i>true</i>, just as you do with an <a
  * href="http://java.sun.com/j2se/1.5.0/docs/guide/language/assert.html">
  * {@code assert}</a> or a JUnit {@code assertTrue()} call.
- * 
+ *
  * <p>
  * Take care not to confuse precondition checking with other similar types of
  * checks! Precondition exceptions -- including those provided here, but also
@@ -48,7 +48,7 @@ import java.util.Collection;
  * should not have invoked the method when it did, with the arguments it did, or
  * perhaps <i>ever</i>. Postcondition or other invariant failures should not
  * throw these types of exceptions.
- * 
+ *
  * <p>
  * <b>Note:</b> The methods of the {@code Preconditions} class are highly
  * unusual in one way: they are <i>supposed to</i> throw exceptions, and promise
@@ -57,7 +57,7 @@ import java.util.Collection;
  * {@link #checkNotNull(Object)} -- and technically this parameter could be even
  * marked as {@link Nullable} -- yet the method will still throw an exception
  * anyway, because that's what its contract says to do.
- * 
+ *
  * @author Kevin Bourrillion
  */
 public final class Preconditions {
@@ -67,7 +67,7 @@ public final class Preconditions {
     /**
      * Ensures the truth of an expression involving one or more parameters to
      * the calling method.
-     * 
+     *
      * @param expression
      *            a boolean expression
      * @throws IllegalArgumentException
@@ -82,7 +82,7 @@ public final class Preconditions {
     /**
      * Ensures the truth of an expression involving one or more parameters to
      * the calling method.
-     * 
+     *
      * @param expression
      *            a boolean expression
      * @param errorMessage
@@ -100,7 +100,7 @@ public final class Preconditions {
     /**
      * Ensures the truth of an expression involving one or more parameters to
      * the calling method.
-     * 
+     *
      * @param expression
      *            a boolean expression
      * @param errorMessageTemplate
@@ -130,7 +130,7 @@ public final class Preconditions {
     /**
      * Ensures the truth of an expression involving the state of the calling
      * instance, but not involving any parameters to the calling method.
-     * 
+     *
      * @param expression
      *            a boolean expression
      * @throws IllegalStateException
@@ -145,7 +145,7 @@ public final class Preconditions {
     /**
      * Ensures the truth of an expression involving the state of the calling
      * instance, but not involving any parameters to the calling method.
-     * 
+     *
      * @param expression
      *            a boolean expression
      * @param errorMessage
@@ -163,7 +163,7 @@ public final class Preconditions {
     /**
      * Ensures the truth of an expression involving the state of the calling
      * instance, but not involving any parameters to the calling method.
-     * 
+     *
      * @param expression
      *            a boolean expression
      * @param errorMessageTemplate
@@ -193,7 +193,7 @@ public final class Preconditions {
     /**
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
-     * 
+     *
      * @param reference
      *            an object reference
      * @return the non-null reference that was validated
@@ -210,7 +210,7 @@ public final class Preconditions {
     /**
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
-     * 
+     *
      * @param reference
      *            an object reference
      * @param errorMessage
@@ -230,7 +230,7 @@ public final class Preconditions {
     /**
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
-     * 
+     *
      * @param reference
      *            an object reference
      * @param errorMessageTemplate
@@ -261,7 +261,7 @@ public final class Preconditions {
     /**
      * Ensures that an {@code Iterable} object passed as a parameter to the
      * calling method is not null and contains no null elements.
-     * 
+     *
      * @param iterable
      *            the iterable to check the contents of
      * @return the non-null {@code iterable} reference just validated
@@ -279,7 +279,7 @@ public final class Preconditions {
     /**
      * Ensures that an {@code Iterable} object passed as a parameter to the
      * calling method is not null and contains no null elements.
-     * 
+     *
      * @param iterable
      *            the iterable to check the contents of
      * @param errorMessage
@@ -300,7 +300,7 @@ public final class Preconditions {
     /**
      * Ensures that an {@code Iterable} object passed as a parameter to the
      * calling method is not null and contains no null elements.
-     * 
+     *
      * @param iterable
      *            the iterable to check the contents of
      * @param errorMessageTemplate
@@ -355,7 +355,7 @@ public final class Preconditions {
      * are matched by position - the first {@code %s} gets {@code args[0]}, etc.
      * If there are more arguments than placeholders, the unmatched arguments
      * will be appended to the end of the formatted message in square braces.
-     * 
+     *
      * @param template
      *            a non-null string containing 0 or more {@code %s}
      *            placeholders.

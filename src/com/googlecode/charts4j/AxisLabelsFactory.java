@@ -100,7 +100,7 @@ public final class AxisLabelsFactory {
         checkContentsNotNull(Arrays.asList(labels), "labels list is null or contains a null value");
         return newAxisLabels(Arrays.asList(labels), Collections.<Number> emptyList());
     }
-    
+
     /**
      * Labels will be placed uniformly around a radar chart.
      *
@@ -113,7 +113,7 @@ public final class AxisLabelsFactory {
     public static RadialAxisLabels newRadialAxisLabels(final List<? extends String> labels) {
         return (RadialAxisLabels)newAxisLabels(labels, Collections.<Number> emptyList());
     }
-    
+
     /**
      * Labels will be placed uniformly around a radar chart.
      *

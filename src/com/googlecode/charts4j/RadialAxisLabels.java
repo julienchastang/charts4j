@@ -28,9 +28,9 @@ package com.googlecode.charts4j;
 /**
  * Radial axis labels specifically for {@link RadarChart}s. Construct with the
  * {@link AxisLabelsFactory} class.
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
- * 
+ *
  * @see RadarPlot
  * @see RadarChart
  * @see AxisLabelsFactory

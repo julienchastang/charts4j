@@ -227,7 +227,7 @@ public abstract class AbstractMarkableChart extends AbstractAxisChart {
      * @author Julien Chastang (julien.c.chastang at gmail dot com)
      *
      */
-    
+
     private static final class HorizontalRangeMarker extends RangeMarker {
 
         /**

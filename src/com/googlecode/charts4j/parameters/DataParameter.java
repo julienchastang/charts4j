@@ -129,7 +129,7 @@ final class DataParameter implements Parameter {
         }
 
         final StringBuilder encodedData = new StringBuilder();
-        for (double datum : data) {// The following cast to int is safe.
+        for (double datum : data) { // The following cast to int is safe.
             final int index = (int) ((datum >= Data.MIN_VALUE && datum <= Data.MAX_VALUE) ? Math.round((datum / Data.MAX_VALUE) * (EXTENDED_ENCODING.length - 1)) : -1);
             encodedData.append((index < 0 || index > (EXTENDED_ENCODING.length - 1)) ? "__" : EXTENDED_ENCODING[index]);
         }
@@ -151,7 +151,7 @@ final class DataParameter implements Parameter {
         }
 
         final StringBuilder encodedData = new StringBuilder();
-        for (double datum : data) {// The following cast to int is safe.
+        for (double datum : data) { // The following cast to int is safe.
             int index = (int) ((datum >= Data.MIN_VALUE && datum <= Data.MAX_VALUE) ? Math.round((datum / Data.MAX_VALUE) * (SIMPLE_ENCODING.length - 1)) : -1);
             encodedData.append((index < 0 || index > (SIMPLE_ENCODING.length - 1)) ? "_" : SIMPLE_ENCODING[index]);
         }

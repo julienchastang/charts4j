@@ -29,4 +29,3 @@
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 package com.googlecode.charts4j.parameters;
-
