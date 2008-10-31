@@ -556,7 +556,7 @@ public class Color {
      */
     @Override
     public String toString() {
-        return color + ((!opacity.equals("FF")) ? opacity : "");
+        return color + ((!"FF".equals(opacity)) ? opacity : "");
     }
 
     /**
