@@ -53,7 +53,7 @@ public final class Fills {
      *            color for gradient.Cannot be null.
      * @param offset
      *            specify at what point the color is pure where: 0 specifies the
-     *            right-most chart position and 100 the left-most.
+     *            left-most chart position and 100 the right-most.
      *
      * @return a newly constructed linear gradient fill
      *
