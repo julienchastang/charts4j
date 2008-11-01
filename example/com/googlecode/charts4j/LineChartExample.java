@@ -76,7 +76,7 @@ public class LineChartExample {
         chart.setTitle("Web Traffic|(in billions of hits)", WHITE, 14);
         chart.addHorizontalRangeMarker(40, 60, Color.newColor(RED, 30));
         chart.addVerticalRangeMarker(70, 90, Color.newColor(GREEN, 30));
-        chart.setGrid(25, 20, 3, 2);
+        chart.setGrid(25, 25, 3, 2);
 
         // Defining axis info and styles
         AxisStyle axisStyle = AxisStyle.newAxisStyle(WHITE, 12, AxisTextAlignment.CENTER);
@@ -108,7 +108,7 @@ public class LineChartExample {
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
         Logger.global.info(url);
-        String expectedString = "http://chart.apis.google.com/chart?chf=bg,s,1F1D1D|c,lg,0,363433,1.0,2E2B2A,0.0&chs=600x450&chd=e:AAB4DhEzFxGnHrJRLhOZRmUpXCYZYpYAXCWfXCZIczhmmtrKuE,..-H8e7M6O5Y4U2u0exmuZrWo9nmnWn.o9pgo9m3jMeZZSU1R7&chtt=Web+Traffic%7C%28in+billions+of+hits%29&chts=FFFFFF,14&chg=25.0,20.0,3,2&chxt=y,y,x,x,x&chxl=0:||25|50|75|100|1:|Hits|2:|Nov|Dec|Jan|Feb|Mar|3:|2007|2007|2008|2008|2008|4:|Month&chxs=0,FFFFFF,12,0|1,FFFFFF,12,0|2,FFFFFF,12,0|3,FFFFFF,12,0|4,FFFFFF,14,0&chxp=1,50.0|4,50.0&chxr=1,0.0,100.0|4,0.0,100.0&chm=r,FF00004C,0,0.40,0.60|R,0080004C,0,0.70,0.90|d,CA3D05,0,-1,12,0|d,FFFFFF,0,-1,8,0|d,87CEEB,1,-1,12,0|d,FFFFFF,1,-1,8,0&chdl=My+Website.com|Competition.com&chco=CA3D05,87CEEB&chls=3,1,0|3,1,0&cht=lc";
+        String expectedString = "http://chart.apis.google.com/chart?chco=CA3D05,87CEEB&chd=e:AAB4DhEzFxGnHrJRLhOZRmUpXCYZYpYAXCWfXCZIczhmmtrKuE,..-H8e7M6O5Y4U2u0exmuZrWo9nmnWn.o9pgo9m3jMeZZSU1R7&chdl=My+Website.com|Competition.com&chf=bg,s,1F1D1D|c,lg,0,363433,1.0,2E2B2A,0.0&chg=25.0,25.0,3,2&chls=3,1,0|3,1,0&chm=r,FF00004C,0,0.40,0.60|R,0080004C,0,0.70,0.90|d,CA3D05,0,-1,12,0|d,FFFFFF,0,-1,8,0|d,87CEEB,1,-1,12,0|d,FFFFFF,1,-1,8,0&chs=600x450&cht=lc&chts=FFFFFF,14&chtt=Web+Traffic%7C%28in+billions+of+hits%29&chxl=0:||25|50|75|100|1:|Hits|2:|Nov|Dec|Jan|Feb|Mar|3:|2007|2007|2008|2008|2008|4:|Month&chxp=1,50.0|4,50.0&chxr=1,0.0,100.0|4,0.0,100.0&chxs=0,FFFFFF,12,0|1,FFFFFF,12,0|2,FFFFFF,12,0|3,FFFFFF,12,0|4,FFFFFF,14,0&chxt=y,y,x,x,x";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
     
