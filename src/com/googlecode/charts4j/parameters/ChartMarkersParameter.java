@@ -101,16 +101,16 @@ final class ChartMarkersParameter implements Parameter {
     }
 
     /**
-     * Add shape marker to each point on the plot.
+     * Add marker to each point on the plot.
      *
-     * @param shapeMarker
+     * @param marker
      *            the marker
      * @param dataSetIndex
      *            the data set index
      */
-    void addShapeMarkers(final ShapeMarker shapeMarker, final int dataSetIndex) {
+    void addMarkers(final Marker marker, final int dataSetIndex) {
         //-1 adds the same shape marker to each point on the plot.
-        markers.add(new ShapeMarkerParam(shapeMarker, dataSetIndex, -1));
+        addMarker(marker, dataSetIndex, -1);
     }
 
 

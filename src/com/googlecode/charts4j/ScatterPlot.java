@@ -68,11 +68,11 @@ public class ScatterPlot extends AbstractMarkableChart {
         if (scatterPlotData.getLegend() != null) {
             parameterManager.addLegend(scatterPlotData.getLegend());
         }
-        final List<ShapeMarker> shapeMarkers = scatterPlotData.getShapeMarkers();
-        for (ShapeMarker sm : shapeMarkers) {
-            parameterManager.addShapeMarkers(sm, 0);
+        final List<Marker> markers = scatterPlotData.getMarkers();
+        for (Marker m : markers) {
+            parameterManager.addMarkers(m, 0);
         }
-        if (shapeMarkers.isEmpty()) {
+        if (markers.isEmpty()) {
             final Color color = (scatterPlotData.getColor() != null) ? scatterPlotData.getColor() : Color.BLACK;
             parameterManager.addMarker(new ShapeMarker(Shape.CIRCLE, color, 10), 0, 0);
         }

@@ -50,8 +50,8 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     /** List of marker points for this plot. **/
     private final List<MarkerPoint> markerPoints = Lists.newLinkedList();
 
-    /** List of shape markers to be added to all point on this plot. **/
-    private final List<ShapeMarker> shapeMarkers = Lists.newLinkedList();
+    /** List of markers to be added to all point on this plot. **/
+    private final List<Marker> markers = Lists.newLinkedList();
 
     /** Color of this plot. **/
     private Color                    color;
@@ -122,7 +122,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
         xData = plotImpl.xData;
         yData = plotImpl.yData;
         markerPoints.addAll(plotImpl.markerPoints);
-        shapeMarkers.addAll(plotImpl.shapeMarkers);
+        markers.addAll(plotImpl.markers);
         color = plotImpl.color;
         legend = plotImpl.legend;
         pointSizes = plotImpl.pointSizes;
@@ -222,23 +222,12 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     }
 
     /**
-     * Get the list of shape markers for this plot.
+     * Get the list of markers for this plot.
      *
-     * @return an immutable list of marker shape markers.
+     * @return an immutable list of markers.
      */
-    ImmutableList<ShapeMarker> getShapeMarkers() {
-        return Lists.copyOf(shapeMarkers);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void addTextMarker(final String text, final Color color, final int size, final int index) {
-        checkNotNull(text, "text cannot be null");
-        checkNotNull(color, "color cannot be null");
-        checkArgument(index >= 0, "index must be >= 0");
-        checkArgument(index < yData.getSize(), "index is out of bounds");
-        markerPoints.add(new MarkerPoint(Markers.newTextMarker(text, color, size), index));
+    ImmutableList<Marker> getMarkers() {
+        return Lists.copyOf(markers);
     }
 
     /**
@@ -255,10 +244,38 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     /**
      * {@inheritDoc}
      */
+    public void addTextMarker(final String text, final Color color, final int size, final int index) {
+        checkNotNull(text, "text cannot be null");
+        checkNotNull(color, "color cannot be null");
+        checkArgument(index >= 0, "index must be >= 0");
+        checkArgument(index < yData.getSize(), "index is out of bounds");
+        markerPoints.add(new MarkerPoint(Markers.newTextMarker(text, color, size), index));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public void addShapeMarkers(final Shape shape, final Color color, final int size) {
         checkNotNull(shape, "shape cannot be null");
         checkNotNull(color, "color cannot be null");
-        shapeMarkers.add((ShapeMarker) Markers.newShapeMarker(shape, color, size));
+        markers.add(Markers.newShapeMarker(shape, color, size));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void addMarker(final Marker marker, final int index) {
+        checkNotNull(marker, "marker cannot be null");
+        checkArgument(index >= 0, "start index must be >= 0");
+        markerPoints.add(new MarkerPoint(marker, index));
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public void addMarkers(final Marker marker) {
+        checkNotNull(marker, "marker cannot be null");
+        markers.add(marker);
     }
 
     /**
@@ -295,15 +312,6 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     public void setZeroLine(final double zeroLine) {
         checkArgument(zeroLine >= Data.MIN_VALUE && zeroLine <= Data.MAX_VALUE, "Zero line must be between " + Data.MIN_VALUE + " and " + Data.MAX_VALUE);
         this.zeroLine = zeroLine;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void addMarker(final Marker marker, final int index) {
-        checkNotNull(marker, "marker cannot be null");
-        checkArgument(index >= 0, "start index must be >= 0");
-        markerPoints.add(new MarkerPoint(marker, index));
     }
 
     /**

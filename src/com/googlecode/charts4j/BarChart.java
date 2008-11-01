@@ -142,9 +142,9 @@ public class BarChart extends AbstractAxisChart {
             if (plot.getDataLine() != null) {
                 parameterManager.addLineStyleMarker(plot.getDataLine().getColor(), lineCount, 0, plot.getDataLine().getSize(), plot.getDataLine().getPriority());
             }
-            final ImmutableList<ShapeMarker> shapeMarkers = plot.getShapeMarkers();
-            for (ShapeMarker sm : shapeMarkers) {
-                parameterManager.addShapeMarkers(sm, lineCount);
+            final ImmutableList<Marker> markers = plot.getMarkers();
+            for (Marker m : markers) {
+                parameterManager.addMarkers(m, lineCount);
             }
             final ImmutableList<MarkerPoint> markerSeries = plot.getMarkerPoints();
             for (MarkerPoint ms : markerSeries) {

@@ -255,15 +255,15 @@ public final class ParameterManager {
     }
 
     /**
-     * Add shape markers to each point on the plot.
+     * Add markers to each point on the plot.
      *
-     * @param shapeMarker
+     * @param marker
      *            the marker
      * @param dataSetIndex
      *            the data set index
      */
-    public void addShapeMarkers(final ShapeMarker shapeMarker, final int dataSetIndex) {
-        getParameter(ChartMarkersParameter.class).addShapeMarkers(shapeMarker, dataSetIndex);
+    public void addMarkers(final Marker marker, final int dataSetIndex) {
+        getParameter(ChartMarkersParameter.class).addMarkers(marker, dataSetIndex);
     }
 
 

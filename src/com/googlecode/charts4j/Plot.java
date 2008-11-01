@@ -101,4 +101,12 @@ public interface Plot {
      *            0.
      */
     void addMarker(final Marker marker, final int index);
+    
+    /**
+     * Add a {@link Marker} to each point on a plot.
+     *
+     * @param marker
+     *            The text or shape marker. Cannot be null.
+     */
+    void addMarkers(final Marker marker);
 }
