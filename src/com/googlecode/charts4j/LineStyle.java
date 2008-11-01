@@ -113,8 +113,8 @@ public final class LineStyle {
      */
     public static LineStyle newLineStyle(final int lineThickness, final int lengthOfLineSegment, final int lengthOfBlankSegment) {
         checkArgument(lineThickness > 0, "line thickness must be > 0: %s", lineThickness);
-        checkArgument(lineThickness > 0, "length of line segment must be >= 0: %s", lengthOfLineSegment);
-        checkArgument(lineThickness > 0, "length of blank segment must be > 0: %s", lengthOfBlankSegment);
+        checkArgument(lengthOfLineSegment >= 0, "length of line segment must be >= 0: %s", lengthOfLineSegment);
+        checkArgument(lengthOfBlankSegment >= 0, "length of blank segment must be > 0: %s", lengthOfBlankSegment);
         return new LineStyle(lineThickness, lengthOfLineSegment, lengthOfBlankSegment);
     }
 }
