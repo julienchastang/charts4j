@@ -43,7 +43,7 @@ public interface GridChart {
      * @param lengthOfLineSegment
      *            length of line segment. must be >= 0.
      * @param lengthOfBlankSegment
-     *            length of blank segment. must be > 0.
+     *            length of blank segment. must be >= 0.
      */
     void setGrid(final double xAxisStepSize, final double yAxisStepSize, final int lengthOfLineSegment, final int lengthOfBlankSegment);
 }
