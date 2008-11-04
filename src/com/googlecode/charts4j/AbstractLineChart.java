@@ -27,6 +27,8 @@ package com.googlecode.charts4j;
 
 import static com.googlecode.charts4j.Color.BLACK;
 
+import java.util.List;
+
 import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.parameters.FillAreaType;
@@ -61,16 +63,25 @@ abstract class AbstractLineChart extends AbstractMarkableChart {
     @Override
     protected void prepareData() {
         super.prepareData();
+        
+        final List<Color> colors        = Lists.newLinkedList();
+        final List<LineStyle> lStyles   = Lists.newLinkedList();
+        final List<Priority> priorities = Lists.newLinkedList();
 
         // Logic to make sure things stay in step.
         boolean hasLegend = false;
         boolean hasColor = false;
+        boolean hasLineStyle = false;
+        boolean hasPriorities = false;
+
 
         // Logic to make sure things stay in step continued.
         for (Plot p : lines) {
             final PlotImpl plot = (PlotImpl) p;
             hasLegend |= (plot.getLegend() != null);
             hasColor |= (plot.getColor() != null);
+            hasLineStyle |= (plot.getLineStyle() != null);
+            hasPriorities |= (plot.getPriority()  != null);
         }
 
         // Logic to make sure things stay in step continued.
@@ -82,6 +93,7 @@ abstract class AbstractLineChart extends AbstractMarkableChart {
             }
             if (hasColor) {
                 parameterManager.addColor(line.getColor() != null ? line.getColor() : BLACK);
+                colors.add(line.getColor() != null ? line.getColor() : BLACK);
             }
             final ImmutableList<Marker> markers = line.getMarkers();
             for (Marker m : markers) {
@@ -94,7 +106,17 @@ abstract class AbstractLineChart extends AbstractMarkableChart {
             if (line.getFillAreaColor() != null) {
                 parameterManager.addFillAreaMarker(FillAreaType.FULL, line.getFillAreaColor(), lineCount, 0);
             }
+            if (hasLineStyle) {
+                parameterManager.addLineChartLineStyle(line.getLineStyle() != null ? line.getLineStyle() : LineStyle.newLineStyle(1, 1, 0));
+                lStyles.add(line.getLineStyle() != null ? line.getLineStyle() : LineStyle.newLineStyle(1, 1, 0));
+            }
+            if (hasPriorities) {
+                priorities.add(line.getPriority() != null ? line.getPriority() : Priority.NORMAL);
+            }
             lineCount++;
+        }
+        if (!priorities.isEmpty()) {
+            setPriorities(priorities, colors, lStyles);
         }
     }
 
@@ -106,5 +128,20 @@ abstract class AbstractLineChart extends AbstractMarkableChart {
      */
     protected final ImmutableList<Plot> getLines() {
         return Lists.copyOf(lines);
+    }
+    
+    /**
+     * Private convenience method for setting priorities.
+     *
+     * @param priorities
+     * @param colors
+     * @param lineStyles
+     */
+    private void setPriorities(final List<Priority> priorities, final List<? extends Color> colors, final List<? extends LineStyle> lineStyles) {
+        for (int i = 0; i < priorities.size(); i++) {
+            final Color color = (colors.isEmpty()) ? BLACK : colors.get(i);
+            final int size = (lineStyles.isEmpty()) ? 1 : lineStyles.get(i).getLineThickness();
+            parameterManager.addLineStyleMarker(color, i, 0, size, priorities.get(i));
+        }
     }
 }

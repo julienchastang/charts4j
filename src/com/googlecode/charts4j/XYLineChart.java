@@ -40,7 +40,7 @@ import com.googlecode.charts4j.parameters.ChartType;
  * @see XYLine
  * @see GCharts
  */
-public class XYLineChart extends AbstractPriorityChart {
+public class XYLineChart extends AbstractLineChart {
 
     /** List of lines to be ploted this chart. **/
     private final ImmutableList<Plot> xylines;

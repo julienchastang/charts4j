@@ -27,12 +27,12 @@ package com.googlecode.charts4j;
 
 
 /**
- * For plots that support line styles.
+ * For line plots including radar charts.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  * @see Plots
  */
-interface LineStylePlot {
+interface LinePlot extends Curve{
 
     /**
      * Set the line style.
@@ -41,4 +41,12 @@ interface LineStylePlot {
      *            The line style to set. Cannot be null.
      */
     void setLineStyle(final LineStyle lineStyle);
+    
+    /**
+     * Set the priority.
+     *
+     * @param priority
+     *            for this plot. Cannot be null.
+     */
+    void setPriority(final Priority priority);
 }

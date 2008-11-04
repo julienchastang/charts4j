@@ -37,13 +37,13 @@ import com.googlecode.charts4j.parameters.ChartType;
  * @see Line
  * @see GCharts
  */
-public class LineChart extends AbstractPriorityChart {
+public class LineChart extends AbstractLineChart {
 
     /** Lines to be rendered by this chart. **/
     private final ImmutableList<Plot> lines;
 
     /** Is this a sparkline chart? **/
-    private boolean                   isSparkline = false;
+    private boolean isSparkline = false;
 
     /**
      * @see GCharts#newLineChart(java.util.List)

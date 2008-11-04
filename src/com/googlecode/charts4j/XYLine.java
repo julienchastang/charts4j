@@ -35,5 +35,5 @@ package com.googlecode.charts4j;
  * @see DataUtil
  * @see XYLineChart
  */
-public interface XYLine extends PriorityPlot {
+public interface XYLine extends LinePlot {
 }

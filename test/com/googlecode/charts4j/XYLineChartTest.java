@@ -26,6 +26,8 @@
 package com.googlecode.charts4j;
 
 import static com.googlecode.charts4j.Color.BLUE;
+import static com.googlecode.charts4j.UrlUtil.normalize;
+import static org.junit.Assert.assertEquals;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,6 +80,9 @@ public class XYLineChartTest {
         XYLineChart chart = GCharts.newXYLineChart(line);
         chart.setSize(400, 400);
         Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?cht=lxy&chco=0000FF&chs=400x400&chd=e:gAhvjelMm6omqQr4tevB,.W.U.M.A-u-Y989c848O";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+
     }
 
     @Test
@@ -90,5 +95,22 @@ public class XYLineChartTest {
         XYLineChart chart = GCharts.newXYLineChart(line);
         chart.setSize(400, 400);
         Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?cht=lxy&chco=0000FF&chs=400x400&chd=e:GaHCHrgA,TNGaTNMz";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+    
+    @Test
+    public void testLineStyle() {
+
+        Data data1 = Data.newData(10, 11, 12, 50);
+        Data data2 = Data.newData(30, 10, 30, 20);
+        XYLine line = Plots.newXYLine(data1, data2);
+        line.setLineStyle(LineStyle.MEDIUM_DOTTED_LINE);
+        line.setColor(BLUE);
+        XYLineChart chart = GCharts.newXYLineChart(line);
+        chart.setSize(400, 400);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?cht=lxy&chls=3,5,3&chco=0000FF&chs=400x400&chd=e:GaHCHrgA,TNGaTNMz";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 }

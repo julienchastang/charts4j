@@ -36,5 +36,5 @@ package com.googlecode.charts4j;
  * @see DataUtil
  * @see LineChart
  */
-public interface Line extends PriorityPlot {
+public interface Line extends LinePlot {
 }

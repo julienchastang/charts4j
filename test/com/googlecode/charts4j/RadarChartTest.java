@@ -177,4 +177,22 @@ public class RadarChartTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=rs&chs=500x500&chxt=x&chco=FF4500&chm=B,0000FF8C,0,0,0&chd=e:AAMzTNZmgAmZszzMAA&chxl=0:|0|45|90|135|180|225|270|315&chtt=A+shell";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+    
+    /**
+     * Testing radar chart plot priorities.
+     */
+    @Test
+    public void test5() {
+        final RadarPlot plot0 = Plots.newRadarPlot(Data.newData(0, 50, 100), RED);
+        plot0.setPriority(Priority.HIGH);
+        final RadarPlot plot1 = Plots.newRadarPlot(Data.newData(0, 50, 100), GREEN);
+        plot1.setPriority(Priority.LOW);
+        final RadarChart chart = GCharts.newRadarChart(plot0, plot1);
+        chart.setSize(400, 400);
+        chart.setGrid(20, 20, 5, 5);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chco=FF0000,008000&chd=e:AAgA..,AAgA..&chg=20.0,20.0,5,5&chm=D,FF0000,0,0,1,1|D,008000,1,0,1,-1&chs=400x400&cht=r";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+
 }

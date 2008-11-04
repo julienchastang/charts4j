@@ -58,19 +58,10 @@ class PrivateRadarChart extends AbstractLineChart {
     @Override
     protected void prepareData() {
         super.prepareData();
-        boolean hasLineStyle = false;
-
-        for (Plot p : plots) {
-            final PlotImpl plot = (PlotImpl) p;
-            hasLineStyle |= (plot.getLineStyle() != null);
-        }
 
         for (Plot p : plots) {
             final PlotImpl plot = (PlotImpl) p;
             parameterManager.addData(plot.getData());
-            if (hasLineStyle) {
-                parameterManager.addLineChartLineStyle(plot.getLineStyle() != null ? plot.getLineStyle() : LineStyle.newLineStyle(1, 1, 0));
-            }
         }
         if (isSpline) {
             parameterManager.setChartTypeParameter(ChartType.RADAR_SPLINE_CHART);

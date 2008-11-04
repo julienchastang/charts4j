@@ -35,5 +35,5 @@ package com.googlecode.charts4j;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-public interface RadarPlot extends Curve, LineStylePlot {
+public interface RadarPlot extends LinePlot {
 }
