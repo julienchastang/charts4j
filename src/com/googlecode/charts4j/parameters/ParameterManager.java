@@ -40,7 +40,6 @@ import com.googlecode.charts4j.LegendPosition;
 import com.googlecode.charts4j.LineStyle;
 import com.googlecode.charts4j.Marker;
 import com.googlecode.charts4j.Priority;
-import com.googlecode.charts4j.ShapeMarker;
 import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.collect.Maps;
