@@ -101,12 +101,20 @@ public class AxisLabelsTest {
     }
 
     @Test
-    public void testNewAxisLabelsDoubleDouble() {
+    public void testNewAxisLabelsDoubleDouble0() {
         final LineChart chart = TestUtil.getBasicChart();
         chart.addXAxisLabels(AxisLabelsFactory.newNumericRangeAxisLabels(0, 10));
         Logger.global.info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxr=0,0.0,10.0&chxt=x";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-
+    
+    @Test
+    public void testNewAxisLabelsDoubleDouble1() {
+        final LineChart chart = TestUtil.getBasicChart();
+        chart.addXAxisLabels(AxisLabelsFactory.newNumericRangeAxisLabels(0, -10));
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxr=0,0.0,-10.0&chxt=x";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
 }

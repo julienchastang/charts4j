@@ -190,7 +190,6 @@ public final class AxisLabelsFactory {
      * @return AxisLabels
      */
     public static AxisLabels newNumericRangeAxisLabels(final double minRange, final double maxRange) {
-        checkArgument(minRange < maxRange, "minRange must be < maxRange.");
         return new AxisLabelsImpl(minRange, maxRange);
     }
 
