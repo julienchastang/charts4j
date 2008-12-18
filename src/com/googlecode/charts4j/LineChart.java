@@ -75,10 +75,6 @@ public class LineChart extends AbstractLineChart {
             final PlotImpl line = (PlotImpl) l;
             parameterManager.addData(line.getData());
         }
-        if (isSparkline) {
-            parameterManager.setChartTypeParameter(ChartType.SPARKLINE_CHART);
-        } else {
-            parameterManager.setChartTypeParameter(ChartType.LINE_CHART);
-        }
+        parameterManager.setChartTypeParameter(isSparkline ? ChartType.SPARKLINE_CHART : ChartType.LINE_CHART);
     }
 }

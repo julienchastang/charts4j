@@ -41,8 +41,8 @@ class PrivateRadarChart extends AbstractLineChart {
     /** Plots to be rendered by this chart.  **/
     private final ImmutableList<Plot> plots;
 
-    /** Is this radar chart a splined chart..  **/
-    private boolean                   isSpline = false;
+    /** Is this radar chart a splined chart.  **/
+    private boolean isSpline = false;
 
     /**
      * @see GCharts#newRadarChart(java.util.List)
@@ -63,11 +63,7 @@ class PrivateRadarChart extends AbstractLineChart {
             final PlotImpl plot = (PlotImpl) p;
             parameterManager.addData(plot.getData());
         }
-        if (isSpline) {
-            parameterManager.setChartTypeParameter(ChartType.RADAR_SPLINE_CHART);
-        } else {
-            parameterManager.setChartTypeParameter(ChartType.RADAR_CHART);
-        }
+        parameterManager.setChartTypeParameter(isSpline ? ChartType.RADAR_SPLINE_CHART : ChartType.RADAR_CHART);
     }
 
     /**
