@@ -39,13 +39,13 @@ import com.googlecode.charts4j.parameters.ChartType;
  *
  * A Google-o-meter looks a bit like a speedometer dial. The range is from 0 to
  * 100. Colors are interpolated from red to green by default. You can provide
- * your own color gradient.
+ * your own color gradient. The arrow can have a label and a legend.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  *
  * @see GCharts
  */
-public class GoogleOMeter extends AbstractGChart {
+public class GoogleOMeter extends AbstractGraphChart {
     /** Data to be plotted. **/
     private final double               data;
 
@@ -54,30 +54,22 @@ public class GoogleOMeter extends AbstractGChart {
 
     /** Label that will sit atop the arrow. **/
     private final String               label;
+    
+    /** Legend. **/
+    private final String               legend;
 
     /**
-     * @see GCharts#newGoogleOMeter(double, String, List)
+     * @see GCharts#newGoogleOMeter(double, String, String, List)
      */
-    GoogleOMeter(final double data, final String label, final List<? extends Color> colors) {
+    GoogleOMeter(final double data, final String label, final String legend, final List<? extends Color> colors) {
         super();
         checkArgument(data >= Data.MIN_VALUE && data <= Data.MAX_VALUE, "must be between " + Data.MIN_VALUE + " and " + Data.MAX_VALUE + " : %s", data);
         checkContentsNotNull(colors, "colors is null or contains a null");
-        checkArgument(colors.size() >= 2, "Must provide at least 2 colors.");
-        checkNotNull(label, "The label cannot be null");
+        checkArgument(colors.size() != 1, "Must provide at least 2 colors or none at all.");
         this.data = data;
         this.label = label;
+        this.legend = legend;
         this.colors = Lists.copyOf(colors);
-    }
-
-    /**
-     * @see GCharts#newGoogleOMeter(double)
-     */
-    GoogleOMeter(final double data) {
-        super();
-        checkArgument(data >= Data.MIN_VALUE && data <= Data.MAX_VALUE, "must be between " + Data.MIN_VALUE + " and " + Data.MAX_VALUE + " : %s", data);
-        this.data = data;
-        this.label = null;
-        this.colors = Lists.<Color>of();
     }
 
     /**
@@ -90,6 +82,9 @@ public class GoogleOMeter extends AbstractGChart {
         parameterManager.addColors(Lists.copyOf(colors));
         if (label != null) {
             parameterManager.addPieChartAndGoogleOMeterLegend(label);
+        }
+        if (legend != null) {
+            parameterManager.addLegend(legend);
         }
         parameterManager.setChartTypeParameter(ChartType.GOOGLE_O_METER);
     }

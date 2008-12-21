@@ -46,16 +46,20 @@ public class Slice {
     /** Label for pie slice. **/
     private final String label;
 
+    /** Legend for pie slice. **/
+    private final String legend;
+
     /** Color for pie slice. **/
     private final Color  color;
 
     /**
      * @see #newSlice(int, Color, String)
      */
-    Slice(final int percent, final Color color, final String sliceLabel) {
+    Slice(final int percent, final Color color, final String sliceLabel, final String sliceLegend) {
         this.percent = percent;
         this.color = color;
         this.label = sliceLabel;
+        this.legend = sliceLegend; 
     }
 
     /**
@@ -85,6 +89,15 @@ public class Slice {
     public final String getLabel() {
         return label;
     }
+    
+    /**
+     * Get the pie slice legend.
+     *
+     * @return legend of pie slice.
+     */
+    public final String getLegend() {
+        return legend;
+    }
 
     /**
      * Create a pie slice.
@@ -92,16 +105,13 @@ public class Slice {
      * @param percent
      *            percent of pie. Must be between 0 to 100.
      * @param color
-     *            color of slice. Cannot be null
+     *            color of slice.
      * @param sliceLabel
-     *            label associated with slice. Cannot be null.
+     *            label associated with slice.
      * @return a slice of pie.
      */
     public static Slice newSlice(final int percent, final Color color, final String sliceLabel) {
-        checkArgument(percent >= 0 && percent <= 100, "percent must be between 0 and 100: %s", percent);
-        checkNotNull(color, "Color cannot be null");
-        checkNotNull(sliceLabel, "Slice label cannot be null");
-        return new Slice(percent, color, sliceLabel);
+        return newSlice(percent, color, sliceLabel, null);
     }
 
     /**
@@ -110,15 +120,25 @@ public class Slice {
      * @param percent
      *            percent of pie. Must be between 0 to 100.
      * @param color
-     *            color of slice. Cannot be null.
+     *            color of slice.
+     * @param sliceLabel
+     *            label associated with slice.
+     * @param sliceLegend
+     *            legend associated with slice.
      * @return a slice of pie.
      */
-    public static Slice newSlice(final int percent, final Color color) {
+    public static Slice newSlice(final int percent, final Color color, final String sliceLabel, final String sliceLegend) {
         checkArgument(percent >= 0 && percent <= 100, "percent must be between 0 and 100: %s", percent);
-        checkNotNull(color, "Color cannot be null");
-        return new Slice(percent, color, null);
+        return new Slice(percent, color, sliceLabel, sliceLegend);
     }
 
+    /**
+     * Use {@link #newSlice(int, Color, String, String)} instead.
+     */
+    @Deprecated //Since version 1.1. Going away in a future release.
+    public static Slice newSlice(final int percent, final Color color) {
+        return newSlice(percent, color, null, null);
+    }
 
     /**
      * Create a pie slice.
@@ -126,12 +146,10 @@ public class Slice {
      * @param percent
      *            percent of pie. Must be between 0 to 100.
      * @param sliceLabel
-     *            label associated with slice. Cannot be null.
+     *            label associated with slice.
      * @return a slice of pie.
      */
     public static Slice newSlice(final int percent, final String sliceLabel) {
-        checkArgument(percent >= 0 && percent <= 100, "percent must be between 0 and 100: %s", percent);
-        checkNotNull(sliceLabel, "Slice label cannot be null");
-        return new Slice(percent, null, sliceLabel);
+        return newSlice(percent, null, sliceLabel, null);
     }
 }

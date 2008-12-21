@@ -25,8 +25,6 @@
 
 package com.googlecode.charts4j;
 
-import static com.googlecode.charts4j.collect.Preconditions.*;
-
 import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.parameters.ChartType;
@@ -44,10 +42,8 @@ import com.googlecode.charts4j.parameters.ChartType;
  * @see Slice
  * @see GCharts
  */
-public class PieChart extends AbstractGChart implements TitledChart {
-    /** Pie chart title. **/
-    private ChartTitle                 chartTitle;
-
+public class PieChart extends AbstractGraphChart {
+    
     /** Is this a 3D pie chart. **/
     private boolean                    threeD = false;
 
@@ -89,47 +85,28 @@ public class PieChart extends AbstractGChart implements TitledChart {
     /**
      * {@inheritDoc}
      */
-    public final void setTitle(final String title) {
-        checkNotNull(title, "The title cannot be null.");
-        this.chartTitle = new ChartTitle(title);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public final void setTitle(final String title, final Color color, final int fontSize) {
-        checkNotNull(title, "The title cannot be null.");
-        checkNotNull(color, "The color cannot be null.");
-        checkArgument(fontSize > 0, "fontSize must be greater > 0.");
-        this.chartTitle = new ChartTitle(title, color, fontSize);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void prepareData() {
         super.prepareData();
         final double[] d = new double[slices.size()];
         int i = 0;
+        boolean hasLegend = false;
+        for (Slice slice : slices) {
+            if (slice.getLegend() != null ){
+                hasLegend = true;
+                break;
+            }
+        }
         for (Slice slice : slices) {
             d[i++] = slice.getPercentage();
             parameterManager.addPieChartAndGoogleOMeterLegend(slice.getLabel() != null ? slice.getLabel() : "");
+            if (hasLegend)
+                parameterManager.addLegend(slice.getLegend() != null ? slice.getLegend() : "");
             if (slice.getColor() != null) {
                 parameterManager.addColor(slice.getColor());
             }
         }
         parameterManager.addData(Data.newData(d));
-        if (threeD) {
-            parameterManager.setChartTypeParameter(ChartType.THREE_D_PIE_CHART);
-        } else {
-            parameterManager.setChartTypeParameter(ChartType.PIE_CHART);
-        }
-        if (chartTitle != null) {
-            parameterManager.setChartTitleParameter(chartTitle.getTitle());
-        }
-        if (chartTitle != null && chartTitle.getColor() != null) {
-            parameterManager.setChartTitleColorAndSizeParameter(chartTitle.getColor(), chartTitle.getFontSize());
-        }
+        parameterManager.setChartTypeParameter(threeD ? ChartType.THREE_D_PIE_CHART : ChartType.PIE_CHART);
     }
 }

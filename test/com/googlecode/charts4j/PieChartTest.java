@@ -62,22 +62,22 @@ public class PieChartTest {
     }
 
     @Test
-    public void test() {
-        final Slice s1 = Slice.newSlice(45, GRAY, "Safari");
-        final Slice s2 = Slice.newSlice(45, ORANGERED, "Firefox");
-        final Slice s3 = Slice.newSlice(10, BLUE, "Internet Explorer");
+    public void basicTest() {
+        final Slice s1 = Slice.newSlice(45, GRAY, "Safari", "X");
+        final Slice s2 = Slice.newSlice(45, ORANGERED, "Firefox", "Y");
+        final Slice s3 = Slice.newSlice(10, BLUE, "Internet Explorer", "Z");
 
         PieChart chart = GCharts.newPieChart(s1, s2, s3);
         chart.setTitle("A Better World 1");
         chart.setSize(500, 200);
         chart.setThreeD(true);
         Logger.global.info(chart.toURLString());
-        String expectedString = "http://chart.apis.google.com/chart?cht=p3&chs=500x200&chl=Safari|Firefox|Internet+Explorer&chco=808080,FF4500,0000FF&chd=e:czczGa&chtt=A+Better+World+1";
+        String expectedString = "http://chart.apis.google.com/chart?chco=808080,FF4500,0000FF&chd=e:czczGa&chdl=X|Y|Z&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+1";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 
     @Test
-    public void nocolortest() {
+    public void nocolorTest() {
         final Slice s1 = Slice.newSlice(45, "Safari");
         final Slice s2 = Slice.newSlice(45, "Firefox");
         final Slice s3 = Slice.newSlice(10, "Internet Explorer");
@@ -93,16 +93,33 @@ public class PieChartTest {
 
     @Test
     public void interpolatedColorTest() {
-        final Slice s1 = Slice.newSlice(45, GRAY, "Safari");
+        final Slice s1 = Slice.newSlice(45, GRAY, "Safari", "A");
         final Slice s2 = Slice.newSlice(45, "Firefox");
-        final Slice s3 = Slice.newSlice(10, BLUE, "Internet Explorer");
+        final Slice s3 = Slice.newSlice(10, BLUE, "Internet Explorer", "B");
 
         PieChart chart = GCharts.newPieChart(s1, s2, s3);
         chart.setTitle("A Better World 3");
         chart.setSize(500, 200);
         chart.setThreeD(true);
         Logger.global.info(chart.toURLString());
-        String expectedString = "http://chart.apis.google.com/chart?cht=p3&chs=500x200&chl=Safari|Firefox|Internet+Explorer&chco=808080,0000FF&chd=e:czczGa&chtt=A+Better+World+3";
+        String expectedString = "http://chart.apis.google.com/chart?chco=808080,0000FF&chd=e:czczGa&chdl=A||B&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+3";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+    
+    @Test
+    public void fillTest() {
+        final Slice s1 = Slice.newSlice(45, GRAY, "Safari", "X");
+        final Slice s2 = Slice.newSlice(45, ORANGERED, "Firefox", "Y");
+        final Slice s3 = Slice.newSlice(10, BLUE, "Internet Explorer", "Z");
+
+        PieChart chart = GCharts.newPieChart(s1, s2, s3);
+        chart.setTitle("A Better World 1");
+        chart.setSize(500, 200);
+        chart.setAreaFill(Fills.newSolidFill(BLACK));
+        chart.setBackgroundFill(Fills.newSolidFill(LIGHTGREY));
+        chart.setThreeD(true);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chco=808080,FF4500,0000FF&chd=e:czczGa&chdl=X|Y|Z&chf=bg,s,D3D3D3|c,s,000000&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+1";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 }

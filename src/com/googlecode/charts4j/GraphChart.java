@@ -26,8 +26,10 @@
 package com.googlecode.charts4j;
 
 /**
- * Interface for all charts that support legend positions. (MapChart,
- * GoogleOMeter and PieChart do not support legend positions.)
+ * Interface for all charts that support legend positions. (Only MapCharts do
+ * do not support legend positions.)
+ *
+ *
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  *

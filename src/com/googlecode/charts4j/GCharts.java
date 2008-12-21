@@ -372,47 +372,64 @@ public final class GCharts {
      * @return a GoogleOMeter
      */
     public static GoogleOMeter newGoogleOMeter(final double data) {
-        checkArgument(data >= Data.MIN_VALUE && data <= Data.MAX_VALUE, "must be between " + Data.MIN_VALUE + " and " + Data.MAX_VALUE + " : %s", data);
-        return new GoogleOMeter(data);
+        return newGoogleOMeter(data, null, null, Lists.<Color>of());
     }
-
+    
     /**
      * Create a {@link GoogleOMeter}.
      *
      * @param data
      *            A number between 0 and 100.
      * @param label
-     *            Label that will appear at the top of the arrow. Cannot be
-     *            null.
-     * @param colors
-     *            Must provide at least two color. Colors will be interpolated
-     *            between colors provided. Must supply at least two colors.
-     *            Cannot be null.
+     *            Label that will appear at the top of the arrow.
      * @return a GoogleOMeter
      */
+    public static GoogleOMeter newGoogleOMeter(final double data,final String label) {
+        return newGoogleOMeter(data, label, null, Lists.<Color>of());
+    }
+
+    /**
+     * Use {@link #newGoogleOMeter(double, String, String, Color...)} instead.
+     */
+    @Deprecated //Since 1.1 Going away in future release.
     public static GoogleOMeter newGoogleOMeter(final double data, final String label, final Color... colors) {
-        return newGoogleOMeter(data, label, Lists.of(colors));
+        return newGoogleOMeter(data, label, null, Lists.of(colors));
     }
 
+    /**
+     * Use {@link #newGoogleOMeter(double, String, String, List)} instead.
+     */
+    @Deprecated  //Since 1.1 Going away in future release.
+    public static GoogleOMeter newGoogleOMeter(final double data, final String label, final List<? extends Color> colors) {
+        return newGoogleOMeter(data, label, null, colors);
+    }
+    
+    /**
+     * @see GCharts#newGoogleOMeter(double, String, String, List)
+     */
+    public static GoogleOMeter newGoogleOMeter(final double data, final String label, final String legend, final Color... colors) {
+        return newGoogleOMeter(data, label, legend, Lists.of(colors));
+    }
+    
     /**
      * Create a {@link GoogleOMeter}.
      *
      * @param data
      *            A number between 0 and 100.
      * @param label
-     *            Label that will appear at the top of the arrow. Cannot be
-     *            null.
+     *            Label that will appear at the top of the arrow. If null, will
+     *            not be displayed.
+     * @param legend
+     *            Legend that will appear to the right of the Google-O-Meter. If
+     *            null, will not be displayed.
      * @param colors
      *            Must provide at least two color. Colors will be interpolated
      *            between colors provided. Must supply at least two colors.
      *            Cannot be null.
      * @return a GoogleOMeter
      */
-    public static GoogleOMeter newGoogleOMeter(final double data, final String label, final List<? extends Color> colors) {
-        checkArgument(data >= Data.MIN_VALUE && data <= Data.MAX_VALUE, "must be between " + Data.MIN_VALUE + " and " + Data.MAX_VALUE + " : %s", data);
-        checkContentsNotNull(colors, "colors is null or contains a null");
-        checkArgument(colors.size() >= 2, "Must provide at least 2 colors.");
-        return new GoogleOMeter(data, label, colors);
+    public static GoogleOMeter newGoogleOMeter(final double data, final String label, final String legend, final List<? extends Color> colors) {
+        return new GoogleOMeter(data, label, legend, colors == null ? Lists.<Color>of() : colors);
     }
 
     /**
