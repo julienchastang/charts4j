@@ -26,7 +26,8 @@
 package com.googlecode.charts4j;
 
 /**
- * Tag interface for all chart and background fills.
+ * Tag interface for all chart and background fills. Use the {@link Fills}
+ * static factory class to instantiate a fill.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */

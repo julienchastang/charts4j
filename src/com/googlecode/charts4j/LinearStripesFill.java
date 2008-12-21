@@ -35,7 +35,7 @@ import com.googlecode.charts4j.parameters.ColorAndWidth;
 
 /**
  * Linear stripes fill. This class is constructed with the
- * {@link Fills#newLinearStripesFill(int, Color, double)} static factory method
+ * {@link Fills#newLinearStripesFill(int, Color, double)} static factory method.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */

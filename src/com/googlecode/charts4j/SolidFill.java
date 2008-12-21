@@ -26,7 +26,8 @@
 package com.googlecode.charts4j;
 
 /**
- * Solid fill. This class is constructed with the {@link Fills.newSolidFill}.
+ * Solid fill. This class is constructed with the
+ * {@link Fills#newSolidFill(Color)} static factory method.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */

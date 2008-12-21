@@ -35,7 +35,8 @@ import com.googlecode.charts4j.parameters.ColorAndOffset;
 
 /**
  * Linear gradient fill. This class is constructed with the
- * {@link Fills#newLinearGradientFill(int, Color, double)}
+ * {@link Fills#newLinearGradientFill(int, Color, double)} static factory
+ * method.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
