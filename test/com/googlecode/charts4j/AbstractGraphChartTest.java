@@ -25,10 +25,11 @@
 
 package com.googlecode.charts4j;
 
-import static com.googlecode.charts4j.Color.RED;
+import static com.googlecode.charts4j.Color.*;
 import static com.googlecode.charts4j.TestUtil.getBasicChart;
 import static com.googlecode.charts4j.UrlUtil.normalize;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -111,6 +112,28 @@ public class AbstractGraphChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chco=FF0000&chd=e:AAgA..&chdl=my+Legend&chdlp=t&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+    
+    @Test
+    public void testSetMargins() {
+        final Plot plot = Plots.newPlot(Data.newData(0, 50, 100), RED, "my Legend");
+        final LineChart chart = GCharts.newLineChart(plot);
+        chart.setMargins(20, 20, 20, 20);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chco=FF0000&chd=e:AAgA..&chdl=my+Legend&chma=20,20,20,20&chs=200x125&cht=lc";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+    
+    @Test
+    public void testSetLegendMargins() {
+        final Plot plot = Plots.newPlot(Data.newData(0, 50, 100), RED, "my Legend");
+        final LineChart chart = GCharts.newLineChart(plot);
+        chart.setLegendMargins(100, 50);
+        chart.setBackgroundFill(Fills.newSolidFill(BLACK));
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chco=FF0000&chd=e:AAgA..&chdl=my+Legend&chf=bg,s,000000&chma=0,0,0,0|100,50&chs=200x125&cht=lc";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+
 
     @Test
     public void testSetAreaFill() {

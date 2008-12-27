@@ -57,7 +57,7 @@ public final class ParameterManager {
     private final Map<Class<? extends Parameter>, Parameter> parameterMap = Maps.newHashMap();
 
     /** The Google Chart API URL. */
-    private final String                        url;
+    private final String                                     url;
 
     /**
      * Instantiates a new parameter manager with the Google Chart API URL.
@@ -151,8 +151,7 @@ public final class ParameterManager {
      *            the space between groups
      */
     public void setBarChartWidthAndSpacingParameter(final int width, final int spaceBetweenBarsInGroup, final int spaceBetweenGroups) {
-        final BarChartWidthAndSpacingParameter p = new BarChartWidthAndSpacingParameter(width, spaceBetweenBarsInGroup, spaceBetweenGroups);
-        parameterMap.put(BarChartWidthAndSpacingParameter.class, p);
+        parameterMap.put(BarChartWidthAndSpacingParameter.class, new BarChartWidthAndSpacingParameter(width, spaceBetweenBarsInGroup, spaceBetweenGroups));
     }
 
     /**
@@ -303,8 +302,7 @@ public final class ParameterManager {
      *            the height
      */
     public void setChartSizeParameter(final int width, final int height) {
-        final ChartSizeParameter p = new ChartSizeParameter(width, height);
-        parameterMap.put(ChartSizeParameter.class, p);
+        parameterMap.put(ChartSizeParameter.class, new ChartSizeParameter(width, height));
     }
 
     /**
@@ -316,8 +314,7 @@ public final class ParameterManager {
      *            the font size
      */
     public void setChartTitleColorAndSizeParameter(final Color color, final int fontSize) {
-        final ChartTitleColorAndSizeParameter p = new ChartTitleColorAndSizeParameter(color, fontSize);
-        parameterMap.put(ChartTitleColorAndSizeParameter.class, p);
+        parameterMap.put(ChartTitleColorAndSizeParameter.class, new ChartTitleColorAndSizeParameter(color, fontSize));
     }
 
     /**
@@ -327,8 +324,7 @@ public final class ParameterManager {
      *            the new chart title parameter
      */
     public void setChartTitleParameter(final String title) {
-        final ChartTitleParameter p = new ChartTitleParameter(title);
-        parameterMap.put(ChartTitleParameter.class, p);
+        parameterMap.put(ChartTitleParameter.class, new ChartTitleParameter(title));
     }
 
     /**
@@ -338,8 +334,7 @@ public final class ParameterManager {
      *            the new chart type parameter
      */
     public void setChartTypeParameter(final ChartType chartType) {
-        final ChartTypeParameter p = new ChartTypeParameter(chartType);
-        parameterMap.put(ChartTypeParameter.class, p);
+        parameterMap.put(ChartTypeParameter.class, new ChartTypeParameter(chartType));
     }
 
     /**
@@ -419,8 +414,7 @@ public final class ParameterManager {
      *            the new geographical area parameter
      */
     public void setGeographicalAreaParameter(final GeographicalArea geographicalArea) {
-        final GeographicalAreaParameter p = new GeographicalAreaParameter(geographicalArea);
-        parameterMap.put(GeographicalAreaParameter.class, p);
+        parameterMap.put(GeographicalAreaParameter.class, new GeographicalAreaParameter(geographicalArea));
     }
 
     /**
@@ -436,8 +430,7 @@ public final class ParameterManager {
      *            the length of blank segment
      */
     public void setGridLineParameter(final double xAxisStepSize, final double yAxisStepSize, final int lengthOfLineSegment, final int lengthOfBlankSegment) {
-        final GridLineParameter p = new GridLineParameter(xAxisStepSize, yAxisStepSize, lengthOfLineSegment, lengthOfBlankSegment);
-        parameterMap.put(GridLineParameter.class, p);
+        parameterMap.put(GridLineParameter.class, new GridLineParameter(xAxisStepSize, yAxisStepSize, lengthOfLineSegment, lengthOfBlankSegment));
     }
 
     /**
@@ -447,8 +440,7 @@ public final class ParameterManager {
      *            the new legend position parameter
      */
     public void setLegendPositionParameter(final LegendPosition legendPosition) {
-        final LegendPositionParameter p = new LegendPositionParameter(legendPosition);
-        parameterMap.put(LegendPositionParameter.class, p);
+        parameterMap.put(LegendPositionParameter.class, new LegendPositionParameter(legendPosition));
     }
 
     /**
@@ -469,6 +461,34 @@ public final class ParameterManager {
      */
     public void addPieChartAndGoogleOMeterLegend(final String legend) {
         getParameter(PieChartAndGoogleOMeterLegendParameter.class).addLegend(legend);
+    }
+
+    /**
+     * Sets the margins.
+     *
+     * @param bottomMargin
+     *            the bottom margin
+     * @param leftMargin
+     *            the left margin
+     * @param rightMargin
+     *            the right margin
+     * @param topMargin
+     *            the top margin
+     */
+    public void setMargins(final int bottomMargin, final int leftMargin, final int rightMargin, final int topMargin) {
+        getParameter(MarginsParameter.class).setMargins(bottomMargin, leftMargin, rightMargin, topMargin);
+    }
+
+    /**
+     * Sets the legend margins.
+     *
+     * @param width
+     *            the width
+     * @param height
+     *            the height
+     */
+    public void setLegendMargins(final int width, final int height) {
+        getParameter(MarginsParameter.class).setLegendMargins(width, height);
     }
 
     /**
@@ -513,7 +533,7 @@ public final class ParameterManager {
      *             if the parameter could not be instantiated
      */
     private <T extends Parameter> T getParameter(final Class<T> clazz) throws ParameterInstantiationException {
-        //Should always be safe.
+        // Should always be safe.
         @SuppressWarnings("unchecked")
         T p = (T) parameterMap.get(clazz);
         if (p == null) {

@@ -25,7 +25,8 @@
 
 package com.googlecode.charts4j;
 
-import static com.googlecode.charts4j.collect.Preconditions.*;
+import static com.googlecode.charts4j.collect.Preconditions.checkArgument;
+import static com.googlecode.charts4j.collect.Preconditions.checkNotNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -42,14 +43,17 @@ import com.googlecode.charts4j.parameters.SolidFillType;
  */
 public abstract class AbstractGraphChart extends AbstractGChart implements GraphChart, TitledChart {
 
-    /** Chart title. **/
-    private ChartTitle     chartTitle;
+    /** Chart title. */
+    private ChartTitle chartTitle;
 
-    /** Chart area fill. **/
-    private Fill           areaFill;
+    /** Chart area fill. */
+    private Fill areaFill;
 
     /** The legend position which may be top, bottom, right, or left. **/
     private LegendPosition legendPosition;
+    
+    /** The legend margins. */
+    private LegendMargins legendMargins;
 
     /**
      * Abstract graph chart constructor.
@@ -82,6 +86,13 @@ public abstract class AbstractGraphChart extends AbstractGChart implements Graph
     public final void setLegendPosition(final LegendPosition legendPosition) {
         checkNotNull(legendPosition, "Legend position cannot be null.");
         this.legendPosition = legendPosition;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setLegendMargins(final int legendWidth, final int legendHeight) {
+        this.legendMargins = new LegendMargins(legendWidth, legendHeight);
     }
 
     /**
@@ -126,6 +137,34 @@ public abstract class AbstractGraphChart extends AbstractGChart implements Graph
         }
         if (legendPosition != null) {
             parameterManager.setLegendPositionParameter(legendPosition);
+        }
+        if (legendMargins != null) {
+            parameterManager.setLegendMargins(legendMargins.width, legendMargins.height);
+        }
+    }
+    
+    /**
+     * Private class to encapsulate legend margins.
+     */
+    private static class LegendMargins {
+        /** The legend height. */
+        private final int height;
+
+        /** The legend width. */
+        private final int width;
+
+        /**
+         * Instantiates a new legend margins.
+         * 
+         * @param height
+         *            the legend height
+         * @param width
+         *            the legend width
+         */
+        private LegendMargins(final int height, final int width) {
+            super();
+            this.height = height;
+            this.width = width;
         }
     }
 }

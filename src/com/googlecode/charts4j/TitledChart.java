@@ -28,8 +28,8 @@ package com.googlecode.charts4j;
 import static com.googlecode.charts4j.collect.Preconditions.*;
 
 /**
- * Interface for all charts that support titles. (MapChart and GoogleOMeter do
- * not support do not support titles.)
+ * Interface for all charts that support titles. (MapChart does not support
+ * support titles.)
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  *

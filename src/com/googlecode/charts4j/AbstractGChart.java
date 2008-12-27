@@ -34,58 +34,61 @@ import com.googlecode.charts4j.parameters.SolidFillType;
 
 /**
  * Contains code common to all charts.
- *
+ * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 abstract class AbstractGChart implements GChart {
 
-    /** Contains accumulation of all parameters set by client. **/
+    /** Contains accumulation of all parameters set by client. */
     protected final ParameterManager parameterManager = new ParameterManager("http://chart.apis.google.com/chart");
 
-    /** The largest possible area for all charts except maps is 300,000 pixels.  **/
+    /** The largest possible area for all charts except maps is 300,000 pixels. */
     private static final int         MAX_PIXELS       = 300000;
 
-    /** Max chart width.  **/
+    /** Max chart width. */
     private static final int         MAX_WIDTH        = 1000;
 
-    /** Max chart height.  **/
+    /** Max chart height. */
     private static final int         MAX_HEIGHT       = 1000;
 
-    /** Min chart width.  **/
+    /** Min chart width. */
     private static final int         MIN_WIDTH        = 0;
 
-    /** Min chart height.  **/
+    /** Min chart height. */
     private static final int         MIN_HEIGHT       = 0;
 
-    /** Default chart width.  **/
+    /** Default chart width. */
     private static final int         DEFAULT_WIDTH    = 200;
 
-    /** Default chart height.  **/
+    /** Default chart height. */
     private static final int         DEFAULT_HEIGHT   = 125;
 
-    /** Max opacity.  **/
+    /** Max opacity. */
     private static final int         MAX_OPACITY      = 100;
 
-    /** Min opacity.  **/
+    /** Min opacity. */
     private static final int         MIN_OPACITY      = 0;
 
-    /** Default opacity.  **/
+    /** Default opacity. */
     private static final int         DEFAULT_OPACITY  = 100;
 
-    /** Width field.  **/
+    /** Width field. */
     private int                      width            = DEFAULT_WIDTH;
 
-    /** Height field.  **/
+    /** Height field. */
     private int                      height           = DEFAULT_HEIGHT;
 
-    /** Background chart fill.  **/
+    /** Background chart fill. */
     private Fill                     backgroundFill;
 
-    /** Chart opacity.  **/
+    /** Chart opacity. */
     private int                      opacity          = DEFAULT_OPACITY;
 
-    /** Data encoding for this chart.  **/
+    /** Data encoding for this chart. */
     private DataEncoding             dataEncoding     = DataEncoding.EXTENDED;
+
+    /** Margins for this chart.  */
+    private Margins                  margins;
 
     /**
      * AbstractGChart constructor.
@@ -118,7 +121,6 @@ abstract class AbstractGChart implements GChart {
      * {@inheritDoc}
      */
     public final String toURLForHTML() {
-        // toURLStringForHTML
         return toURLString().replaceAll("&", "&amp;");
     }
 
@@ -145,6 +147,13 @@ abstract class AbstractGChart implements GChart {
         checkNotNull(dataEncoding, "The data encoding cannot be null");
         this.dataEncoding = dataEncoding;
     }
+    
+    /**
+     * {@inheritDoc}
+     */    
+    public void setMargins(final int leftMargin, final int rightMargin, final int topMargin, final int bottomMargin) {
+        this.margins = new Margins(leftMargin, rightMargin, topMargin, bottomMargin);
+    }
 
     /**
      * Prepare data for URL String formation.
@@ -165,5 +174,45 @@ abstract class AbstractGChart implements GChart {
         }
         parameterManager.setChartSizeParameter(width, height);
         parameterManager.setDataEncoding(dataEncoding);
+        if (margins != null) {
+            parameterManager.setMargins(margins.bottomMargin, margins.leftMargin, margins.rightMargin, margins.topMargin);
+        }
+    }
+
+    /**
+     * Inner class that encapsulates the chart margins.
+     */
+    private static final class Margins {
+        
+        /** The left margin. */
+        private final int leftMargin; 
+        
+        /** The right margin. */
+        private final int rightMargin;
+        
+        /** The top margin. */
+        private final int topMargin;
+        
+        /** The bottom margin. */
+        private final int bottomMargin;
+        
+        /**
+         * Define the chart margins.
+         * 
+         * @param bottomMargin
+         *            the bottom margin
+         * @param leftMargin
+         *            the left margin
+         * @param rightMargin
+         *            the right margin
+         * @param topMargin
+         *            the top margin
+         */
+        private Margins(final int bottomMargin, final int leftMargin, final int rightMargin, final int topMargin) {
+            this.bottomMargin = bottomMargin;
+            this.leftMargin   = leftMargin;
+            this.rightMargin  = rightMargin;
+            this.topMargin    = topMargin;
+        }
     }
 }

@@ -103,4 +103,20 @@ public interface GChart {
      *            null.
      */
     void setDataEncoding(final DataEncoding dataEncoding);
+
+    /**
+     * Specify the chart margins. The overall size of the chart defined with the
+     * {@link #setSize(int, int)} method will not change. The margin moves
+     * inward. It is similar to a CSS padding.
+     * 
+     * @param leftMargin
+     *            the left margin
+     * @param rightMargin
+     *            the right margin
+     * @param topMargin
+     *            the top margin
+     * @param bottomMargin
+     *            the bottom margin
+     */
+    void setMargins(final int leftMargin, final int rightMargin, final int topMargin, final int bottomMargin);
 }

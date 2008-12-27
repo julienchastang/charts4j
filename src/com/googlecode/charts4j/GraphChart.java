@@ -45,6 +45,16 @@ public interface GraphChart {
     void setLegendPosition(final LegendPosition legendPosition);
 
     /**
+     * Specify the legend margins.
+     * 
+     * @param legendWidth
+     *            the legend width
+     * @param legendHeight
+     *            the legend height
+     */
+    void setLegendMargins(final int legendWidth, final int legendHeight);
+
+    /**
      * Specify chart area fill.
      *
      * @param fill

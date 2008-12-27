@@ -187,4 +187,18 @@ public final class RadarChart implements GChart, GraphChart, TitledChart, GridCh
     public void setDataEncoding(final DataEncoding dataEncoding) {
         radarChart.setDataEncoding(dataEncoding);
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public void setMargins(final int leftMargin, final int rightMargin, final int topMargin, final int bottomMargin) {
+        radarChart.setMargins(leftMargin, rightMargin, topMargin, bottomMargin);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setLegendMargins(final int legendWidth, final int legendHeight) {
+        radarChart.setLegendMargins(legendWidth, legendHeight);
+    }
 }
