@@ -44,11 +44,25 @@ import com.googlecode.charts4j.parameters.ChartType;
  */
 public class PieChart extends AbstractGraphChart {
     
-    /** Is this a 3D pie chart. **/
+    /** Is this a 3D pie chart. */
     private boolean                    threeD = false;
 
-    /** An immutable list of slices for this pie.  **/
+    /** An immutable list of slices for this pie.  */
     private final ImmutableList<Slice> slices;
+        
+    /** The pie chart orientation radians.  */
+    private Double orientation;
+
+    /**
+     * Set the pie chart orientation in radians. Positive values will rotate the
+     * chart clockwise.
+     * 
+     * @param orientation
+     *            the orientation to set in radians
+     */
+    public void setOrientation(final double radians) {
+        this.orientation = radians;
+    }
 
     /**
      * Create a pie chart with the given slices.
@@ -105,6 +119,9 @@ public class PieChart extends AbstractGraphChart {
             if (slice.getColor() != null) {
                 parameterManager.addColor(slice.getColor());
             }
+        }
+        if (orientation != null) {
+            parameterManager.addPieChartOrientation(orientation);
         }
         parameterManager.addData(Data.newData(d));
         parameterManager.setChartTypeParameter(threeD ? ChartType.THREE_D_PIE_CHART : ChartType.PIE_CHART);

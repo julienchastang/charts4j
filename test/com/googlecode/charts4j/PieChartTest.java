@@ -122,4 +122,18 @@ public class PieChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chco=808080,FF4500,0000FF&chd=e:czczGa&chdl=X|Y|Z&chf=bg,s,D3D3D3|c,s,000000&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+1";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+    
+    @Test
+    public void orientationTest() {
+        final Slice s1 = Slice.newSlice(45, "Safari");
+        final Slice s2 = Slice.newSlice(45, "Firefox");
+        final Slice s3 = Slice.newSlice(10, "Internet Explorer");
+
+        PieChart chart = GCharts.newPieChart(s1, s2, s3);
+        chart.setOrientation(3.14/2);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:czczGa&chl=Safari|Firefox|Internet+Explorer&chp=1.57&chs=200x125&cht=p";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+
+    }
 }

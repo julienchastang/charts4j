@@ -492,6 +492,16 @@ public final class ParameterManager {
     }
 
     /**
+     * Add a pie chart orientation.
+     * 
+     * @param orientation
+     *            the orientation
+     */
+    public void addPieChartOrientation(final double orientation) {
+        parameterMap.put(PieChartOrientationParameter.class, new PieChartOrientationParameter(orientation));
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
