@@ -37,6 +37,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.googlecode.charts4j.AxisStyle;
 import com.googlecode.charts4j.AxisTextAlignment;
 
 /**
@@ -65,7 +66,7 @@ public class AxisStylesParameterTest {
     @Test
     public void test0() {
         final AxisStylesParameter p = new AxisStylesParameter();
-        p.addAxisStyle(1, BLUE, 12, AxisTextAlignment.CENTER);
+        p.addAxisStyle(1, AxisStyle.newAxisStyle(BLUE, 12, AxisTextAlignment.CENTER));
         Logger.global.info(p.toURLParameterString());
         final String expectedString = "chxs=1,0000FF,12,0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
@@ -74,8 +75,8 @@ public class AxisStylesParameterTest {
     @Test
     public void test1() {
         final AxisStylesParameter p = new AxisStylesParameter();
-        p.addAxisStyle(1, BLUE, 12, AxisTextAlignment.CENTER);
-        p.addAxisStyle(2, RED, 12, AxisTextAlignment.CENTER);
+        p.addAxisStyle(1, AxisStyle.newAxisStyle(BLUE, 12, AxisTextAlignment.CENTER));
+        p.addAxisStyle(2, AxisStyle.newAxisStyle(RED, 12, AxisTextAlignment.CENTER));
         Logger.global.info(p.toURLParameterString());
         final String expectedString = "chxs=1,0000FF,12,0|2,FF0000,12,0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
@@ -86,6 +87,30 @@ public class AxisStylesParameterTest {
         final AxisStylesParameter p = new AxisStylesParameter();
         Logger.global.info(p.toURLParameterString());
         final String expectedString = "";
+        assertEquals("Junit error", expectedString, p.toURLParameterString());
+    }
+    
+    @Test
+    public void test4() {
+        final AxisStylesParameter p = new AxisStylesParameter();
+        final AxisStyle axisStyle = AxisStyle.newAxisStyle(BLUE, 12, AxisTextAlignment.CENTER);
+        axisStyle.setDrawAxis(true);
+        p.addAxisStyle(1, axisStyle);
+        Logger.global.info(p.toURLParameterString());
+        final String expectedString = "chxs=1,0000FF,12,0,l";
+        assertEquals("Junit error", expectedString, p.toURLParameterString());
+    }
+    
+    @Test
+    public void test5() {
+        final AxisStylesParameter p = new AxisStylesParameter();
+        final AxisStyle axisStyle = AxisStyle.newAxisStyle(BLUE, 12, AxisTextAlignment.CENTER);
+        axisStyle.setDrawAxis(true);
+        axisStyle.setDrawTickMarks(true);
+        axisStyle.setTickMarkColor(RED);
+        p.addAxisStyle(1, axisStyle);
+        Logger.global.info(p.toURLParameterString());
+        final String expectedString = "chxs=1,0000FF,12,0,lt,FF0000";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
 }

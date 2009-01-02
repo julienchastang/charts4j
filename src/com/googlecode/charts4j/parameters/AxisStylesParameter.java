@@ -27,8 +27,7 @@ package com.googlecode.charts4j.parameters;
 
 import java.util.List;
 
-import com.googlecode.charts4j.AxisTextAlignment;
-import com.googlecode.charts4j.Color;
+import com.googlecode.charts4j.AxisStyle;
 import com.googlecode.charts4j.collect.Lists;
 
 /**
@@ -42,22 +41,18 @@ final class AxisStylesParameter implements Parameter {
     private static final String    URL_PARAMETER_KEY = "chxs";
 
     /** The axis styles. */
-    private final List<AxisStyles> axisStyles        = Lists.newLinkedList();
+    private final List<PrivateAxisStyles> axisStyles = Lists.newLinkedList();
 
     /**
      * Add an axis style.
      *
      * @param index
      *            the index
-     * @param color
-     *            the color of the axis style
-     * @param fontSize
-     *            the font size of the axis style
-     * @param alignment
-     *            the alignment of the axis style
+     * @param axisStyle
+     *            the axisStyle
      */
-    void addAxisStyle(final int index, final Color color, final int fontSize, final AxisTextAlignment alignment) {
-        axisStyles.add(new AxisStyles(index, color, fontSize, alignment));
+    void addAxisStyle(final int index, final AxisStyle axisStyle) {
+        axisStyles.add(new PrivateAxisStyles(index, axisStyle));
     }
 
     /**
@@ -66,7 +61,7 @@ final class AxisStylesParameter implements Parameter {
     public String toURLParameterString() {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
-        for (AxisStyles styles : axisStyles) {
+        for (PrivateAxisStyles styles : axisStyles) {
             sb.append(cnt++ > 0 ? "|" + styles : styles);
         }
         return !axisStyles.isEmpty() ? sb.toString() : "";
@@ -75,37 +70,31 @@ final class AxisStylesParameter implements Parameter {
     /**
      * A container class to hold axis styles.
      */
-    private static final class AxisStyles {
+    private static final class PrivateAxisStyles {
+
+        /** Draw tick marks. */
+        private static final String DRAW_TICK_MARKS = "t";
+        
+        /** Draw axis lines. */
+        private static final String DRAW_AXIS_LINE = "l";
 
         /** The index. */
         private final int               index;
 
-        /** The color. */
-        private final Color             color;
-
-        /** The font size. */
-        private final int               fontSize;
-
-        /** The alignment. */
-        private final AxisTextAlignment alignment;
+        /** The axis style. */
+        private final AxisStyle axisStyle;
 
         /**
          * Instantiate axis styles.
          *
          * @param index
          *            the index
-         * @param color
-         *            the color
-         * @param fontSize
-         *            the font size
-         * @param alignment
-         *            the alignment
+         * @param axisStyle
+         *            the axisStyle
          */
-        private AxisStyles(final int index, final Color color, final int fontSize, final AxisTextAlignment alignment) {
+        private PrivateAxisStyles(final int index, final AxisStyle axisStyle) {
             this.index = index;
-            this.color = color;
-            this.fontSize = fontSize;
-            this.alignment = alignment;
+            this.axisStyle = axisStyle;
         }
 
         /**
@@ -113,7 +102,25 @@ final class AxisStylesParameter implements Parameter {
          */
         @Override
         public String toString() {
-            return index + "," + color + "," + fontSize + "," + alignment;
+            final StringBuilder sb = new StringBuilder(index + "," + axisStyle.getTextColor() + "," + axisStyle.getFontSize() + "," + axisStyle.getAlignment());
+            sb.append(getDrawingControlString(axisStyle) != null ? "," + getDrawingControlString(axisStyle) : "");
+            sb.append(axisStyle.getTickMarkColor() != null ? "," + axisStyle.getTickMarkColor() : "");
+            return sb.toString();
+        }
+        
+        /**
+         * Build the drawing control string.
+         * 
+         * @param axisStyle
+         *            the axis style
+         * 
+         * @return the drawing control string
+         */
+        private String getDrawingControlString(final AxisStyle axisStyle) {
+            final StringBuilder sb = new StringBuilder();
+            sb.append(axisStyle.drawAxis() != null && axisStyle.drawAxis() ? DRAW_AXIS_LINE : "");
+            sb.append(axisStyle.drawTickMarks() != null && axisStyle.drawTickMarks() ? DRAW_TICK_MARKS : "");
+            return sb.length() > 0 ? sb.toString() : null;
         }
     }
 }

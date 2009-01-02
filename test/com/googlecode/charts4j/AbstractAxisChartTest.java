@@ -98,7 +98,7 @@ public class AbstractAxisChartTest {
         ai.setAxisStyle(AxisStyle.newAxisStyle(RED, 14, AxisTextAlignment.RIGHT));
         chart.addXAxisLabels(ai);
         Logger.global.info(chart.toURLString());
-        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxl=0:|start|end&chxs=0,FF0000,14,1&chxt=x";
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxl=0:|start|end&chxs=0,FF0000,14,-1&chxt=x";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 

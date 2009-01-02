@@ -185,7 +185,11 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
                         parameterManager.addAxisRange(axisIndex, axisLabel.getRange().getMin(), axisLabel.getRange().getMax());
                     }
                     if (axisLabel.getAxisStyle() != null) {
-                        parameterManager.addAxisStyle(axisIndex, axisLabel.getAxisStyle().getColor(), axisLabel.getAxisStyle().getFontSize(), axisLabel.getAxisStyle().getAlignment());
+                        //For an explanation of this peculiar code see the comment at AxisStyle.correctAxisStyle.
+                        parameterManager.addAxisStyle(axisIndex, getClass().equals(PrivateRadarChart.class) ? axisLabel.getAxisStyle() : AxisStyle.correctAxisStyle(axisLabel.getAxisStyle()));
+                        if (axisLabel.getAxisStyle().getTickMarkLength() != null) {
+                            parameterManager.addTickMarkLength(axisIndex, axisLabel.getAxisStyle().getTickMarkLength());
+                        }
                     }
                     axisIndex++;
                 }

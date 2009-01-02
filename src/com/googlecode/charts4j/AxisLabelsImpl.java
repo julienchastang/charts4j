@@ -64,7 +64,7 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
     AxisLabelsImpl(final AxisLabelsImpl axisLabels) {
         this.positions.addAll(axisLabels.positions);
         this.labels.addAll(axisLabels.labels);
-        this.axisStyle = axisLabels.getAxisStyle();
+        this.axisStyle = AxisStyle.newAxisStyle(axisLabels.getAxisStyle());
         this.range = axisLabels.range;
 
     }
@@ -91,7 +91,7 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
      * {@inheritDoc}
      */
     public void setAxisStyle(final AxisStyle axisStyle) {
-        this.axisStyle = axisStyle;
+        this.axisStyle = AxisStyle.newAxisStyle(axisStyle);
     }
 
     /**

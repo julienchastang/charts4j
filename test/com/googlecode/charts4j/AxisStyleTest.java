@@ -63,7 +63,7 @@ public class AxisStyleTest {
     }
 
     @Test
-    public void testNewAxisStyle() {
+    public void testAxisStyle0() {
         final LineChart chart = TestUtil.getBasicChart();
         AxisLabels axisLabels = AxisLabelsFactory.newNumericAxisLabels(Arrays.asList(0, 1, 2, 3, 4, 5));
         axisLabels.setAxisStyle(AxisStyle.newAxisStyle(RED, 16, AxisTextAlignment.CENTER));
@@ -72,4 +72,33 @@ public class AxisStyleTest {
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAgA..&chxt=x&chxp=0,0,1,2,3,4,5&chxr=0,0.0,5.0&chxs=0,FF0000,16,0&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+
+    @Test
+    public void testAxisStyle1() {
+        final LineChart chart = TestUtil.getBasicChart();
+        AxisStyle axisStyle  = AxisStyle.newAxisStyle(RED, 16, AxisTextAlignment.CENTER);
+        axisStyle.setDrawAxis(true);
+        axisStyle.setTickMarkColor(RED);
+        axisStyle.setTickMarkLength(-50);
+        AxisLabels axisLabels = AxisLabelsFactory.newNumericAxisLabels(Arrays.asList(0, 1, 2, 3, 4, 5));
+        axisLabels.setAxisStyle(axisStyle);
+        chart.addXAxisLabels(axisLabels);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxp=0,0,1,2,3,4,5&chxr=0,0.0,5.0&chxs=0,FF0000,16,0,lt,FF0000&chxt=x&chxtc=0,-50";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+    
+    @Test
+    public void testAxisAlignment() {
+        final LineChart chart = TestUtil.getBasicChart();
+        chart.setGrid(50, 50, 5, 0);
+        AxisStyle axisStyle  = AxisStyle.newAxisStyle(RED, 16, AxisTextAlignment.LEFT);
+        AxisLabels axisLabels = AxisLabelsFactory.newAxisLabels("Foo", 50);
+        axisLabels.setAxisStyle(axisStyle);
+        chart.addXAxisLabels(axisLabels);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chg=50.0,50.0,5,0&chs=200x125&cht=lc&chxl=0:|Foo&chxp=0,50.0&chxr=0,0.0,100.0&chxs=0,FF0000,16,1&chxt=x";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+
 }

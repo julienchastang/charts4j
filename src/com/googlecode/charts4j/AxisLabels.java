@@ -37,7 +37,8 @@ package com.googlecode.charts4j;
 public interface AxisLabels {
 
     /**
-     * Set the desired axis style.
+     * Set the desired axis style. AxisStyle mutable will be defensively copied
+     * upon entry.
      *
      * @param axisStyle
      *            Set the axis style that will define the appearance of the text

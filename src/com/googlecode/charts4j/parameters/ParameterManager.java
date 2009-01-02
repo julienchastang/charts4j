@@ -31,7 +31,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import com.googlecode.charts4j.AxisTextAlignment;
+import com.googlecode.charts4j.AxisStyle;
 import com.googlecode.charts4j.Color;
 import com.googlecode.charts4j.Data;
 import com.googlecode.charts4j.DataEncoding;
@@ -119,15 +119,23 @@ public final class ParameterManager {
      *
      * @param index
      *            the index
-     * @param color
-     *            the color
-     * @param fontSize
-     *            the font size
-     * @param alignment
-     *            the alignment
+     * @param axisStyle
+     *            the axisStyle
      */
-    public void addAxisStyle(final int index, final Color color, final int fontSize, final AxisTextAlignment alignment) {
-        getParameter(AxisStylesParameter.class).addAxisStyle(index, color, fontSize, alignment);
+    public void addAxisStyle(final int index, final AxisStyle axisStyle) {
+        getParameter(AxisStylesParameter.class).addAxisStyle(index, axisStyle);
+    }
+
+    /**
+     * Adds the tick mark length.
+     * 
+     * @param index
+     *            the axis index
+     * @param tickMarkLength
+     *            the tick mark length
+     */
+    public void addTickMarkLength(final int index, final int tickMarkLength) {
+        getParameter(TickMarkLengthParameter.class).addTickMarkLength(index, tickMarkLength);
     }
 
     /**
