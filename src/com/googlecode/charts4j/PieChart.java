@@ -57,7 +57,7 @@ public class PieChart extends AbstractGraphChart {
      * Set the pie chart orientation in radians. Positive values will rotate the
      * chart clockwise.
      * 
-     * @param orientation
+     * @param radians
      *            the orientation to set in radians
      */
     public void setOrientation(final double radians) {
