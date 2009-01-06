@@ -32,7 +32,7 @@ package com.googlecode.charts4j;
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  * 
  */
-class MarkerPoint { //TODO: Change the name of this class to marker points.
+class MarkedPoints {
     /** Text or shape marker. **/
     private final Marker marker;
 
@@ -55,7 +55,7 @@ class MarkerPoint { //TODO: Change the name of this class to marker points.
      *            The index of the point to decorate.
      *
      */
-    MarkerPoint(final Marker marker, final int index) {
+    MarkedPoints(final Marker marker, final int index) {
         super();
         this.marker = marker;
         this.startIndex = index;
@@ -75,7 +75,7 @@ class MarkerPoint { //TODO: Change the name of this class to marker points.
      * @param n
      *            Marker on every n-th data point.
      */
-    MarkerPoint(final Marker marker, final int startIndex, final int endIndex,  final int n) {
+    MarkedPoints(final Marker marker, final int startIndex, final int endIndex,  final int n) {
         this.marker = marker;
         this.startIndex = startIndex;
         this.endIndex = endIndex;

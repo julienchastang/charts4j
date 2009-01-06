@@ -47,8 +47,8 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     /** Y data series for this plot. **/
     private final Data               yData;
 
-    /** List of marker points for this plot. **/
-    private final List<MarkerPoint> markerPoints = Lists.newLinkedList();
+    /** List of marked points for this plot. **/
+    private final List<MarkedPoints> markedPointsList = Lists.newLinkedList();
 
     /** List of markers to be added to all point on this plot. **/
     private final List<Marker> markers = Lists.newLinkedList();
@@ -121,7 +121,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     PlotImpl(final PlotImpl plotImpl) {
         xData = plotImpl.xData;
         yData = plotImpl.yData;
-        markerPoints.addAll(plotImpl.markerPoints);
+        markedPointsList.addAll(plotImpl.markedPointsList);
         markers.addAll(plotImpl.markers);
         color = plotImpl.color;
         legend = plotImpl.legend;
@@ -213,12 +213,12 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     }
 
     /**
-     * Get the list of markers points for this plot.
+     * Get the list of marked points for this plot.
      *
-     * @return an immutable list of marker points.
+     * @return an immutable list of marked points.
      */
-    ImmutableList<MarkerPoint> getMarkerPoints() {
-        return Lists.copyOf(markerPoints);
+    ImmutableList<MarkedPoints> getMarkedPointsList() {
+        return Lists.copyOf(markedPointsList);
     }
 
     /**
@@ -238,7 +238,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
         checkNotNull(color, "color cannot be null");
         checkArgument(index >= 0, "index must be >= 0");
         checkArgument(index < yData.getSize(), "index is out of bounds");
-        markerPoints.add(new MarkerPoint(Markers.newShapeMarker(shape, color, size), index));
+        markedPointsList.add(new MarkedPoints(Markers.newShapeMarker(shape, color, size), index));
     }
 
     /**
@@ -249,7 +249,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
         checkNotNull(color, "color cannot be null");
         checkArgument(index >= 0, "index must be >= 0");
         checkArgument(index < yData.getSize(), "index is out of bounds");
-        markerPoints.add(new MarkerPoint(Markers.newTextMarker(text, color, size), index));
+        markedPointsList.add(new MarkedPoints(Markers.newTextMarker(text, color, size), index));
     }
 
     /**
@@ -267,7 +267,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     public void addMarker(final Marker marker, final int index) {
         checkNotNull(marker, "marker cannot be null");
         checkArgument(index >= 0, "index must be >= 0");
-        markerPoints.add(new MarkerPoint(marker, index));
+        markedPointsList.add(new MarkedPoints(marker, index));
     }
     
     /**
@@ -287,7 +287,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
         checkArgument(endIndex > 0, "end index must be > 0");
         checkArgument(endIndex > startIndex, "end index must be > start index");
         checkArgument(n > 0, "n must be > 0");
-        markerPoints.add(new MarkerPoint(marker, startIndex, endIndex, n));
+        markedPointsList.add(new MarkedPoints(marker, startIndex, endIndex, n));
     }
 
     /**

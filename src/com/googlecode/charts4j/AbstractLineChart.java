@@ -99,8 +99,8 @@ abstract class AbstractLineChart extends AbstractMarkableChart {
             for (Marker m : markers) {
                 parameterManager.addMarkers(m, lineCount);
             }
-            final ImmutableList<MarkerPoint> markerPoint = line.getMarkerPoints();
-            for (MarkerPoint mp : markerPoint) {
+            final ImmutableList<MarkedPoints> markedPointsList = line.getMarkedPointsList();
+            for (MarkedPoints mp : markedPointsList) {
                 parameterManager.addMarker(mp.getMarker(), lineCount, mp.getStartIndex(), mp.getEndIndex(), mp.getN());
             }
             if (line.getFillAreaColor() != null) {
