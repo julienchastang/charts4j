@@ -32,7 +32,8 @@ import java.util.List;
 import com.googlecode.charts4j.collect.Lists;
 
 /**
- * Abstract type that represents all charts that support {@link Marker}s.
+ * Abstract type that represents all charts that support <b>range</b>
+ * {@link Marker}s.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  *
