@@ -43,7 +43,7 @@ public class ParameterManagerTest {
     public void test1() throws Exception {
         final ParameterManager pm = new ParameterManager("http://chart.apis.google.com/chart");
         pm.setChartTypeParameter(ChartType.LINE_CHART);
-        pm.addMarker(Markers.newTextMarker("Hello", BLUE, 12), 0, 3);
+        pm.addMarker(Markers.newTextMarker("Hello", BLUE, 12), 0, 3, 4, 1);
         Logger.global.info(pm.toString());
     }
 }

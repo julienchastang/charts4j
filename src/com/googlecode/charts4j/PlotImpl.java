@@ -87,7 +87,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
      */
     PlotImpl(final Data xdata, final Data ydata) {
         this.xData = xdata;
-        yData = ydata;
+        this.yData = ydata;
     }
 
     /**
@@ -98,7 +98,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
      */
     PlotImpl(final Data data) {
         this.yData = data;
-        //Below, the * / 100 is to prevent ill-onditioned math.
+        //Below, the * / 100 is to prevent ill-conditioned math.
         int inc = 0;
         if (data.getSize() > 1) {
             inc = ((int)Data.MAX_VALUE) * 100 / (data.getSize() - 1);
@@ -236,7 +236,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     public void addShapeMarker(final Shape shape, final Color color, final int size, final int index) {
         checkNotNull(shape, "shape cannot be null");
         checkNotNull(color, "color cannot be null");
-        checkArgument(index >= 0, "start index must be >= 0");
+        checkArgument(index >= 0, "index must be >= 0");
         checkArgument(index < yData.getSize(), "index is out of bounds");
         markerPoints.add(new MarkerPoint(Markers.newShapeMarker(shape, color, size), index));
     }
@@ -266,7 +266,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
      */
     public void addMarker(final Marker marker, final int index) {
         checkNotNull(marker, "marker cannot be null");
-        checkArgument(index >= 0, "start index must be >= 0");
+        checkArgument(index >= 0, "index must be >= 0");
         markerPoints.add(new MarkerPoint(marker, index));
     }
     
@@ -276,6 +276,32 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     public void addMarkers(final Marker marker) {
         checkNotNull(marker, "marker cannot be null");
         markers.add(marker);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void addMarkers(final Marker marker, final int startIndex, final int endIndex, final int n) {
+        checkNotNull(marker, "marker cannot be null");
+        checkArgument(startIndex >= 0, "start index must be >= 0");
+        checkArgument(endIndex > 0, "end index must be > 0");
+        checkArgument(endIndex > startIndex, "end index must be > start index");
+        checkArgument(n > 0, "n must be > 0");
+        markerPoints.add(new MarkerPoint(marker, startIndex, endIndex, n));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void addMarkers(final Marker marker, final int n) {
+        addMarkers(marker, 0, yData.getSize(), n);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public void addMarkers(final Marker marker, final int startIndex, final int endIndex) {
+        addMarkers(marker, startIndex, endIndex, 1);
     }
 
     /**

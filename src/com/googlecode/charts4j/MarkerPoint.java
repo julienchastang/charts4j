@@ -26,18 +26,24 @@
 package com.googlecode.charts4j;
 
 /**
- * Marker point that describes a data point to be decorated with a text or shape
- * marker.
- *
+ * Marked point(s) that describe data points to be decorated with a text or
+ * shape marker.
+ * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
- *
+ * 
  */
-class MarkerPoint {
+class MarkerPoint { //TODO: Change the name of this class to marker points.
     /** Text or shape marker. **/
     private final Marker marker;
 
-    /** Index of marker. **/
-    private final int    index;
+    /** The start index of marker. **/
+    private final int    startIndex;
+
+    /** The end index of marker, end point exclusive. **/
+    private final int    endIndex;
+
+    /** The periodicity of marker. **/
+    private final int    n;
 
     /**
      * Marker point constructor.
@@ -52,24 +58,63 @@ class MarkerPoint {
     MarkerPoint(final Marker marker, final int index) {
         super();
         this.marker = marker;
-        this.index = index;
+        this.startIndex = index;
+        this.endIndex = index + 1;
+        this.n = 1;
+    }
+    
+    /**
+     * Marker point constructor.
+     * 
+     * @param marker
+     *            The shape or text marker for this series.
+     * @param startIndex
+     *            The start index for the marker range.
+     * @param endIndex
+     *            The end index for the marker range.
+     * @param n
+     *            Marker on every n-th data point.
+     */
+    MarkerPoint(final Marker marker, final int startIndex, final int endIndex,  final int n) {
+        this.marker = marker;
+        this.startIndex = startIndex;
+        this.endIndex = endIndex;
+        this.n = n;
     }
 
     /**
      * Get the marker for this marker series.
-     *
+     * 
      * @return the marker
      */
-    public Marker getMarker() {
+    Marker getMarker() {
         return marker;
     }
 
     /**
-     * Get the index of the point to decorate.
-     *
-     * @return the index
+     * Get the start index of the point to decorate.
+     * 
+     * @return the start index
      */
-    public int getIndex() {
-        return index;
+    int getStartIndex() {
+        return startIndex;
+    }
+
+    /**
+     * Get the end index of the point to decorate.
+     * 
+     * @return the end index
+     */
+    int getEndIndex() {
+        return endIndex;
+    }
+
+    /**
+     * Get the periodicity.
+     * 
+     * @return the periodicity
+     */
+    int getN() {
+        return n;
     }
 }

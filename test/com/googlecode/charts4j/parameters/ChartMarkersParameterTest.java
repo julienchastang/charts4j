@@ -96,7 +96,7 @@ public class ChartMarkersParameterTest {
     public void test3() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
-        p.addMarker(sm, 1, 5);
+        p.addMarker(sm, 1, 5, 6, 1);
         Logger.global.info(p.toURLParameterString());
         final String expectedString = "chm=o,CD853F,1,5,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
@@ -105,7 +105,7 @@ public class ChartMarkersParameterTest {
     @Test
     public void test4() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
-        p.addMarker(Markers.newTextMarker("foobar", BLACK, 15), 7, 5);
+        p.addMarker(Markers.newTextMarker("foobar", BLACK, 15), 7, 5, 6, 1);
         Logger.global.info(p.toURLParameterString());
         final String expectedString = "chm=tfoobar,000000,7,5,15,0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
@@ -115,8 +115,8 @@ public class ChartMarkersParameterTest {
     public void test5() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
-        p.addMarker(sm, 1, 5);
-        p.addMarker(Markers.newTextMarker("foobar", BLACK, 15), 7, 5);
+        p.addMarker(sm, 1, 5, 6, 1);
+        p.addMarker(Markers.newTextMarker("foobar", BLACK, 15), 7, 5, 6, 1);
         Logger.global.info(p.toURLParameterString());
         final String expectedString = "chm=o,CD853F,1,5,13,-1|tfoobar,000000,7,5,15,0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
@@ -129,4 +129,35 @@ public class ChartMarkersParameterTest {
         final String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
+    
+    @Test
+    public void test7() {
+        final ChartMarkersParameter p = new ChartMarkersParameter();
+        final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
+        p.addMarker(sm, 1, 5, 10 ,2);
+        Logger.global.info(p.toURLParameterString());
+        final String expectedString = "chm=o,CD853F,1,5:9:2,13,-1";
+        assertEquals("Junit error", expectedString, p.toURLParameterString());
+    }
+    
+    @Test
+    public void test8() {
+        final ChartMarkersParameter p = new ChartMarkersParameter();
+        final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
+        p.addMarker(sm, 1, 5, 6 ,2);
+        Logger.global.info(p.toURLParameterString());
+        final String expectedString = "chm=o,CD853F,1,5,13,-1";
+        assertEquals("Junit error", expectedString, p.toURLParameterString());
+    }
+    
+    @Test
+    public void test9() {
+        final ChartMarkersParameter p = new ChartMarkersParameter();
+        final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
+        p.addMarkers(sm, 1);
+        Logger.global.info(p.toURLParameterString());
+        final String expectedString = "chm=o,CD853F,1,-1,13,-1";
+        assertEquals("Junit error", expectedString, p.toURLParameterString());
+    }
+
 }

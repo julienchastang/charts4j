@@ -158,4 +158,33 @@ public class MarkableChartTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chs=400x300&chco=008000&chm=d,0000FF,0,1,20,1|o,FF0000,0,2,20,-1&chd=e:AAczWZv...";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+    
+    @Test
+    public void testShapeMarkedPoints() {
+        // Defining Line
+        final Line line = Plots.newLine(Data.newData(0, 45, 35, 75, 100, 10, 20, 30));
+        Marker diamond = Markers.newShapeMarker(Shape.DIAMOND, BLUE, 20, Priority.HIGH);
+        line.addMarkers(diamond, 1);
+        // Defining chart.
+        final LineChart chart = GCharts.newLineChart(line);
+        chart.setSize(400, 300);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAczWZv...GaMzTN&chm=d,0000FF,0,0:7:1,20,1&chs=400x300&cht=lc";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+    
+    @Test
+    public void testTextMarkedPoints() {
+        // Defining Line
+        final Line line = Plots.newLine(Data.newData(0, 45, 35, 75, 100, 10, 20, 30));
+        Marker diamond = Markers.newTextMarker("Z", BLUE, 12);
+        line.addMarkers(diamond, 2, 7, 2);
+        // Defining chart.
+        final LineChart chart = GCharts.newLineChart(line);
+        chart.setSize(400, 300);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAczWZv...GaMzTN&chm=tZ,0000FF,0,2:6:2,12,0&chs=400x300&cht=lc";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+
 }

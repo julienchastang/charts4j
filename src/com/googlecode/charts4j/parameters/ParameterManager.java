@@ -247,17 +247,21 @@ public final class ParameterManager {
     }
 
     /**
-     * Add a marker to the plot.
+     * Add a marker(s) to the plot.
      *
      * @param marker
      *            the marker
      * @param dataSetIndex
      *            the data set index
-     * @param dataPoint
-     *            the data point
+     * @param startIndex
+     *            The start index for the marker range.
+     * @param endIndex
+     *            The end index for the marker range.
+     * @param n
+     *            Marker on every n-th data point.
      */
-    public void addMarker(final Marker marker, final int dataSetIndex, final int dataPoint) {
-        getParameter(ChartMarkersParameter.class).addMarker(marker, dataSetIndex, dataPoint);
+    public void addMarker(final Marker marker, final int dataSetIndex, final int startIndex, final int endIndex, final int n) {
+        getParameter(ChartMarkersParameter.class).addMarker(marker, dataSetIndex, startIndex, endIndex, n);
     }
 
     /**

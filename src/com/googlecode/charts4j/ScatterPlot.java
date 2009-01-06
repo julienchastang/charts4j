@@ -74,11 +74,11 @@ public class ScatterPlot extends AbstractMarkableChart {
         }
         if (markers.isEmpty()) {
             final Color color = (scatterPlotData.getColor() != null) ? scatterPlotData.getColor() : Color.BLACK;
-            parameterManager.addMarker(new ShapeMarker(Shape.CIRCLE, color, 10), 0, 0);
+            parameterManager.addMarker(new ShapeMarker(Shape.CIRCLE, color, 10), 0, 0, 1, 1);
         }
         final List<MarkerPoint> markerPoints = scatterPlotData.getMarkerPoints();
         for (MarkerPoint ms : markerPoints) {
-            parameterManager.addMarker(ms.getMarker(), 0, ms.getIndex());
+            parameterManager.addMarker(ms.getMarker(), 0, ms.getStartIndex(), ms.getEndIndex(), ms.getN());
         }
         parameterManager.setChartTypeParameter(ChartType.SCATTER_CHART);
     }

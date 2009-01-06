@@ -89,14 +89,18 @@ final class ChartMarkersParameter implements Parameter {
      *            the marker
      * @param dataSetIndex
      *            the data set index
-     * @param dataPoint
-     *            the data point
+     * @param startIndex
+     *            The start index for the marker range.
+     * @param endIndex
+     *            The end index for the marker range.
+     * @param n
+     *            Marker on every n-th data point.
      */
-    void addMarker(final Marker marker, final int dataSetIndex, final int dataPoint) {
+    void addMarker(final Marker marker, final int dataSetIndex, final int startIndex, final int endIndex, final int n) {
         if (marker instanceof ShapeMarker) {
-            markers.add(new ShapeMarkerParam((ShapeMarker) marker, dataSetIndex, dataPoint));
+            markers.add(new ShapeMarkerParam((ShapeMarker) marker, dataSetIndex, startIndex, endIndex, n));
         } else if (marker instanceof TextMarker) {
-            markers.add(new TextMarkerParam((TextMarker) marker, dataSetIndex, dataPoint));
+            markers.add(new TextMarkerParam((TextMarker) marker, dataSetIndex, startIndex, endIndex, n));
         }
     }
 
@@ -110,7 +114,7 @@ final class ChartMarkersParameter implements Parameter {
      */
     void addMarkers(final Marker marker, final int dataSetIndex) {
         //-1 adds the same shape marker to each point on the plot.
-        addMarker(marker, dataSetIndex, -1);
+        addMarker(marker, dataSetIndex, -1, 0, 0);
     }
 
 
@@ -155,7 +159,7 @@ final class ChartMarkersParameter implements Parameter {
     }
 
     /**
-     * The Interface GoogleChartMarker.
+     * The GoogleChartMarker tag interface.
      */
     private interface GoogleChartMarker {
     }
@@ -174,8 +178,14 @@ final class ChartMarkersParameter implements Parameter {
         /** The data set index. */
         private final int      dataSetIndex;
 
-        /** The data point. */
-        private final int      dataPoint;
+        /** The start index. */
+        private final int      startIndex;
+        
+        /** The end index. */
+        private final int      endIndex;
+        
+        /** The periodicity. */
+        private final int      n;
 
         /** The size. */
         private final int      size;
@@ -192,18 +202,24 @@ final class ChartMarkersParameter implements Parameter {
          *            the color
          * @param dataSetIndex
          *            the data set index
-         * @param dataPoint
-         *            the data point
+         * @param startIndex
+         *            The start index for the marker range.
+         * @param endIndex
+         *            The end index for the marker range.
+         * @param n
+         *            Marker on every n-th data point.
          * @param size
          *            the size
          * @param priority
          *            the priority
          */
-        private GMarker(final String marker, final Color color, final int dataSetIndex, final int dataPoint, final int size, final Priority priority) {
+        private GMarker(final String marker, final Color color, final int dataSetIndex, final int startIndex, final int endIndex, final int n, final int size, final Priority priority) {
             this.marker = marker;
             this.color = color;
             this.dataSetIndex = dataSetIndex;
-            this.dataPoint = dataPoint;
+            this.startIndex = startIndex;
+            this.endIndex = endIndex;
+            this.n = n;
             this.size = size;
             this.priority = priority;
         }
@@ -213,7 +229,17 @@ final class ChartMarkersParameter implements Parameter {
          */
         @Override
         public String toString() {
-            return marker + "," + color + "," + dataSetIndex + "," + dataPoint + "," + size + "," + priority;
+            final String returnString;
+            if (startIndex >= 0 && endIndex == startIndex + 1) {
+                returnString =  marker + "," + color + "," + dataSetIndex + "," + startIndex + "," + size + "," + priority;
+            }
+            else if (startIndex == -1) {
+                returnString =  marker + "," + color + "," + dataSetIndex + "," + startIndex + "," + size + "," + priority;                
+            }
+            else {//(endIndex - 1)  ---> The GCA is end point inclusive.
+                returnString =  marker + "," + color + "," + dataSetIndex + "," + startIndex + ":" + (endIndex - 1) + ":" + n + "," + size + "," + priority;
+            }
+            return returnString;
         }
     }
 
@@ -237,7 +263,7 @@ final class ChartMarkersParameter implements Parameter {
          *            the priority
          */
         private LineStyleMarker(final Color color, final int dataSetIndex, final int dataPoint, final int size, final Priority priority) {
-            super("D", color, dataSetIndex, dataPoint, size, priority);
+            super("D", color, dataSetIndex, dataPoint, dataPoint + 1, 1, size, priority);
         }
     }
 
@@ -253,11 +279,15 @@ final class ChartMarkersParameter implements Parameter {
          *            the shape marker
          * @param dataSetIndex
          *            the data set index
-         * @param dataPoint
-         *            the data point
+         * @param startIndex
+         *            The start index for the marker range.
+         * @param endIndex
+         *            The end index for the marker range.
+         * @param n
+         *            Marker on every n-th data point.
          */
-        private ShapeMarkerParam(final ShapeMarker shapeMarker, final int dataSetIndex, final int dataPoint) {
-            super(shapeMarker.getShape().toString(), shapeMarker.getColor(), dataSetIndex, dataPoint, shapeMarker.getSize(), shapeMarker.getPriority());
+        private ShapeMarkerParam(final ShapeMarker shapeMarker, final int dataSetIndex, final int startIndex, final int endIndex, final int n) {
+            super(shapeMarker.getShape().toString(), shapeMarker.getColor(), dataSetIndex, startIndex, endIndex, n, shapeMarker.getSize(), shapeMarker.getPriority());
         }
     }
 
@@ -273,11 +303,15 @@ final class ChartMarkersParameter implements Parameter {
          *            the text marker
          * @param dataSetIndex
          *            the data set index
-         * @param dataPoint
-         *            the data point
+         * @param startIndex
+         *            The start index for the marker range.
+         * @param endIndex
+         *            The end index for the marker range.
+         * @param n
+         *            Marker on every n-th data point.
          */
-        private TextMarkerParam(final TextMarker textMarker, final int dataSetIndex, final int dataPoint) {
-            super("t" + ParameterUtil.utf8Encode(textMarker.getText()), textMarker.getColor(), dataSetIndex, dataPoint, textMarker.getSize(), textMarker.getPriority());
+        private TextMarkerParam(final TextMarker textMarker, final int dataSetIndex, final int startIndex, final int endIndex, final int n) {
+            super("t" + ParameterUtil.utf8Encode(textMarker.getText()), textMarker.getColor(), dataSetIndex, startIndex, endIndex, n, textMarker.getSize(), textMarker.getPriority());
         }
     }
 
