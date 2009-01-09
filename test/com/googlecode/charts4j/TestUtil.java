@@ -43,6 +43,17 @@ class TestUtil {
         final Plot plot = Plots.newPlot(Data.newData(0, 50, 100));
         return GCharts.newLineChart(plot);
     }
+    
+    /**
+     * Get a basic bar chart.
+     * 
+     * @return Get a basic bar chart.
+     */
+    static BarChart getBasicBarChart() {
+        final Plot plot = Plots.newPlot(Data.newData(70, 50, 100));
+        return GCharts.newBarChart(plot);
+    }
+
 
     /**
      * Get a basic line.
