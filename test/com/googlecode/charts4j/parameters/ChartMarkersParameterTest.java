@@ -159,5 +159,24 @@ public class ChartMarkersParameterTest {
         final String expectedString = "chm=o,CD853F,1,-1,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-
+    
+    @Test
+    public void addFreeShapeMarker() {
+        final ChartMarkersParameter p = new ChartMarkersParameter();
+        final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
+        p.addFreeMarker(sm, 10, 20);
+        Logger.global.info(p.toURLParameterString());
+        final String expectedString = "chm=@o,CD853F,0,0.1:0.2,13,-1";
+        assertEquals("Junit error", expectedString, p.toURLParameterString());
+    }
+    
+    @Test
+    public void addFreeTextMarker() {
+        final ChartMarkersParameter p = new ChartMarkersParameter();
+        final Marker sm = Markers.newTextMarker("charts4j", PERU, 13, Priority.HIGH);
+        p.addFreeMarker(sm, 20, 10);
+        Logger.global.info(p.toURLParameterString());
+        final String expectedString = "chm=@tcharts4j,CD853F,0,0.2:0.1,13,1";
+        assertEquals("Junit error", expectedString, p.toURLParameterString());
+    }
 }
