@@ -29,6 +29,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import com.googlecode.charts4j.Color;
+import com.googlecode.charts4j.Data;
 import com.googlecode.charts4j.Marker;
 import com.googlecode.charts4j.Priority;
 import com.googlecode.charts4j.ShapeMarker;
@@ -144,6 +145,20 @@ final class ChartMarkersParameter implements Parameter {
      */
     void addHorizontalRangeMarker(final Color color, final double startPoint, final double endPoint) {
         markers.add(new RangeMarker(RangeType.HORIZONTAL, color, startPoint, endPoint));
+    }
+    
+    /**
+     * Adds the free marker.
+     * 
+     * @param marker
+     *            the marker
+     * @param xPos
+     *            the x pos
+     * @param yPos
+     *            the y pos
+     */
+    void addFreeMarker(final Marker marker, final double xPos, final double yPos) {
+        markers.add(new FreeMarker(marker, xPos, yPos));
     }
 
     /**
@@ -405,6 +420,55 @@ final class ChartMarkersParameter implements Parameter {
         @Override
         public String toString() {
             return rangeType + "," + color + ",0," + decimalFormatter.format(startPoint) + "," + decimalFormatter.format(endPoint);
+        }
+    }
+    
+    /**
+     * Private static inner class to encapsulate a FreeMarker.
+     */
+    private static class FreeMarker implements GoogleChartMarker {
+        
+        /** The marker. */
+        private final Marker marker;
+        
+        /** The x pos. */
+        private final double xPos; 
+        
+        /** The y pos. */
+        private final double yPos;
+
+        /**
+         * Instantiates a new free marker.
+         * 
+         * @param marker
+         *            the marker
+         * @param xPos
+         *            the x pos
+         * @param yPos
+         *            the y pos
+         */
+        private FreeMarker(final Marker marker, final double xPos, final double yPos) {
+            this.marker = marker;
+            this.xPos = xPos;
+            this.yPos = yPos;
+        }
+        
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+            final String s;
+            if (marker instanceof TextMarker) {
+                final TextMarker m = (TextMarker) marker;
+                s = "@t" + m.getText() + "," + m.getColor() + ",0," + xPos / Data.MAX_VALUE + ":" + yPos / Data.MAX_VALUE  + "," + m.getSize()  + "," + m.getPriority();
+            } else if (marker instanceof ShapeMarker) {
+                final ShapeMarker m = (ShapeMarker) marker;
+                s = "@" + m.getShape().toString() + "," + m.getColor() + ",0," + xPos / Data.MAX_VALUE + ":" + yPos / Data.MAX_VALUE  + "," + m.getSize() + "," + m.getPriority();
+            } else {
+                s = "";
+            }
+            return s;
         }
     }
 }

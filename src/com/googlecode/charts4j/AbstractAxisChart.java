@@ -54,6 +54,9 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
 
     /** List of right axis labels. **/
     private final List<AxisLabelsImpl> rightAxisLabels = Lists.newLinkedList();
+    
+    /** List of free markers. **/
+    private final List<FreeMarker> freeMarkers         = Lists.newLinkedList();
 
     /**
      * Line style for grid. For internal purposes only. Thickness field is
@@ -129,6 +132,27 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
         checkNotNull(axisLabels, "axisLabels cannnot be null");
         rightAxisLabels.add(AxisLabelsFactory.newAxisLabels((AxisLabelsImpl) axisLabels));
     }
+    
+    
+    /**
+     * Add a shape or text marker at any position in this chart. As is true for
+     * the rest of the API, specify the position between 0 and 100 along the x
+     * and y axes.
+     *
+     * @param marker
+     *            The shape or text marker that will be displayed in the chart.
+     *            Cannot be null.
+     * @param xPos
+     *            The x position of the text. xPos >= 0 and <= 100.
+     * @param yPos
+     *            The y position of the text. yPos >= 0 and <= 100.
+     */
+    public final void addMarker(final Marker marker, final double xPos, final double yPos) {
+        checkNotNull(marker, "marker cannnot be null");
+        checkArgument(xPos >= 0 && xPos <= 100, "xPos must be >= 0 and <= 100: %s", xPos);
+        checkArgument(yPos >= 0 && yPos <= 100, "yPos must be >= 0 and <= 100: %s", yPos);
+        freeMarkers.add(new FreeMarker(marker, xPos, yPos));
+    }
 
     /**
      * {@inheritDoc}
@@ -153,6 +177,9 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
         super.prepareData();
         if (gridLineStyle != null) {
             parameterManager.setGridLineParameter(xAxisStepSize, yAxisStepSize, gridLineStyle.getLengthOfLineSegment(), gridLineStyle.getLengthOfBlankSegment());
+        }
+        for (FreeMarker marker : freeMarkers) {
+            parameterManager.addFreeMarker(marker.marker, marker.xPos, marker.yPos);
         }
         if (!xAxisLabels.isEmpty() || !yAxisLabels.isEmpty() || !topAxisLabels.isEmpty() || !rightAxisLabels.isEmpty()) {
 
@@ -211,5 +238,36 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
         }
         Collections.sort(doubleList);
         return doubleList;
+    }
+    
+    /**
+     * Private static inner class to encapsulate a FreeMarker.
+     */
+    private static class FreeMarker {
+        
+        /** The marker. */
+        private final Marker marker;
+        
+        /** The x pos. */
+        private final double xPos; 
+        
+        /** The y pos. */
+        private final double yPos;
+
+        /**
+         * Instantiates a new free marker.
+         * 
+         * @param marker
+         *            the marker
+         * @param xPos
+         *            the x pos
+         * @param yPos
+         *            the y pos
+         */
+        private FreeMarker(final Marker marker, final double xPos, final double yPos) {
+            this.marker = marker;
+            this.xPos = xPos;
+            this.yPos = yPos;
+        }
     }
 }

@@ -275,6 +275,20 @@ public final class ParameterManager {
     public void addMarkers(final Marker marker, final int dataSetIndex) {
         getParameter(ChartMarkersParameter.class).addMarkers(marker, dataSetIndex);
     }
+    
+    /**
+     * Adds the free marker.
+     * 
+     * @param marker
+     *            the marker
+     * @param xPos
+     *            the x pos
+     * @param yPos
+     *            the y pos
+     */
+    public void addFreeMarker(final Marker marker, final double xPos, final double yPos) {
+        getParameter(ChartMarkersParameter.class).addFreeMarker(marker, xPos, yPos);
+    }
 
 
     /**
