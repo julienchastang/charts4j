@@ -72,7 +72,7 @@ public interface Plot {
      * @param color
      *            Color of text marker. Cannot be null.
      * @param size
-     *            The size of the text marker. Must be > 0.
+     *            The font size of the text marker. Must be > 0.
      * @param index
      *            The index at which the text marker should be added. Must be >=
      *            0.
