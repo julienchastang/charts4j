@@ -26,7 +26,9 @@
 package com.googlecode.charts4j.parameters;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 import com.googlecode.charts4j.Color;
 import com.googlecode.charts4j.Data;
@@ -393,7 +395,7 @@ final class ChartMarkersParameter implements Parameter {
         private final double    endPoint;
 
         /** The decimal formatter. */
-        private final DecimalFormat   decimalFormatter        = new DecimalFormat("0.00");
+        private final DecimalFormat   decimalFormatter = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
 
         /**
          * Instantiates a new range marker.

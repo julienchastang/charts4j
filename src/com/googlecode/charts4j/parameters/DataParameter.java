@@ -26,7 +26,9 @@
 package com.googlecode.charts4j.parameters;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 import com.googlecode.charts4j.Data;
 import com.googlecode.charts4j.DataEncoding;
@@ -43,7 +45,8 @@ final class DataParameter implements Parameter {
     private static final String   URL_PARAMETER_KEY       = "chd";
 
     /** The decimal formatter. */
-    private final DecimalFormat   decimalFormatter        = new DecimalFormat("##0.0");
+    private final DecimalFormat   decimalFormatter        = new DecimalFormat("##0.0", new DecimalFormatSymbols(Locale.US));
+
 
     /** The Constant EXTENDED_ENCODING_CHARS. */
     private static final char[]   EXTENDED_ENCODING_CHARS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
