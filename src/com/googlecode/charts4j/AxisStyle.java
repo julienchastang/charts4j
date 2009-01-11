@@ -202,7 +202,7 @@ public final class AxisStyle {
      */
     static AxisStyle newAxisStyle(final AxisStyle axisStyle) {
         if (axisStyle == null) {
-            return null; //TODO: Make sure all copy constructors do this check.
+            return null;
         }
         final AxisStyle as = new AxisStyle(axisStyle.textColor, axisStyle.fontSize, axisStyle.alignment);
         as.isAxisDrawn = axisStyle.isAxisDrawn;
@@ -231,7 +231,7 @@ public final class AxisStyle {
      */
     static AxisStyle correctAxisStyle(final AxisStyle axisStyle) {
         if (axisStyle == null) {
-            return null; //TODO: Make sure all copy constructors do this check.
+            return null;
         }
 
         final AxisStyle as;
