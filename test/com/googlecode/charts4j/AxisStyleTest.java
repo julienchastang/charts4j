@@ -66,10 +66,12 @@ public class AxisStyleTest {
     public void testAxisStyle0() {
         final LineChart chart = TestUtil.getBasicChart();
         AxisLabels axisLabels = AxisLabelsFactory.newNumericAxisLabels(Arrays.asList(0, 1, 2, 3, 4, 5));
-        axisLabels.setAxisStyle(AxisStyle.newAxisStyle(RED, 16, AxisTextAlignment.CENTER));
-        chart.addXAxisLabels(axisLabels);
+        AxisStyle as  = AxisStyle.newAxisStyle(RED, 16, AxisTextAlignment.CENTER);
+        as.setDrawTickMarks(false);
+        axisLabels.setAxisStyle(as);
+        chart.addRightAxisLabels(axisLabels);
         Logger.global.info(chart.toURLString());
-        String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAgA..&chxt=x&chxp=0,0,1,2,3,4,5&chxr=0,0.0,5.0&chxs=0,FF0000,16,0&cht=lc";
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxp=0,0,1,2,3,4,5&chxr=0,0.0,5.0&chxs=0,FF0000,16,0,l&chxt=r";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 
@@ -77,7 +79,6 @@ public class AxisStyleTest {
     public void testAxisStyle1() {
         final LineChart chart = TestUtil.getBasicChart();
         AxisStyle axisStyle  = AxisStyle.newAxisStyle(RED, 16, AxisTextAlignment.CENTER);
-        axisStyle.setDrawAxis(true);
         axisStyle.setTickMarkColor(RED);
         axisStyle.setTickMarkLength(-50);
         AxisLabels axisLabels = AxisLabelsFactory.newNumericAxisLabels(Arrays.asList(0, 1, 2, 3, 4, 5));
@@ -87,6 +88,17 @@ public class AxisStyleTest {
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxp=0,0,1,2,3,4,5&chxr=0,0.0,5.0&chxs=0,FF0000,16,0,lt,FF0000&chxt=x&chxtc=0,-50";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+    
+    @Test
+    public void testAxisStyle2() {
+        final LineChart chart = TestUtil.getBasicChart();
+        AxisLabels axisLabels = AxisLabelsFactory.newNumericRangeAxisLabels(10, 90);
+        chart.addYAxisLabels(axisLabels);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxr=0,10.0,90.0&chxt=y";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+
     
     @Test
     public void testAxisAlignment() {

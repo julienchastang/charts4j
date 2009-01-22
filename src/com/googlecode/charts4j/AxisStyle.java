@@ -45,9 +45,6 @@ public final class AxisStyle {
     /** Axis text alignment relative to tick mark. */
     private final AxisTextAlignment alignment;
 
-    /** Is the axis drawn. */
-    private Boolean                 isAxisDrawn;
-
     /** Are the tick marks drawn. */
     private Boolean                 areTickMarksDrawn;
 
@@ -94,34 +91,17 @@ public final class AxisStyle {
     }
 
     /**
-     * Draw the axis?
-     * 
-     * @return is the axis displayed
-     */
-    public Boolean drawAxis() {
-        return isAxisDrawn;
-    }
-
-    /**
-     * Is the axis is drawn or not.
-     * 
-     * @param drawAxis
-     *            draw the axis?
-     */
-    public void setDrawAxis(final boolean drawAxis) {
-        this.isAxisDrawn = drawAxis;
-    }
-
-    /**
      * Are the tick marks drawn?
      * 
-     * @return are the tick marks displayed?
+     * @return are the tick marks displayed? Can be null if it was never set.
      */
     public Boolean drawTickMarks() {
         return areTickMarksDrawn;
     }
 
     /**
+     * The developer can override default tick mark behavior with this method.
+     * 
      * @param drawTickMarks
      *            Are the tick marks displayed?
      */
@@ -205,7 +185,6 @@ public final class AxisStyle {
             return null;
         }
         final AxisStyle as = new AxisStyle(axisStyle.textColor, axisStyle.fontSize, axisStyle.alignment);
-        as.isAxisDrawn = axisStyle.isAxisDrawn;
         as.areTickMarksDrawn = axisStyle.areTickMarksDrawn;
         as.tickMarkColor = axisStyle.tickMarkColor;
         as.tickMarkLength = axisStyle.tickMarkLength;
@@ -246,7 +225,6 @@ public final class AxisStyle {
             as = newAxisStyle(axisStyle);
             break;
         }
-        as.isAxisDrawn = axisStyle.isAxisDrawn;
         as.areTickMarksDrawn = axisStyle.areTickMarksDrawn;
         as.tickMarkColor = axisStyle.tickMarkColor;
         as.tickMarkLength = axisStyle.tickMarkLength;

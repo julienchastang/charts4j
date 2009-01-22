@@ -118,8 +118,9 @@ final class AxisStylesParameter implements Parameter {
          */
         private String getDrawingControlString(final AxisStyle axisStyle) {
             final StringBuilder sb = new StringBuilder();
-            sb.append(axisStyle.drawAxis() != null && axisStyle.drawAxis() ? DRAW_AXIS_LINE : "");
-            sb.append(axisStyle.drawTickMarks() != null && axisStyle.drawTickMarks() ? DRAW_TICK_MARKS : "");
+            if (axisStyle.drawTickMarks() != null) {
+                sb.append(axisStyle.drawTickMarks() ? DRAW_AXIS_LINE + DRAW_TICK_MARKS : DRAW_AXIS_LINE);
+            }
             return sb.length() > 0 ? sb.toString() : null;
         }
     }
