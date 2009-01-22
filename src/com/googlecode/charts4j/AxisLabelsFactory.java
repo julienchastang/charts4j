@@ -98,7 +98,7 @@ public final class AxisLabelsFactory {
      */
     public static AxisLabels newAxisLabels(final String... labels) {
         checkContentsNotNull(Arrays.asList(labels), "labels list is null or contains a null value");
-        return newAxisLabels(Arrays.asList(labels), Collections.<Number> emptyList());
+        return newAxisLabels(Arrays.asList(labels), Collections.<Number>emptyList());
     }
 
     /**
