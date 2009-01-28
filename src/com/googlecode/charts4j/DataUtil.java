@@ -25,12 +25,16 @@
 
 package com.googlecode.charts4j;
 
-import static com.googlecode.charts4j.collect.Preconditions.*;
+import static com.googlecode.charts4j.collect.Preconditions.checkArgument;
+import static com.googlecode.charts4j.collect.Preconditions.checkContentsNotNull;
+import static com.googlecode.charts4j.collect.Preconditions.checkNotNull;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
+import com.googlecode.charts4j.collect.PrimitiveArrays;
 
 /**
  * Perusing the <a href="http://groups.google.com/group/google-chart-api">
@@ -77,7 +81,7 @@ public final class DataUtil {
      */
     public static Data scaleWithinRange(final double min, final double max, final double[] data) {
         checkArgument(max - min > 0, "min >= max!");
-        return Data.newData(scale(data, min, max));
+        return Data.newData(privateScale(data, min, max));
     }
 
     /**
@@ -118,14 +122,10 @@ public final class DataUtil {
      */
     public static Data scale(final double... data) {
         checkNotNull(data, "data is null or contents of data is null.");
-        double min = Double.MAX_VALUE;
-        double max = Double.MIN_VALUE;
-        for (double d : data) {
-            min = (d < min) ? d : min;
-            max = (d > max) ? d : max;
-        }
+        final double min = Collections.min(PrimitiveArrays.asList(data));
+        final double max = Collections.max(PrimitiveArrays.asList(data));        
         checkArgument(min < max, "Cannot scale this data. It is ill conditioned.");
-        return Data.newData(scale(data, min, max));
+        return Data.newData(privateScale(data, min, max));
     }
 
     /**
@@ -145,26 +145,65 @@ public final class DataUtil {
         checkContentsNotNull(data, "data is null or contents of data is null.");
         return scale(toDoubleArray(Lists.copyOf(data)));
     }
-
+    
     /**
-     * Method that scales the data.
-     *
-     * @param doubleArray
-     *            Data to be scaled. Cannot be null.
-     * @param min
-     *            Minimum range for scaled data.
-     * @param max
-     *            Maximum range of scaled data.
-     * @return scaled double array
+     * This method is for scaling multiple data series at once. It is useful in
+     * situations where you have multiple plots in one chart, and you want the
+     * data consistently scaled by the same factor. The data are scaled between
+     * the minimum and maximum data points found for all data. The returned
+     * scaled {@link Data} list can be plotted with the guarantee that all the
+     * plots will fit on the chart.
+     * 
+     * @param data
+     *            the data. The first index is the data series index. The second
+     *            is the data series.
+     * 
+     * @return the list of Data objects that can then be plotted.
      */
-    private static double[] scale(final double[] doubleArray, final double min, final double max) {
-        checkNotNull(doubleArray, "doubleArray cannot be null");
-        checkArgument(max - min > 0, "min > max!");
-        final double[] scaledData = new double[doubleArray.length];
-        for (int j = 0; j < doubleArray.length; j++) {
-            scaledData[j] = ((doubleArray[j] - min) / (max - min)) * Data.MAX_VALUE;
+    public static List<Data> scale(final double data[][]) {
+        checkNotNull(data, "data cannot be null");
+        final List<Double> allData = Lists.newLinkedList();
+        for (double[] d : data) {
+            for (double doub : d) {
+                allData.add(doub);
+            }
         }
-        return scaledData;
+        final double min = Collections.min(allData);
+        final double max = Collections.max(allData);
+        final List<Data> list = Lists.newLinkedList();
+        for (double[] d : data) {
+            list.add(scaleWithinRange(min, max, d));
+        }
+        return list;
+    }
+    
+    /**
+     * This method is for scaling multiple data series at once. It is useful in
+     * situations where you have multiple plots in one chart, and you want the
+     * data consistently scaled by the same factor. The data are scaled between
+     * the minimum and maximum data points found for all data. The returned
+     * scaled {@link Data} list can be plotted with the guarantee that all the
+     * plots will fit on the chart.
+     * 
+     * @param data
+     *            the data.
+     * 
+     * @return the list of Data objects that can then be plotted.
+     */
+    public static List<Data> scale(final List<? extends List<? extends Number>> data) {
+        checkContentsNotNull(data, "data is null or contents of data is null.");
+        final double[][] d = new double[data.size()][];
+        int j = 0;
+        for (List<? extends Number> datum : data) {
+            checkContentsNotNull(datum, "data is null or contents of data is null.");
+            double[] plotData = new double[datum.size()];
+            int i = 0;
+            for (Number n : datum) {
+                plotData[i++] = n.doubleValue();
+            }
+            d[j++] = plotData;
+        }
+        return scale(d);
     }
 
     /**
@@ -182,5 +221,26 @@ public final class DataUtil {
             d[i] = data.get(i).doubleValue();
         }
         return d;
+    }
+
+    /**
+     * Method that scales the data.
+     *
+     * @param doubleArray
+     *            Data to be scaled. Cannot be null.
+     * @param min
+     *            Minimum range for scaled data.
+     * @param max
+     *            Maximum range of scaled data.
+     * @return scaled double array
+     */
+    private static double[] privateScale(final double[] doubleArray, final double min, final double max) {
+        checkNotNull(doubleArray, "doubleArray cannot be null");
+        checkArgument(max - min > 0, "min > max!");
+        final double[] scaledData = new double[doubleArray.length];
+        for (int j = 0; j < doubleArray.length; j++) {
+            scaledData[j] = ((doubleArray[j] - min) / (max - min)) * Data.MAX_VALUE;
+        }
+        return scaledData;
     }
 }

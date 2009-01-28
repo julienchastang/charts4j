@@ -28,6 +28,8 @@ package com.googlecode.charts4j;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,6 +38,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.googlecode.charts4j.collect.PrimitiveArrays;
 
 /**
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
@@ -86,5 +90,28 @@ public class DataUtilTest {
         Data data = DataUtil.scaleWithinRange(0, 10, Arrays.asList(1, 2, 3, 4, 5, 6));
         Logger.global.info(data.toString());
         assertEquals("Junit error", "[10.0, 20.0, 30.0, 40.0, 50.0, 60.0]", data.toString());
+    }
+    
+    @Test
+    public void testScaleData4() {
+        double d0[] = new double[] {4, 5, 6};
+        double d1[] = new double[] {0, 5, 10};
+        double d[][] = new double[][] {d0, d1};
+        List<Data> data = DataUtil.scale(d);
+        assertEquals("Junit error", "[[40.0, 50.0, 60.0], [0.0, 50.0, 100.0]]", data.toString());
+    }
+    
+    @Test
+    public void testScaleData5() {
+        double d0[] = new double[] {4, 5, 6};
+        double d1[] = new double[] {0, 5, 10};
+        List<Double> l0 = PrimitiveArrays.asList(d0);
+        List<Double> l1 = PrimitiveArrays.asList(d1);
+
+        List<List<Double>> d = new LinkedList<List<Double>>();
+        d.add(l0);
+        d.add(l1);
+        List<Data> data = DataUtil.scale(d);
+        assertEquals("Junit error", "[[40.0, 50.0, 60.0], [0.0, 50.0, 100.0]]", data.toString());
     }
 }
