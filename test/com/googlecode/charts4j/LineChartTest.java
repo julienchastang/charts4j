@@ -25,10 +25,18 @@
 
 package com.googlecode.charts4j;
 
-import static com.googlecode.charts4j.Color.*;
+import static com.googlecode.charts4j.Color.AZURE;
+import static com.googlecode.charts4j.Color.BLACK;
+import static com.googlecode.charts4j.Color.GREEN;
+import static com.googlecode.charts4j.Color.LIGHTBLUE;
+import static com.googlecode.charts4j.Color.LIGHTGREY;
+import static com.googlecode.charts4j.Color.RED;
+import static com.googlecode.charts4j.Color.WHITE;
 import static com.googlecode.charts4j.UrlUtil.normalize;
 import static org.junit.Assert.assertEquals;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -220,5 +228,33 @@ public class LineChartTest {
         Logger.global.info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chd=e:gA&chs=200x125";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+    
+    @Test
+    public void test10() {
+        double d0[] = new double[100];
+        double d1[] = new double[100];
+        
+        for (int i = 0; i < d0.length; i++) {
+            d0[i] = 5*Math.sin(i*0.2);
+        }
+        
+        for (int i = 0; i < d1.length; i++) {
+            d1[i] = Math.cos(i*0.2);
+        }
+        
+        List<Data> data = DataUtil.scale(new double[][]{d0,d1}); 
+        List<Plot> plots = new LinkedList<Plot>();
+        
+        for (Data d : data) {
+            plots.add(Plots.newPlot(d));
+        }
+        
+        final LineChart chart = GCharts.newLineChart(plots);
+        
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:gAmXsdyE296791.i...K9G541nwgqukheIX1R2MbHyEHBjANAIBUDvHRLzRIXEdWjvp-v01B5Z8w--.9.q-G7W3gyutMnIgzabUROmJnFhCeAnAAArClFrJ0O1UiathFnatcy83s7f-N.t.8-68o5O00vkptjddEWyQ4LlHGDmBPAGAPBpEQH-MpSGYGeakzq.wv116C,mamRl5lSkdjdiUhGf0ejdVcPbSahZ-ZqZnZ0aRa8b0c3eCfSgkh0jAkEk-lrmJmYmXmFlkk1j5i0hngWfEd1crbqa0aLZxZmZtaDaobbcadiewgChTihjpknlal-mUmZmOl0lKkTjSiHg4fmeWdJcEbJaaZ6ZpZoZ4aXbFb.dDePfggxiBjMkOlGlxmNmZmVmBldkrju&chs=200x125&cht=lc";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+        
     }
 }
