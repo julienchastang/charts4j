@@ -57,6 +57,19 @@ public final class Lists {
     public static <E> List<E> newLinkedList() {
         return new LinkedList<E>();
     }
+    
+    /**
+     * Static factory method to instantiate an ArrayList.
+     *
+     * @param <E>
+     *            Type parameter for list.
+     *
+     * @return A newly instantiated ArrayList of type E.
+     */
+    public static <E> List<E> newArrayList() {
+        return new LinkedList<E>();
+    }
+
 
     /**
      * Given a vararg, return an immutable list.
