@@ -187,7 +187,7 @@ final class DataParameter implements Parameter {
      * {@inheritDoc}
      */
     public String toURLParameterString() {
-        final StringBuffer sb = new StringBuffer(URL_PARAMETER_KEY + "=" + dataEncoding);
+        final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=" + dataEncoding);
         final String seperator = dataEncoding.equals(DataEncoding.TEXT) ? "|" : ",";
         int cnt = 0;
         for (Data data : datas) {
