@@ -36,6 +36,8 @@ import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.collect.Maps;
 import com.googlecode.charts4j.parameters.AxisTypes;
 
+//Small test.
+
 /**
  * Abstract type that is common to all charts with axes.
  *
