@@ -79,7 +79,11 @@ public class Data {
      */
     public Data(final double... data) {
         checkNotNull(data, "data is null or contents of data is null.");
-        this.data = data.clone();
+        double clonedData[] = new double[data.length];
+        for (int i = 0; i < data.length; i++) {
+            clonedData[i] = data[i];
+        }
+        this.data = clonedData;
     }
 
     /**
@@ -97,7 +101,11 @@ public class Data {
      * @return copy of double array representing the data.
      */
     public final double[] getData() {
-        return data.clone();
+        double clonedData[] = new double[data.length];
+        for (int i = 0; i < data.length; i++) {
+            clonedData[i] = data[i];
+        }
+        return clonedData;
     }
 
     /**
