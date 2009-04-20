@@ -4,13 +4,16 @@
 	<property environment="env" />
 	<property file="build.properties" />
 	<property name="junit.jar" value="lib/junit-4.4.jar" />
+	<property name="gwt.jar" value="lib/gwt-user-1.6.4.jar" />
 
 	<path id="compile.classpath">
 		<pathelement location="${junit.jar}" />
+		<pathelement location="${gwt.jar}" />
 	</path>
 
 	<path id="test.classpath">
 		<pathelement location="${junit.jar}" />
+		<pathelement location="${gwt.jar}" />
 		<pathelement location="${build.dir}/classes" />
 		<pathelement location="${build.dir}/test" />
 		<pathelement location="${build.dir}/example" />
@@ -62,10 +65,11 @@
 		<mkdir dir="${build.dir}/dist/${app.name}-${version}/lib" />
 		<jar jarfile="${build.dir}/dist/${app.name}-${version}/lib/${app.name}-${version}.jar">
 			<fileset dir="${build.dir}/classes" />
+			<fileset dir="${src.dir}" />
 		</jar>
 	</target>
 
-	<target name="dist" depends="clean,test, jar, javadoc" description="Build entire distribution.">
+	<target name="dist" depends="clean, jar, javadoc" description="Build entire distribution.">
 		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="COPYING" />
 		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="README" />
 		<copy toDir="${build.dir}/dist/${app.name}-${version}">
