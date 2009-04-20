@@ -79,7 +79,14 @@ public class Data {
      */
     public Data(final double... data) {
         checkNotNull(data, "data is null or contents of data is null.");
-        this.data = data.clone();
+
+	// GWT doesnt support .clone()
+	this.data = new double[data.length];
+	int i = 0;
+	for (double d : data) {
+	    this.data[i++] = d;
+	}
+        
     }
 
     /**
@@ -97,7 +104,16 @@ public class Data {
      * @return copy of double array representing the data.
      */
     public final double[] getData() {
-        return data.clone();
+
+	// GWT doesnt support .clone()
+	double clonedData[] = new double[data.length];
+	int i = 0;
+	for (double d : data) {
+	    clonedData[i++] = d;
+	}
+
+	return clonedData;
+	
     }
 
     /**
