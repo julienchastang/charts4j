@@ -568,18 +568,69 @@ public final class ParameterManager {
      * @throws ParameterInstantiationException
      *             if the parameter could not be instantiated
      */
+    @SuppressWarnings("unchecked")
     private <T extends Parameter> T getParameter(final Class<T> clazz) throws ParameterInstantiationException {
         // Should always be safe.
-        @SuppressWarnings("unchecked")
         T p = (T) parameterMap.get(clazz);
         if (p == null) {
-            try {
-                p = clazz.newInstance();
-            } catch (InstantiationException e) {
-                throw new ParameterInstantiationException("Internal error: Could not instatiate " + clazz.getName(), e);
-            } catch (IllegalAccessException e) {
-                throw new ParameterInstantiationException("Internal error: Could not instatiate " + clazz.getName(), e);
-            }
+            
+            // GWT doesnt support reflections
+            // all child classes of com.googlecode.charts4j.parameters.Parameter must be mentioned here!
+            // TODO@jc: what about those classes that do not have a zero-argument constructor? how do u handle them with reflections?
+	    if (clazz.getName().contains("AxisLabelPositionsParameter")) {
+		p = (T) new AxisLabelPositionsParameter();
+	    } else if (clazz.getName().contains("AxisLabelsParameter")) {
+		p = (T) new AxisLabelsParameter();
+	    } else if (clazz.getName().contains("AxisRangesParameter")) {
+		p = (T) new AxisRangesParameter();
+	    } else if (clazz.getName().contains("AxisStylesParameter")) {
+		p = (T) new AxisStylesParameter();
+	    } else if (clazz.getName().contains("AxisTypesParameter")) {
+		p = (T) new AxisTypesParameter();
+//	    } else if (clazz.getName().contains("BarChartWidthAndSpacingParameter")) {
+//		p = (T) new BarChartWidthAndSpacingParameter();
+	    } else if (clazz.getName().contains("BarChartZeroLinesParameter")) {
+		p = (T) new BarChartZeroLinesParameter();
+	    } else if (clazz.getName().contains("ChartFillsParameter")) {
+		p = (T) new ChartFillsParameter();
+	    } else if (clazz.getName().contains("ChartMarkersParameter")) {
+		p = (T) new ChartMarkersParameter();
+//	    } else if (clazz.getName().contains("ChartSizeParameter")) {
+//		p = (T) new ChartSizeParameter();
+//	    } else if (clazz.getName().contains("ChartTitleColorAndSizeParameter")) {
+//		p = (T) new ChartTitleColorAndSizeParameter();
+//	    } else if (clazz.getName().contains("ChartTitleParameter")) {
+//		p = (T) new ChartTitleParameter();
+//	    } else if (clazz.getName().contains("ChartTypeParameter")) {
+//		p = (T) new ChartTypeParameter();
+	    } else if (clazz.getName().contains("ColorsParameter")) {
+		p = (T) new ColorsParameter();
+	    } else if (clazz.getName().contains("DataLegendsParameter")) {
+		p = (T) new DataLegendsParameter();
+	    } else if (clazz.getName().contains("DataParameter")) {
+		p = (T) new DataParameter();
+	    } else if (clazz.getName().contains("GeoCodesParameter")) {
+		p = (T) new GeoCodesParameter();
+//	    } else if (clazz.getName().contains("GeographicalAreaParameter")) {
+//		p = (T) new GeographicalAreaParameter();
+//	    } else if (clazz.getName().contains("GridLineParameter")) {
+//		p = (T) new GridLineParameter();
+//	    } else if (clazz.getName().contains("LegendPositionParameter")) {
+//		p = (T) new LegendPositionParameter();
+	    } else if (clazz.getName().contains("LineChartLineStylesParameter")) {
+		p = (T) new LineChartLineStylesParameter();
+	    } else if (clazz.getName().contains("MarginsParameter")) {
+		p = (T) new MarginsParameter();
+	    } else if (clazz.getName().contains("PieChartAndGoogleOMeterLegendParameter")) {
+		p = (T) new PieChartAndGoogleOMeterLegendParameter();
+//	    } else if (clazz.getName().contains("PieChartOrientationParameter")) {
+//		p = (T) new PieChartOrientationParameter();
+	    } else if (clazz.getName().contains("TickMarkLengthParameter")) {
+		p = (T) new TickMarkLengthParameter();
+	    } else {
+		throw new ParameterInstantiationException("Internal error: Could not instatiate " + clazz.getName(), new RuntimeException());
+	    }
+            
             parameterMap.put(clazz, p);
         }
         return p;
