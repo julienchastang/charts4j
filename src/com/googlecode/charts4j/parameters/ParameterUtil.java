@@ -25,8 +25,7 @@
 
 package com.googlecode.charts4j.parameters;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import com.google.gwt.http.client.URL;
 
 /**
  * A utility class for URL parameters.
@@ -57,10 +56,8 @@ final class ParameterUtil {
         if (s == null) {
             return null;
         }
-        try {
-            return URLEncoder.encode(s, UTF_8);
-        } catch (UnsupportedEncodingException e) {
-            return s;
-        }
+        // GWT doesnt support URLEncoder
+        String encodedUrl = URL.encode(s);
+	return encodedUrl;
     }
 }
