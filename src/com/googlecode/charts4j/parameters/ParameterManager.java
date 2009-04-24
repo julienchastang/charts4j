@@ -45,23 +45,26 @@ import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.collect.Maps;
 
 /**
- * <b>For Charts4J internal use only.</b> The ParameterManager contains all
- * the parameters for a given chart that is being built up. These parameters
- * will eventually be serialized to a string.
- *
+ * <b>For Charts4J internal use only.</b> The ParameterManager contains all the
+ * parameters for a given chart that is being built up. These parameters will
+ * eventually be serialized to a string.
+ * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public final class ParameterManager {
 
     /** The parameter map. */
-    private final Map<Class<? extends Parameter>, Parameter> parameterMap = Maps.newHashMap();
+    private final Map<Class<? extends Parameter>, Parameter> newParameterMap = Maps.newHashMap();
+
+    /** The parameter map. */
+    private final Map<Class<? extends Parameter>, Parameter> parameterMap    = Maps.newHashMap();
 
     /** The Google Chart API URL. */
     private final String                                     url;
 
     /**
      * Instantiates a new parameter manager with the Google Chart API URL.
-     *
+     * 
      * @param url
      *            the url
      */
@@ -74,11 +77,27 @@ public final class ParameterManager {
      */
     public void init() {
         parameterMap.clear();
+        newParameterMap.put(AxisLabelPositionsParameter.class, new AxisLabelPositionsParameter());
+        newParameterMap.put(AxisLabelsParameter.class, new AxisLabelsParameter());
+        newParameterMap.put(AxisRangesParameter.class, new AxisRangesParameter());
+        newParameterMap.put(AxisStylesParameter.class, new AxisStylesParameter());
+        newParameterMap.put(AxisTypesParameter.class, new AxisTypesParameter());
+        newParameterMap.put(BarChartZeroLinesParameter.class, new BarChartZeroLinesParameter());
+        newParameterMap.put(ChartFillsParameter.class, new ChartFillsParameter());
+        newParameterMap.put(ChartMarkersParameter.class, new ChartMarkersParameter());
+        newParameterMap.put(ColorsParameter.class, new ColorsParameter());
+        newParameterMap.put(DataLegendsParameter.class, new DataLegendsParameter());
+        newParameterMap.put(DataParameter.class, new DataParameter());
+        newParameterMap.put(GeoCodesParameter.class, new GeoCodesParameter());
+        newParameterMap.put(LineChartLineStylesParameter.class, new LineChartLineStylesParameter());
+        newParameterMap.put(MarginsParameter.class, new MarginsParameter());
+        newParameterMap.put(PieChartAndGoogleOMeterLegendParameter.class, new PieChartAndGoogleOMeterLegendParameter());
+        newParameterMap.put(TickMarkLengthParameter.class, new TickMarkLengthParameter());
     }
 
     /**
      * Adds the axis label position.
-     *
+     * 
      * @param index
      *            the index
      * @param positions
@@ -90,7 +109,7 @@ public final class ParameterManager {
 
     /**
      * Adds the axis labels.
-     *
+     * 
      * @param index
      *            the index
      * @param labels
@@ -102,7 +121,7 @@ public final class ParameterManager {
 
     /**
      * Adds the axis range.
-     *
+     * 
      * @param index
      *            the index
      * @param startOfRange
@@ -116,7 +135,7 @@ public final class ParameterManager {
 
     /**
      * Adds the axis style.
-     *
+     * 
      * @param index
      *            the index
      * @param axisStyle
@@ -140,7 +159,7 @@ public final class ParameterManager {
 
     /**
      * Adds the axis types.
-     *
+     * 
      * @param axisTypes
      *            the axis types
      */
@@ -150,7 +169,7 @@ public final class ParameterManager {
 
     /**
      * Sets the bar chart width and spacing parameter.
-     *
+     * 
      * @param width
      *            the width
      * @param spaceBetweenBarsInGroup
@@ -164,7 +183,7 @@ public final class ParameterManager {
 
     /**
      * Sets the bar chart zero line parameter.
-     *
+     * 
      * @param d
      *            the new bar chart zero line parameter
      */
@@ -174,7 +193,7 @@ public final class ParameterManager {
 
     /**
      * Adds the linear gradient fill.
-     *
+     * 
      * @param fillType
      *            the fill type
      * @param angle
@@ -188,7 +207,7 @@ public final class ParameterManager {
 
     /**
      * Adds the linear stripe fill.
-     *
+     * 
      * @param fillType
      *            the fill type
      * @param angle
@@ -202,7 +221,7 @@ public final class ParameterManager {
 
     /**
      * Adds the solid fill.
-     *
+     * 
      * @param solidFillType
      *            the solid fill type
      * @param color
@@ -214,7 +233,7 @@ public final class ParameterManager {
 
     /**
      * Adds the fill area marker.
-     *
+     * 
      * @param fillAreaType
      *            the fill area type
      * @param color
@@ -230,7 +249,7 @@ public final class ParameterManager {
 
     /**
      * Adds the line style marker.
-     *
+     * 
      * @param color
      *            the color
      * @param dataSetIndex
@@ -248,7 +267,7 @@ public final class ParameterManager {
 
     /**
      * Add a marker(s) to the plot.
-     *
+     * 
      * @param marker
      *            the marker
      * @param dataSetIndex
@@ -266,7 +285,7 @@ public final class ParameterManager {
 
     /**
      * Add markers to each point on the plot.
-     *
+     * 
      * @param marker
      *            the marker
      * @param dataSetIndex
@@ -275,7 +294,7 @@ public final class ParameterManager {
     public void addMarkers(final Marker marker, final int dataSetIndex) {
         getParameter(ChartMarkersParameter.class).addMarkers(marker, dataSetIndex);
     }
-    
+
     /**
      * Adds the free marker.
      * 
@@ -290,10 +309,9 @@ public final class ParameterManager {
         getParameter(ChartMarkersParameter.class).addFreeMarker(marker, xPos, yPos);
     }
 
-
     /**
      * Adds the vertical range marker.
-     *
+     * 
      * @param color
      *            the color
      * @param startPoint
@@ -307,7 +325,7 @@ public final class ParameterManager {
 
     /**
      * Adds the horizontal range marker.
-     *
+     * 
      * @param color
      *            the color
      * @param startPoint
@@ -321,7 +339,7 @@ public final class ParameterManager {
 
     /**
      * Sets the chart size parameter.
-     *
+     * 
      * @param width
      *            the width
      * @param height
@@ -333,7 +351,7 @@ public final class ParameterManager {
 
     /**
      * Sets the chart title color and size parameter.
-     *
+     * 
      * @param color
      *            the color
      * @param fontSize
@@ -345,7 +363,7 @@ public final class ParameterManager {
 
     /**
      * Sets the chart title parameter.
-     *
+     * 
      * @param title
      *            the new chart title parameter
      */
@@ -355,7 +373,7 @@ public final class ParameterManager {
 
     /**
      * Sets the chart type parameter.
-     *
+     * 
      * @param chartType
      *            the new chart type parameter
      */
@@ -365,7 +383,7 @@ public final class ParameterManager {
 
     /**
      * Adds the color.
-     *
+     * 
      * @param color
      *            the color
      */
@@ -375,7 +393,7 @@ public final class ParameterManager {
 
     /**
      * Adds the colors.
-     *
+     * 
      * @param colors
      *            the colors
      */
@@ -385,7 +403,7 @@ public final class ParameterManager {
 
     /**
      * Adds the legend.
-     *
+     * 
      * @param legend
      *            the legend
      */
@@ -395,7 +413,7 @@ public final class ParameterManager {
 
     /**
      * Adds the legends.
-     *
+     * 
      * @param legends
      *            the legends
      */
@@ -405,7 +423,7 @@ public final class ParameterManager {
 
     /**
      * Adds the data.
-     *
+     * 
      * @param data
      *            the data
      */
@@ -415,7 +433,7 @@ public final class ParameterManager {
 
     /**
      * Sets the data encoding.
-     *
+     * 
      * @param dataEncoding
      *            the new data encoding
      */
@@ -425,7 +443,7 @@ public final class ParameterManager {
 
     /**
      * Adds the geo code.
-     *
+     * 
      * @param geoCode
      *            the geo code
      */
@@ -435,7 +453,7 @@ public final class ParameterManager {
 
     /**
      * Sets the geographical area parameter.
-     *
+     * 
      * @param geographicalArea
      *            the new geographical area parameter
      */
@@ -445,7 +463,7 @@ public final class ParameterManager {
 
     /**
      * Sets the grid line parameter.
-     *
+     * 
      * @param xAxisStepSize
      *            the x axis step size
      * @param yAxisStepSize
@@ -461,7 +479,7 @@ public final class ParameterManager {
 
     /**
      * Sets the legend position parameter.
-     *
+     * 
      * @param legendPosition
      *            the new legend position parameter
      */
@@ -471,7 +489,7 @@ public final class ParameterManager {
 
     /**
      * Adds the line chart line style.
-     *
+     * 
      * @param lineStyle
      *            the line style
      */
@@ -481,7 +499,7 @@ public final class ParameterManager {
 
     /**
      * Adds the pie chart and google o meter legend.
-     *
+     * 
      * @param legend
      *            the legend
      */
@@ -491,7 +509,7 @@ public final class ParameterManager {
 
     /**
      * Sets the margins.
-     *
+     * 
      * @param bottomMargin
      *            the bottom margin
      * @param leftMargin
@@ -507,7 +525,7 @@ public final class ParameterManager {
 
     /**
      * Sets the legend margins.
-     *
+     * 
      * @param width
      *            the width
      * @param height
@@ -558,12 +576,12 @@ public final class ParameterManager {
 
     /**
      * Get the parameter.
-     *
+     * 
      * @param <T>
      *            type of parameter to retrieve
      * @param clazz
      *            the class of the parameter to retrieve
-     *
+     * 
      * @return the parameter
      * @throws ParameterInstantiationException
      *             if the parameter could not be instantiated
@@ -573,64 +591,7 @@ public final class ParameterManager {
         // Should always be safe.
         T p = (T) parameterMap.get(clazz);
         if (p == null) {
-            
-            // GWT doesnt support reflections
-            // all child classes of com.googlecode.charts4j.parameters.Parameter must be mentioned here!
-            // TODO@jc: what about those classes that do not have a zero-argument constructor? how do u handle them with reflections?
-	    if (clazz.getName().contains("AxisLabelPositionsParameter")) {
-		p = (T) new AxisLabelPositionsParameter();
-	    } else if (clazz.getName().contains("AxisLabelsParameter")) {
-		p = (T) new AxisLabelsParameter();
-	    } else if (clazz.getName().contains("AxisRangesParameter")) {
-		p = (T) new AxisRangesParameter();
-	    } else if (clazz.getName().contains("AxisStylesParameter")) {
-		p = (T) new AxisStylesParameter();
-	    } else if (clazz.getName().contains("AxisTypesParameter")) {
-		p = (T) new AxisTypesParameter();
-//	    } else if (clazz.getName().contains("BarChartWidthAndSpacingParameter")) {
-//		p = (T) new BarChartWidthAndSpacingParameter();
-	    } else if (clazz.getName().contains("BarChartZeroLinesParameter")) {
-		p = (T) new BarChartZeroLinesParameter();
-	    } else if (clazz.getName().contains("ChartFillsParameter")) {
-		p = (T) new ChartFillsParameter();
-	    } else if (clazz.getName().contains("ChartMarkersParameter")) {
-		p = (T) new ChartMarkersParameter();
-//	    } else if (clazz.getName().contains("ChartSizeParameter")) {
-//		p = (T) new ChartSizeParameter();
-//	    } else if (clazz.getName().contains("ChartTitleColorAndSizeParameter")) {
-//		p = (T) new ChartTitleColorAndSizeParameter();
-//	    } else if (clazz.getName().contains("ChartTitleParameter")) {
-//		p = (T) new ChartTitleParameter();
-//	    } else if (clazz.getName().contains("ChartTypeParameter")) {
-//		p = (T) new ChartTypeParameter();
-	    } else if (clazz.getName().contains("ColorsParameter")) {
-		p = (T) new ColorsParameter();
-	    } else if (clazz.getName().contains("DataLegendsParameter")) {
-		p = (T) new DataLegendsParameter();
-	    } else if (clazz.getName().contains("DataParameter")) {
-		p = (T) new DataParameter();
-	    } else if (clazz.getName().contains("GeoCodesParameter")) {
-		p = (T) new GeoCodesParameter();
-//	    } else if (clazz.getName().contains("GeographicalAreaParameter")) {
-//		p = (T) new GeographicalAreaParameter();
-//	    } else if (clazz.getName().contains("GridLineParameter")) {
-//		p = (T) new GridLineParameter();
-//	    } else if (clazz.getName().contains("LegendPositionParameter")) {
-//		p = (T) new LegendPositionParameter();
-	    } else if (clazz.getName().contains("LineChartLineStylesParameter")) {
-		p = (T) new LineChartLineStylesParameter();
-	    } else if (clazz.getName().contains("MarginsParameter")) {
-		p = (T) new MarginsParameter();
-	    } else if (clazz.getName().contains("PieChartAndGoogleOMeterLegendParameter")) {
-		p = (T) new PieChartAndGoogleOMeterLegendParameter();
-//	    } else if (clazz.getName().contains("PieChartOrientationParameter")) {
-//		p = (T) new PieChartOrientationParameter();
-	    } else if (clazz.getName().contains("TickMarkLengthParameter")) {
-		p = (T) new TickMarkLengthParameter();
-	    } else {
-		throw new ParameterInstantiationException("Internal error: Could not instatiate " + clazz.getName(), new RuntimeException());
-	    }
-            
+            p = (T) newParameterMap.get(clazz);
             parameterMap.put(clazz, p);
         }
         return p;
@@ -647,7 +608,7 @@ public final class ParameterManager {
 
         /**
          * Instantiates a new parameter instantiation exception.
-         *
+         * 
          * @param message
          *            the message
          * @param cause
