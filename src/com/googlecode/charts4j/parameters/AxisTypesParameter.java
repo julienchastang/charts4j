@@ -60,7 +60,7 @@ final class AxisTypesParameter implements Parameter {
 
         int cnt = 0;
         for (AxisTypes axisType : axisTypesList) {
-            sb.append(cnt++ > 0 ? "," + axisType : axisType);
+            sb.append(cnt++ > 0 ? "," : "").append(axisType);
         }
 
         return !axisTypesList.isEmpty() ? sb.toString() : "";

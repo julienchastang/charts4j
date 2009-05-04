@@ -60,7 +60,7 @@ final class LineChartLineStylesParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (LineStyleWrapper l : lineStyles) {
-            sb.append(cnt++ > 0 ? "|" + l : l);
+            sb.append(cnt++ > 0 ? "|" : "").append(l);
         }
         return !lineStyles.isEmpty() ? sb.toString() : "";
     }

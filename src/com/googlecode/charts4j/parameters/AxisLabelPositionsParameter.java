@@ -63,7 +63,7 @@ final class AxisLabelPositionsParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (AxisLabelPositions positions : labelPositions) {
-            sb.append((cnt++ > 0) ? "|" + positions : positions);
+            sb.append(cnt++ > 0 ? "|" : "").append(positions);
         }
         return (!labelPositions.isEmpty()) ? sb.toString() : "";
     }
@@ -103,7 +103,7 @@ final class AxisLabelPositionsParameter implements Parameter {
                 final StringBuilder sb = new StringBuilder(index + ",");
                 int cnt = 0;
                 for (Number n : positions) {
-                    sb.append(cnt++ > 0 ? "," + n : n);
+                    sb.append(cnt++ > 0 ? "," : "").append(n);
                 }
                 return sb.toString();
             }

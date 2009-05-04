@@ -170,7 +170,7 @@ final class ChartMarkersParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (GoogleChartMarker m : markers) {
-            sb.append(cnt++ > 0 ? "|" + m : m);
+            sb.append(cnt++ > 0 ? "|" : "").append(m);
         }
         return !markers.isEmpty() ? sb.toString() : "";
     }

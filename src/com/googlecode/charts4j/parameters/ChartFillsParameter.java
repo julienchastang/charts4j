@@ -91,7 +91,7 @@ final class ChartFillsParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (Fill f : fills) {
-            sb.append(cnt++ > 0 ? "|" + f : f);
+            sb.append(cnt++ > 0 ? "|" : "").append(f);
         }
         return !fills.isEmpty() ? sb.toString() : "";
     }
@@ -173,7 +173,7 @@ final class ChartFillsParameter implements Parameter {
             final StringBuilder sb = new StringBuilder();
             int cnt = 0;
             for (ColorAndOffset co : colorAndOffsets) {
-                sb.append((cnt++ > 0) ? "," + co : co);
+                sb.append(cnt++ > 0 ? "," : "").append(co);
             }
             return fillType + ",lg," + angle + "," + sb.toString();
         }
@@ -217,7 +217,7 @@ final class ChartFillsParameter implements Parameter {
             final StringBuilder sb = new StringBuilder();
             int cnt = 0;
             for (ColorAndWidth cw : colorAndWidths) {
-                sb.append((cnt++ > 0) ? "," + cw : cw);
+                sb.append(cnt++ > 0 ? ",": "").append(cw);
             }
 
             return fillType + ",ls," + angle + "," + sb.toString();

@@ -177,8 +177,7 @@ final class DataParameter implements Parameter {
         final StringBuilder encodedData = new StringBuilder();
         int count = 0;
         for (double datum : data) {
-            encodedData.append(count++ > 0 ? "," : "");
-            encodedData.append(datum >= Data.MIN_VALUE && datum <= Data.MAX_VALUE ? decimalFormatter.format(datum) : "-1");
+            encodedData.append(count++ > 0 ? "," : "").append(datum >= Data.MIN_VALUE && datum <= Data.MAX_VALUE ? decimalFormatter.format(datum) : "-1");
         }
         return encodedData.toString();
     }
@@ -192,7 +191,7 @@ final class DataParameter implements Parameter {
         int cnt = 0;
         for (Data data : datas) {
             final String dataString = dataEncoding.equals(DataEncoding.SIMPLE) ? simpleEncoding(data.getData()) : dataEncoding.equals(DataEncoding.TEXT) ? textEncoding(data.getData()) : extendedEncoding(data.getData());
-            sb.append(cnt++ > 0 ? seperator + dataString : dataString);
+            sb.append(cnt++ > 0 ? seperator : "").append(dataString);
         }
         return sb.toString();
     }

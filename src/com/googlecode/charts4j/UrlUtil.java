@@ -70,7 +70,7 @@ public final class UrlUtil {
         final StringBuilder sb = new StringBuilder(stringList.get(0) + "?");
         int cnt = 0;
         for (String p : params) {
-            sb.append(cnt++ > 0 ? "&" + p : p);
+            sb.append(cnt++ > 0 ? "&" : "").append(p);
         }
         return sb.toString();
     }

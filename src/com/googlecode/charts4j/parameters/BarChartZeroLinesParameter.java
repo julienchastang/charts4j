@@ -62,7 +62,7 @@ final class BarChartZeroLinesParameter implements Parameter {
 
         int cnt = 0;
         for (Double d : zeroLines) {
-            sb.append(cnt++ > 0 ? "," + d : d);
+            sb.append(cnt++ > 0 ? "," : "").append(d);
         }
         return !zeroLines.isEmpty() ? sb.toString() : "";
     }

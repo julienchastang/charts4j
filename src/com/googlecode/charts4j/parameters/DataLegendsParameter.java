@@ -61,7 +61,7 @@ final class DataLegendsParameter implements Parameter {
         int cnt = 0;
         for (String legend : legends) {
             final String l = ParameterUtil.utf8Encode(legend);
-            sb.append(cnt++ > 0 ? "|" + l : l);
+            sb.append(cnt++ > 0 ? "|" : "").append(l);
         }
         return !legends.isEmpty() ? sb.toString() : "";
     }

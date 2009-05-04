@@ -61,7 +61,7 @@ final class ColorsParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (Color c : colors) {
-            sb.append(cnt++ > 0 ? "," + c : c);
+            sb.append(cnt++ > 0 ? "," : "").append(c);
         }
         return !colors.isEmpty() ? sb.toString() : "";
     }

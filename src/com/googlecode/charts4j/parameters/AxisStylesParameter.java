@@ -62,7 +62,7 @@ final class AxisStylesParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (PrivateAxisStyles styles : axisStyles) {
-            sb.append(cnt++ > 0 ? "|" + styles : styles);
+            sb.append(cnt++ > 0 ? "|" : "").append(styles);
         }
         return !axisStyles.isEmpty() ? sb.toString() : "";
     }

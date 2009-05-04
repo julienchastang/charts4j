@@ -63,7 +63,7 @@ final class AxisRangesParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (AxisRange ar : axisRanges) {
-            sb.append(cnt++ > 0 ? "|" + ar : ar);
+            sb.append(cnt++ > 0 ? "|" : "").append(ar);
         }
         return !axisRanges.isEmpty() ? sb.toString() : "";
     }

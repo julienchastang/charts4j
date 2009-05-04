@@ -62,7 +62,7 @@ public class TickMarkLengthParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (AxisTickMarkLength tml : tickMarkLengths) {
-            sb.append(cnt++ > 0 ? "|" + tml : tml);
+            sb.append(cnt++ > 0 ? "|" : "").append(tml);
         }
         return !tickMarkLengths.isEmpty() ? sb.toString() : "";
     }

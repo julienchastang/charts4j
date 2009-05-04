@@ -551,7 +551,7 @@ public final class ParameterManager {
         int cnt = 0;
         final StringBuilder sb = new StringBuilder(url + "?");
         for (String p : parameters) {
-            sb.append(cnt++ > 0 ? "&" + p : p);
+            sb.append(cnt++ > 0 ? "&" : "").append(p);
         }
         return sb.toString();
     }

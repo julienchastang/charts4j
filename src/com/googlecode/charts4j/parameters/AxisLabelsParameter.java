@@ -62,7 +62,8 @@ final class AxisLabelsParameter implements Parameter {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
         for (AxisLabels aLabels : axisLabels) {
-            sb.append(cnt++ > 0 ? "|" + aLabels : aLabels);
+            sb.append(cnt++ > 0 ? "|" : "").append(aLabels);
+
         }
         return !axisLabels.isEmpty() ? sb.toString() : "";
     }
@@ -103,7 +104,7 @@ final class AxisLabelsParameter implements Parameter {
                 int cnt = 0;
                 for (String label : labels) {
                     final String l = ParameterUtil.utf8Encode(label);
-                    sb.append(cnt++ > 0 ? "|" + l : l);
+                    sb.append(cnt++ > 0 ? "|" : "").append(l);                    
                 }
                 return sb.toString();
             }
