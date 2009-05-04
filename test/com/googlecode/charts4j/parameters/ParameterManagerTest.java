@@ -42,6 +42,7 @@ public class ParameterManagerTest {
     @Test
     public void test1() throws Exception {
         final ParameterManager pm = new ParameterManager("http://chart.apis.google.com/chart");
+        pm.init();
         pm.setChartTypeParameter(ChartType.LINE_CHART);
         pm.addMarker(Markers.newTextMarker("Hello", BLUE, 12), 0, 3, 4, 1);
         Logger.global.info(pm.toString());
