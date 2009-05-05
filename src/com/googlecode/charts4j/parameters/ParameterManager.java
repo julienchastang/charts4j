@@ -109,9 +109,11 @@ public final class ParameterManager {
      *            the start of range
      * @param endOfRange
      *            the end of range
+     * @param interval
+     *            the numeric label interval
      */
-    public void addAxisRange(final int index, final double startOfRange, final double endOfRange) {
-        getParameter(AxisRangesParameter.class).addAxisRange(index, startOfRange, endOfRange);
+    public void addAxisRange(final int index, final double startOfRange, final double endOfRange, final double interval) {
+        getParameter(AxisRangesParameter.class).addAxisRange(index, startOfRange, endOfRange, interval);
     }
 
     /**

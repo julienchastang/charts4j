@@ -51,9 +51,11 @@ final class AxisRangesParameter implements Parameter {
      *            the start of range
      * @param endOfRange
      *            the end of range
+     * @param interval
+     *            the numeric label interval
      */
-    void addAxisRange(final int index, final double startOfRange, final double endOfRange) {
-        axisRanges.add(new AxisRange(index, startOfRange, endOfRange));
+    void addAxisRange(final int index, final double startOfRange, final double endOfRange, final double interval) {
+        axisRanges.add(new AxisRange(index, startOfRange, endOfRange, interval));
     }
 
     /**
@@ -82,6 +84,9 @@ final class AxisRangesParameter implements Parameter {
         /** The end of range. */
         private final double endOfRange;
 
+        /** Tick mark interval. */
+        private final double interval;
+
         /**
          * Instantiates this container class.
          *
@@ -92,10 +97,11 @@ final class AxisRangesParameter implements Parameter {
          * @param endOfRange
          *            the end of range
          */
-        private AxisRange(final int index, final double startOfRange, final double endOfRange) {
+        private AxisRange(final int index, final double startOfRange, final double endOfRange, final double interval) {
             this.index = index;
             this.startOfRange = startOfRange;
             this.endOfRange = endOfRange;
+            this.interval = interval;
         }
 
         /**
@@ -103,7 +109,7 @@ final class AxisRangesParameter implements Parameter {
          */
         @Override
         public String toString() {
-            return index + "," + startOfRange + "," + endOfRange;
+            return index + "," + startOfRange + "," + endOfRange + (Double.isNaN(interval) ? "" : "," + interval);
         }
     }
 }

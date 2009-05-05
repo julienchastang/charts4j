@@ -190,7 +190,24 @@ public final class AxisLabelsFactory {
      * @return AxisLabels
      */
     public static AxisLabels newNumericRangeAxisLabels(final double minRange, final double maxRange) {
-        return new AxisLabelsImpl(minRange, maxRange);
+        return new AxisLabelsImpl(minRange, maxRange, Double.NaN);
+    }
+
+    /**
+     * Define a range on the axis. Values are evenly spaced between the min and
+     * max range according to the interval.
+     *
+     * @param minRange
+     *            The start of the range.
+     * @param maxRange
+     *            The end of the range.
+     * @param interval
+     *            The numeric label interval.
+     *
+     * @return AxisLabels
+     */
+    public static AxisLabels newNumericRangeAxisLabels(final double minRange, final double maxRange, final double interval) {
+        return new AxisLabelsImpl(minRange, maxRange, interval);
     }
 
     /**

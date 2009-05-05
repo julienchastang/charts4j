@@ -201,15 +201,15 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
                     else if (!axisLabel.getPositions().isEmpty() && !axisLabel.getLabels().isEmpty()) {
                         parameterManager.addAxisLabels(axisIndex, axisLabel.getLabels());
                         parameterManager.addAxisLabelPosition(axisIndex, axisLabel.getPositions());
-                        parameterManager.addAxisRange(axisIndex, Data.MIN_VALUE, Data.MAX_VALUE);
+                        parameterManager.addAxisRange(axisIndex, Data.MIN_VALUE, Data.MAX_VALUE, Double.NaN);
                     }
                     // if there are positions but no labels
                     else if (!axisLabel.getPositions().isEmpty() && axisLabel.getLabels().isEmpty()) {
                         final List<Double> sortedpositions = convertToSortedDoubleList(axisLabel.getPositions());
                         parameterManager.addAxisLabelPosition(axisIndex, axisLabel.getPositions());
-                        parameterManager.addAxisRange(axisIndex, sortedpositions.get(0), sortedpositions.get(sortedpositions.size() - 1));
+                        parameterManager.addAxisRange(axisIndex, sortedpositions.get(0), sortedpositions.get(sortedpositions.size() - 1), Double.NaN);
                     } else if (axisLabel.getRange() != null) {
-                        parameterManager.addAxisRange(axisIndex, axisLabel.getRange().getMin(), axisLabel.getRange().getMax());
+                        parameterManager.addAxisRange(axisIndex, axisLabel.getRange().getMin(), axisLabel.getRange().getMax(), axisLabel.getRange().getInterval());
                     }
                     if (axisLabel.getAxisStyle() != null) {
                         //For an explanation of this peculiar code see the comment at AxisStyle.correctAxisStyle.

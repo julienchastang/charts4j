@@ -52,10 +52,10 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
     private Range              range;
 
     /**
-     * @see AxisLabelsFactory#newNumericAxisLabels(double, double)
+     * @see AxisLabelsFactory#newNumericAxisLabels(double, double, double)
      */
-    AxisLabelsImpl(final double minRange, final double maxRange) {
-        this.range = new Range(minRange, maxRange);
+    AxisLabelsImpl(final double minRange, final double maxRange, final double interval) {
+        this.range = new Range(minRange, maxRange, interval);
     }
 
     /**
@@ -137,6 +137,9 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
 
         /** The maximum of the axis range. **/
         private final double max;
+        
+        /** The numeric label interval. **/
+        private final double interval;
 
         /**
          * Range constructor.
@@ -145,10 +148,13 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
          *            The minimum of the axis range
          * @param max
          *            The maximum of the axis range
+         * @param interval
+         *            The numeric label interval
          */
-        Range(final double min, final double max) {
+        Range(final double min, final double max, final double interval) {
             this.min = min;
             this.max = max;
+            this.interval = interval;
         }
 
         /**
@@ -167,6 +173,15 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
          */
         double getMin() {
             return min;
+        }
+        
+        /**
+         * Get the numeric interval
+         *
+         * @return the numeric interval
+         */
+        double getInterval() {
+            return interval;
         }
     }
 }

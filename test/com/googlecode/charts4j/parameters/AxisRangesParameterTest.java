@@ -61,10 +61,10 @@ public class AxisRangesParameterTest {
     @Test
     public void test0() {
         final AxisRangesParameter p = new AxisRangesParameter();
-        p.addAxisRange(1, 10, 30);
-        p.addAxisRange(2, 12, 15);
+        p.addAxisRange(1, 10, 30, Double.NaN);
+        p.addAxisRange(2, 12, 15, 1);
         Logger.global.info(p.toURLParameterString());
-        final String expectedString = "chxr=1,10.0,30.0|2,12.0,15.0";
+        final String expectedString = "chxr=1,10.0,30.0|2,12.0,15.0,1.0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
 
