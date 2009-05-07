@@ -42,16 +42,23 @@ final class ColorsParameter implements Parameter {
     private static final String URL_PARAMETER_KEY = "chco";
 
     /** The colors. */
-    private final List<Color>   colors            = Lists.newLinkedList();
+    private final List<List<Color>>   colors            = Lists.newLinkedList();
 
     /**
-     * Add the colors.
+     * Add the colors. This is a 2D data structure because in some cases
+     * (e.g. individually colored bars in a bar chart) there can be more
+     * than one color in a data series. In most cases, however, the inner
+     * list, is only going to be 1 long.
      *
      * @param colors
      *            the colors
      */
-    void addColors(final ImmutableList<? extends Color> colors) {
-        this.colors.addAll(colors);
+    void addColors(final ImmutableList<? extends ImmutableList<? extends Color>> colors) {
+        for (ImmutableList<? extends Color> listOfColors : colors) {
+            final List<Color> l = Lists.newLinkedList();
+            l.addAll(listOfColors);
+            this.colors.add(l);
+        }
     }
 
     /**
@@ -60,8 +67,12 @@ final class ColorsParameter implements Parameter {
     public String toURLParameterString() {
         final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
         int cnt = 0;
-        for (Color c : colors) {
-            sb.append(cnt++ > 0 ? "," : "").append(c);
+        for (List<Color> l : colors) {
+            sb.append(cnt++ > 0 ? "," : "");
+            int i = 0;
+            for (Color color : l) {
+                sb.append(i++ > 0 ? "|" : "").append(color);
+            }
         }
         return !colors.isEmpty() ? sb.toString() : "";
     }

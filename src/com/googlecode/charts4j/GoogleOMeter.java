@@ -79,7 +79,12 @@ public class GoogleOMeter extends AbstractGraphChart {
     protected void prepareData() {
         super.prepareData();
         parameterManager.addData(Data.newData(data));
-        parameterManager.addColors(Lists.copyOf(colors));
+
+        final List<ImmutableList<Color>> colorList = Lists.newArrayList();
+        for (Color color : colors) {
+            colorList.add(Lists.of(color));
+        }
+        parameterManager.addColors(Lists.copyOf(colorList));
         if (label != null) {
             parameterManager.addPieChartAndGoogleOMeterLegend(label);
         }

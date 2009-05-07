@@ -25,9 +25,11 @@
 
 package com.googlecode.charts4j.parameters;
 
-import static com.googlecode.charts4j.Color.*;
+import static com.googlecode.charts4j.Color.BLUE;
+import static com.googlecode.charts4j.Color.RED;
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,6 +39,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.googlecode.charts4j.Color;
+import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
 
 /**
@@ -65,7 +69,9 @@ public class ColorsParameterTest {
     @Test
     public void test0() {
         final ColorsParameter p = new ColorsParameter();
-        p.addColors(Lists.of(BLUE));
+        List<ImmutableList<Color>> colors = Lists.newLinkedList();
+        colors.add(Lists.of(BLUE));
+        p.addColors(Lists.copyOf(colors));
         Logger.global.info(p.toURLParameterString());
         final String expectedString = "chco=0000FF";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
@@ -74,7 +80,10 @@ public class ColorsParameterTest {
     @Test
     public void test1() {
         final ColorsParameter p = new ColorsParameter();
-        p.addColors(Lists.of(BLUE, RED));
+        List<ImmutableList<Color>> colors = Lists.newLinkedList();
+        colors.add(Lists.of(BLUE));
+        colors.add(Lists.of(RED));
+        p.addColors(Lists.copyOf(colors));
         Logger.global.info(p.toURLParameterString());
         final String expectedString = "chco=0000FF,FF0000";
         assertEquals("Junit error", expectedString, p.toURLParameterString());

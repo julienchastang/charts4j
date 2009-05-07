@@ -68,6 +68,17 @@ public interface BarChartPlot extends Curve {
     void setZeroLine(final double zeroLine);
 
     /**
+     * Sets the color on an individual bar at a given index.
+     * 
+     * @param color
+     *            the color of the bar
+     * @param index
+     *            the index of the bar that will be colored. Must be >= 0 and
+     *            cannot be out of bounds with respect to the dataset.
+     */
+    void setColor(final Color color, final int index);
+
+    /**
      * Type for specifying a dataline sitting on top of the bar chart.
      *
      * @author Julien Chastang (julien.c.chastang at gmail dot com)
@@ -129,6 +140,50 @@ public interface BarChartPlot extends Curve {
          */
         Priority getPriority() {
             return priority;
+        }
+    }
+
+    /**
+     * The Class BarColor.
+     */
+    static class BarColor {
+
+        /** The color. */
+        private final Color color;
+
+        /** The index. */
+        private final int index;
+
+        /**
+         * Instantiates a new bar color.
+         * 
+         * @param color
+         *            the color
+         * @param index
+         *            the index
+         */
+        BarColor(final Color color, final int index) {
+            super();
+            this.color = color;
+            this.index = index;
+        }
+
+        /**
+         * Get the colored bar index.
+         * 
+         * @return the index
+         */
+        int getIndex() {
+            return index;
+        }
+
+        /**
+         * Get the colored bar color.
+         * 
+         * @return the color
+         */
+        Color getColor() {
+            return color;
         }
     }
 }

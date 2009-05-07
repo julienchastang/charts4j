@@ -29,6 +29,7 @@ import static com.googlecode.charts4j.collect.Preconditions.*;
 
 import java.util.List;
 
+import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.parameters.ChartType;
 
@@ -97,7 +98,12 @@ public class MapChart extends AbstractGChart {
     protected void prepareData() {
         super.prepareData();
         parameterManager.setGeographicalAreaParameter(geographicalArea);
-        parameterManager.addColors(Lists.copyOf(colorGradientList));
+
+        final List<ImmutableList<Color>> colors = Lists.newArrayList();
+        for (Color color : colorGradientList) {
+            colors.add(Lists.of(color));
+        }
+        parameterManager.addColors(Lists.copyOf(colors));
 
         int cnt = 0;
         final double[] countryColors = new double[pBoundaries.size()];

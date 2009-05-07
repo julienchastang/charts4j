@@ -26,8 +26,12 @@
 package com.googlecode.charts4j;
 
 import static com.googlecode.charts4j.Color.BLACK;
-import static com.googlecode.charts4j.collect.Preconditions.*;
+import static com.googlecode.charts4j.collect.Preconditions.checkArgument;
+import static com.googlecode.charts4j.collect.Preconditions.checkContentsNotNull;
 
+import java.util.List;
+
+import com.googlecode.charts4j.BarChartPlot.BarColor;
 import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.parameters.ChartType;
@@ -120,7 +124,7 @@ public class BarChart extends AbstractAxisChart {
         for (Plot plot : barChartPlots) {
             final PlotImpl series = (PlotImpl) plot;
             hasLegend |= (series.getLegend() != null);
-            hasColor |= (series.getColor() != null);
+            hasColor |= (series.getColor() != null || !series.getBarColors().isEmpty());
             hasZeroLine |= (series.getZeroLine() != 0);
         }
 
@@ -132,8 +136,26 @@ public class BarChart extends AbstractAxisChart {
             if (hasLegend) {
                 parameterManager.addLegend(plot.getLegend() != null ? plot.getLegend() : " ");
             }
+            //Color logic is complicated b/c individual bars can be colored.
             if (hasColor) {
-                parameterManager.addColor(plot.getColor() != null ? plot.getColor() : BLACK);
+                if (plot.getBarColors().isEmpty()) {
+                    parameterManager.addColor(plot.getColor() != null ? plot.getColor() : BLACK);
+                } else {
+                    final List<ImmutableList<Color>> colors = Lists.newArrayList();
+                    final List<Color> colorList = Lists.newLinkedList();
+                    //Initialize color list.
+                    for (int i = 0; i < plot.getData().getSize(); i++) {
+                        colorList.add(plot.getColor() != null ? plot.getColor() : BLACK);
+                    }
+                    //Now set the color on inidvidual bars.
+                    for (BarColor bColor : plot.getBarColors()) {
+                        if (bColor.getIndex() < plot.getData().getSize()) {
+                            colorList.set(bColor.getIndex(), bColor.getColor());
+                        }
+                    }
+                    colors.add(Lists.copyOf(colorList));
+                    parameterManager.addColors(Lists.copyOf(colors));
+                }
             }
             if (hasZeroLine) {
                 // Remember zero line has to be between 0 and 1
@@ -142,12 +164,12 @@ public class BarChart extends AbstractAxisChart {
             if (plot.getDataLine() != null) {
                 parameterManager.addLineStyleMarker(plot.getDataLine().getColor(), lineCount, 0, plot.getDataLine().getSize(), plot.getDataLine().getPriority());
             }
-            final ImmutableList<Marker> markers = plot.getMarkers();
-            for (Marker m : markers) {
+
+            for (Marker m : plot.getMarkers()) {
                 parameterManager.addMarkers(m, lineCount);
             }
-            final ImmutableList<MarkedPoints> markedPointsList = plot.getMarkedPointsList();
-            for (MarkedPoints mp : markedPointsList) {
+
+            for (MarkedPoints mp : plot.getMarkedPointsList()) {
                 parameterManager.addMarker(mp.getMarker(), lineCount, mp.getStartIndex(), mp.getEndIndex(), mp.getN());
             }
             if (plot.getFillAreaColor() != null) {

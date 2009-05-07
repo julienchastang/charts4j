@@ -25,7 +25,8 @@
 
 package com.googlecode.charts4j;
 
-import static com.googlecode.charts4j.collect.Preconditions.*;
+import static com.googlecode.charts4j.collect.Preconditions.checkArgument;
+import static com.googlecode.charts4j.collect.Preconditions.checkNotNull;
 
 import java.util.List;
 
@@ -52,6 +53,9 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
 
     /** List of markers to be added to all point on this plot. **/
     private final List<Marker> markers = Lists.newLinkedList();
+
+    /** Individual colors for bars in bar chart. **/
+    private final List<BarColor>           barColors = Lists.newLinkedList();
 
     /** Color of this plot. **/
     private Color                    color;
@@ -122,6 +126,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
         xData = plotImpl.xData;
         yData = plotImpl.yData;
         markedPointsList.addAll(plotImpl.markedPointsList);
+        barColors.addAll(plotImpl.barColors);
         markers.addAll(plotImpl.markers);
         color = plotImpl.color;
         legend = plotImpl.legend;
@@ -193,6 +198,25 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     public void setColor(final Color color) {
         checkNotNull(color, "color cannot be null");
         this.color = color;
+    }
+
+    /**
+     * Get the individually colored bars in a bar chart.
+     *
+     * @return a list of individually colored bars.
+     */
+    public ImmutableList<BarColor> getBarColors() {
+        return Lists.copyOf(barColors);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setColor(final Color color, final int index) {
+        checkNotNull(color, "color cannot be null");
+        checkArgument(index >= 0, "index must be >= 0");
+        checkArgument(index < yData.getSize(), "index out of bounds");
+        barColors.add(new BarColor(color,index));
     }
 
     /**

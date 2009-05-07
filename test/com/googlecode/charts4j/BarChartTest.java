@@ -199,5 +199,16 @@ public class BarChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAQAgAv...,AAQAgAv...&chco=0000FF,FF0000&chbh=23,30,8&cht=bvg";        
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+    
+    @Test
+    public void testDifferentColoredBars() {
+        BarChartPlot data1 = Plots.newBarChartPlot(Data.newData(10, 25, 50, 75, 100), BLUE);
+        BarChartPlot data2 = Plots.newBarChartPlot(Data.newData(100, 75, 50, 35, 10), RED);
+        data2.setColor(GREEN, 0);
+        BarChart chart = GCharts.newBarChart(data1,data2);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?cht=bvg&chbh=23,4,8&chs=200x125&chd=e:GaQAgAv...,..v.gAWZGa&chco=0000FF,008000|FF0000|FF0000|FF0000|FF0000";        
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
 
 }

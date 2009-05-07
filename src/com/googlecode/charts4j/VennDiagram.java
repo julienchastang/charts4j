@@ -25,8 +25,12 @@
 
 package com.googlecode.charts4j;
 
-import static com.googlecode.charts4j.collect.Preconditions.*;
+import static com.googlecode.charts4j.collect.Preconditions.checkArgument;
+import static com.googlecode.charts4j.collect.Preconditions.checkNotNull;
 
+import java.util.List;
+
+import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
 import com.googlecode.charts4j.parameters.ChartType;
 
@@ -121,7 +125,12 @@ public class VennDiagram extends AbstractGraphChart {
     protected void prepareData() {
         super.prepareData();
         if (circle1Color != null && circle2Color != null && circle3Color != null) {
-            parameterManager.addColors(Lists.of(circle1Color, circle2Color, circle3Color));
+
+            final List<ImmutableList<Color>> colors = Lists.newArrayList();
+            colors.add(Lists.of(circle1Color));
+            colors.add(Lists.of(circle2Color));
+            colors.add(Lists.of(circle3Color));
+            parameterManager.addColors(Lists.copyOf(colors));
         }
         if (circle1Legend != null && circle2Legend != null && circle3Legend != null) {
             parameterManager.addLegends(Lists.of(circle1Legend, circle2Legend, circle3Legend));

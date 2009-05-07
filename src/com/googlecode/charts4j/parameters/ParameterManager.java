@@ -367,21 +367,26 @@ public final class ParameterManager {
 
     /**
      * Adds the color.
-     *
+     * 
      * @param color
      *            the color
      */
     public void addColor(final Color color) {
-        getParameter(ColorsParameter.class).addColors(Lists.of(color));
+        final List<ImmutableList<Color>> colors = Lists.newArrayList();
+        colors.add(Lists.of(color));
+        getParameter(ColorsParameter.class).addColors(Lists.copyOf(colors));
     }
 
     /**
-     * Adds the colors.
+     * Add the colors. This is a 2D data structure because in some cases
+     * (e.g. individually colored bars in a bar chart) there can be more
+     * than one color in a data series. In most cases, however, the inner
+     * list, is only going to be 1 long.
      *
      * @param colors
      *            the colors
      */
-    public void addColors(final ImmutableList<? extends Color> colors) {
+    public void addColors(final ImmutableList<? extends ImmutableList<? extends Color>> colors) {
         getParameter(ColorsParameter.class).addColors(colors);
     }
 
