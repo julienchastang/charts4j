@@ -28,9 +28,6 @@ package com.googlecode.charts4j;
 import static com.googlecode.charts4j.collect.Preconditions.checkArgument;
 import static com.googlecode.charts4j.collect.Preconditions.checkNotNull;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 import com.googlecode.charts4j.parameters.FillType;
 import com.googlecode.charts4j.parameters.SolidFillType;
 
@@ -99,18 +96,7 @@ public abstract class AbstractGraphChart extends AbstractGChart implements Graph
      * {@inheritDoc}
      */
     public final void setAreaFill(final Fill fill) {
-        try {
-            final Constructor<? extends Fill> constructor = fill.getClass().getDeclaredConstructor(fill.getClass());
-            areaFill = constructor.newInstance(fill);
-        } catch (NoSuchMethodException e) {
-            throw new IllegalArgumentException("Problem accessing copy constrcutor for " + fill.getClass().getName());
-        } catch (InstantiationException e) {
-            throw new IllegalArgumentException("Problem accessing copy constrcutor for " + fill.getClass().getName());
-        } catch (IllegalAccessException e) {
-            throw new IllegalArgumentException("Problem accessing copy constrcutor for " + fill.getClass().getName());
-        } catch (InvocationTargetException e) {
-            throw new IllegalArgumentException("Problem accessing copy constrcutor for " + fill.getClass().getName());
-        }
+        areaFill = fill.klone();
     }
 
     /**

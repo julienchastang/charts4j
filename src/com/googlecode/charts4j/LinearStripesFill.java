@@ -58,9 +58,16 @@ public class LinearStripesFill extends AbstractLinearFill {
      * @param linearStripesFill
      *            to copy
      */
-    LinearStripesFill(final LinearStripesFill linearStripesFill) {
+    private LinearStripesFill(final LinearStripesFill linearStripesFill) {
         super(linearStripesFill.getAngle());
         colorsAndWidths.addAll(linearStripesFill.colorsAndWidths);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public Fill klone() {
+        return new LinearStripesFill(this);
     }
 
     /**

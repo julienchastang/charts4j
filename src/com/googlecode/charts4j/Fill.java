@@ -31,5 +31,5 @@ package com.googlecode.charts4j;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-public interface Fill {
+public interface Fill extends Kloneable<Fill> {
 }

@@ -26,46 +26,18 @@
 package com.googlecode.charts4j;
 
 /**
- * Solid fill. This class is constructed with the
- * {@link Fills#newSolidFill(Color)} static factory method.
- *
+ * Interface for cloning objects. Implementors will supply a properly written
+ * method for deep cloning. Internally you may wish to rely on the copy
+ * constructor.
+ * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class SolidFill implements Fill {
-
-    /** Color of solid fill. **/
-    private final Color color;
+public interface Kloneable<T> {
 
     /**
-     * @see Fills#newSolidFill(Color)
+     * Deep clone of this object.
+     * 
+     * @return the brand new object.
      */
-    SolidFill(final Color color) {
-        this.color = color;
-    }
-
-    /**
-     * Copy constructor.
-     *
-     * @param fill
-     *            fill to copy.
-     */
-    private SolidFill(final SolidFill fill) {
-        this.color = fill.color;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public Fill klone() {
-        return new SolidFill(this);
-    }
-
-    /**
-     * Get color for solid fill.
-     *
-     * @return the color
-     */
-    Color getColor() {
-        return color;
-    }
+    public T klone();
 }

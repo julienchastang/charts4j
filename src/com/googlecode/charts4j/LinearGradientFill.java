@@ -59,9 +59,16 @@ public class LinearGradientFill extends AbstractLinearFill {
      * @param linearGradientFill
      *            fill to copy.
      */
-    LinearGradientFill(final LinearGradientFill linearGradientFill) {
+    private LinearGradientFill(final LinearGradientFill linearGradientFill) {
         super(linearGradientFill.getAngle());
         colorsAndOffsets.addAll(linearGradientFill.colorsAndOffsets);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public Fill klone() {
+        return new LinearGradientFill(this);
     }
 
     /**
