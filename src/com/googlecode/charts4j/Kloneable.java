@@ -26,8 +26,9 @@
 package com.googlecode.charts4j;
 
 /**
- * Interface for cloning objects. Implementors will supply a properly written
- * method for deep cloning. Internally you may wish to rely on the copy
+ * Interface for cloning objects. Usually useful for cloning mutables whose
+ * reference you do not want to escape. Implementors will supply a properly
+ * written method for deep cloning. Internally you may wish to rely on the copy
  * constructor.
  * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
