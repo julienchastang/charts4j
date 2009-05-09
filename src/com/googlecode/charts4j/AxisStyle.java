@@ -35,7 +35,7 @@ import static com.googlecode.charts4j.collect.Preconditions.checkNotNull;
  * @see AxisLabels
  * @see AxisLabelsFactory
  */
-public final class AxisStyle {
+public final class AxisStyle implements Kloneable<AxisStyle> {
     /** Axis text color. */
     private final Color             textColor;
 
@@ -61,6 +61,28 @@ public final class AxisStyle {
         this.textColor = textColor;
         this.fontSize = fontSize;
         this.alignment = alignment;
+    }
+    
+    /**
+     * Copy constructor.
+     * 
+     * @param axisStyle
+     *            the axis style
+     * 
+     * @return the axis style
+     */
+    private AxisStyle (final AxisStyle axisStyle) {
+        this(axisStyle.textColor, axisStyle.fontSize, axisStyle.alignment);
+        this.areTickMarksDrawn = axisStyle.areTickMarksDrawn;
+        this.tickMarkColor = axisStyle.tickMarkColor;
+        this.tickMarkLength = axisStyle.tickMarkLength;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public AxisStyle klone() {
+        return new AxisStyle(this);
     }
 
     /**
@@ -172,24 +194,6 @@ public final class AxisStyle {
         return new AxisStyle(textColor, fontSize, alignment);
     }
     
-    /**
-     * Copy constructor.
-     * 
-     * @param axisStyle
-     *            the axis style
-     * 
-     * @return the axis style
-     */
-    static AxisStyle newAxisStyle(final AxisStyle axisStyle) {
-        if (axisStyle == null) {
-            return null;
-        }
-        final AxisStyle as = new AxisStyle(axisStyle.textColor, axisStyle.fontSize, axisStyle.alignment);
-        as.areTickMarksDrawn = axisStyle.areTickMarksDrawn;
-        as.tickMarkColor = axisStyle.tickMarkColor;
-        as.tickMarkLength = axisStyle.tickMarkLength;
-        return as;
-    }
     
     /**
      * Here is the deal with this very strange copy constructor. There is
@@ -222,7 +226,7 @@ public final class AxisStyle {
             as = newAxisStyle(axisStyle.textColor, axisStyle.fontSize, AxisTextAlignment.RIGHT);
             break;
         default:
-            as = newAxisStyle(axisStyle);
+            as = axisStyle.klone();
             break;
         }
         as.areTickMarksDrawn = axisStyle.areTickMarksDrawn;

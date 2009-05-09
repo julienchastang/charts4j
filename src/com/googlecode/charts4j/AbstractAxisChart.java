@@ -88,7 +88,7 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
      */
     public final void addXAxisLabels(final AxisLabels axisLabels) {
         checkNotNull(axisLabels, "axisLabel cannnot be null");
-        xAxisLabels.add(AxisLabelsFactory.newAxisLabels((AxisLabelsImpl) axisLabels));
+        xAxisLabels.add((AxisLabelsImpl) axisLabels.klone());
     }
 
     /**
@@ -102,7 +102,7 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
      */
     public final void addYAxisLabels(final AxisLabels axisLabels) {
         checkNotNull(axisLabels, "axisLabel cannnot be null");
-        yAxisLabels.add(AxisLabelsFactory.newAxisLabels((AxisLabelsImpl) axisLabels));
+        yAxisLabels.add((AxisLabelsImpl) axisLabels.klone());
     }
 
     /**
@@ -116,7 +116,7 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
      */
     public final void addTopAxisLabels(final AxisLabels axisLabels) {
         checkNotNull(axisLabels, "axisLabel cannnot be null");
-        topAxisLabels.add(AxisLabelsFactory.newAxisLabels((AxisLabelsImpl) axisLabels));
+        topAxisLabels.add((AxisLabelsImpl) axisLabels.klone());
     }
 
     /**
@@ -130,7 +130,7 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
      */
     public final void addRightAxisLabels(final AxisLabels axisLabels) {
         checkNotNull(axisLabels, "axisLabels cannnot be null");
-        rightAxisLabels.add(AxisLabelsFactory.newAxisLabels((AxisLabelsImpl) axisLabels));
+        rightAxisLabels.add((AxisLabelsImpl) axisLabels.klone());
     }
     
     

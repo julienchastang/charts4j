@@ -31,7 +31,7 @@ package com.googlecode.charts4j;
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  *
  */
-public interface Plot {
+public interface Plot extends Kloneable<Plot> {
 
     /**
      * Set the legend.

@@ -414,7 +414,7 @@ public final class Plots {
     static ImmutableList<Plot> copyOf(final List<? extends Plot> plots) {
         final List<Plot> plotList = Lists.newLinkedList();
         for (Plot p : plots) {
-            plotList.add(new PlotImpl((PlotImpl) p));
+            plotList.add(p.klone());
         }
         return Lists.copyOf(plotList);
     }

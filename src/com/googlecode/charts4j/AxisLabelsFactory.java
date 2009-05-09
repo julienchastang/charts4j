@@ -209,15 +209,4 @@ public final class AxisLabelsFactory {
     public static AxisLabels newNumericRangeAxisLabels(final double minRange, final double maxRange, final double interval) {
         return new AxisLabelsImpl(minRange, maxRange, interval);
     }
-
-    /**
-     * Copy static factory method.
-     *
-     * @param axisLabels
-     *            to be copy constructed.
-     * @return Copy of AxisLabelsImpl
-     */
-    static AxisLabelsImpl newAxisLabels(final AxisLabelsImpl axisLabels) {
-        return new AxisLabelsImpl(axisLabels);
-    }
 }

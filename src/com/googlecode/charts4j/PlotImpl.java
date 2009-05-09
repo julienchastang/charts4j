@@ -122,7 +122,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
      * @param plotImpl
      *            object to be copied.
      */
-    PlotImpl(final PlotImpl plotImpl) {
+    private PlotImpl(final PlotImpl plotImpl) {
         xData = plotImpl.xData;
         yData = plotImpl.yData;
         markedPointsList.addAll(plotImpl.markedPointsList);
@@ -136,6 +136,10 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
         dataLine = plotImpl.dataLine;
         lineStyle = plotImpl.lineStyle;
         priority = plotImpl.priority;
+    }
+
+    public Plot klone() {
+        return new PlotImpl(this);
     }
 
     /**

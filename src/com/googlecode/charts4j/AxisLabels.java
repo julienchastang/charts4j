@@ -34,7 +34,7 @@ package com.googlecode.charts4j;
  * @see AxisStyle
  * @see AxisLabelsFactory
  */
-public interface AxisLabels {
+public interface AxisLabels extends Kloneable<AxisLabels> {
 
     /**
      * Set the desired axis style. AxisStyle mutable will be defensively copied
