@@ -125,9 +125,9 @@ public class PieChartTest {
     
     @Test
     public void orientationTest() {
-        final Slice s1 = Slice.newSlice(45, "Safari");
-        final Slice s2 = Slice.newSlice(45, "Firefox");
-        final Slice s3 = Slice.newSlice(10, "Internet Explorer");
+        final Slice s1 = Slice.newSlice(450, "Safari");
+        final Slice s2 = Slice.newSlice(450, "Firefox");
+        final Slice s3 = Slice.newSlice(100, "Internet Explorer");
 
         PieChart chart = GCharts.newPieChart(s1, s2, s3);
         chart.setOrientation(3.14/2);

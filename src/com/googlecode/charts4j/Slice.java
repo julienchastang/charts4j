@@ -33,6 +33,9 @@ import static com.googlecode.charts4j.collect.Preconditions.*;
  * are specified, pie segment colors are interpolated from dark orange to pale
  * yellow.
  *
+ * If slices do not add up to 100, slices will be proportional to the total of
+ * all slices.
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  *
  * @see PieChart
@@ -103,7 +106,7 @@ public class Slice {
      * Create a pie slice.
      *
      * @param percent
-     *            percent of pie. Must be between 0 to 100.
+     *            percent of pie. Must be >= 0.
      * @param color
      *            color of slice.
      * @param sliceLabel
@@ -118,7 +121,7 @@ public class Slice {
      * Create a pie slice.
      *
      * @param percent
-     *            percent of pie. Must be between 0 to 100.
+     *            percent of pie. Must be >= 0.
      * @param color
      *            color of slice.
      * @param sliceLabel
@@ -128,7 +131,7 @@ public class Slice {
      * @return a slice of pie.
      */
     public static Slice newSlice(final int percent, final Color color, final String sliceLabel, final String sliceLegend) {
-        checkArgument(percent >= 0 && percent <= 100, "percent must be between 0 and 100: %s", percent);
+        checkArgument(percent >= 0, "value must be between >= 0: %s", percent);
         return new Slice(percent, color, sliceLabel, sliceLegend);
     }
 
@@ -144,7 +147,7 @@ public class Slice {
      * Create a pie slice.
      *
      * @param percent
-     *            percent of pie. Must be between 0 to 100.
+     *            percent of pie. Must be >= 0.
      * @param sliceLabel
      *            label associated with slice.
      * @return a slice of pie.

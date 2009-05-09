@@ -51,7 +51,7 @@ public class PieChart extends AbstractGraphChart {
     private final ImmutableList<Slice> slices;
         
     /** The pie chart orientation radians.  */
-    private Double orientation;
+    private double orientation = Double.NaN;
 
     /**
      * Set the pie chart orientation in radians. Positive values will rotate the
@@ -65,7 +65,8 @@ public class PieChart extends AbstractGraphChart {
     }
 
     /**
-     * Create a pie chart with the given slices.
+     * Create a pie chart with the given slices. If slices do not add up to 100,
+     * slices will be proportional to the total of all slices.
      *
      * @param slices
      *            list of data slices of the pie chart.
@@ -105,14 +106,16 @@ public class PieChart extends AbstractGraphChart {
         final double[] d = new double[slices.size()];
         int i = 0;
         boolean hasLegend = false;
+        double sum = 0;
         for (Slice slice : slices) {
             if (slice.getLegend() != null ){
-                hasLegend = true;
-                break;
+                hasLegend |= true;
             }
+            sum += slice.getPercentage();
         }
+        
         for (Slice slice : slices) {
-            d[i++] = slice.getPercentage();
+            d[i++] = (slice.getPercentage()/sum)*100;
             parameterManager.addPieChartAndGoogleOMeterLegend(slice.getLabel() != null ? slice.getLabel() : "");
             if (hasLegend)
                 parameterManager.addLegend(slice.getLegend() != null ? slice.getLegend() : "");
@@ -120,7 +123,7 @@ public class PieChart extends AbstractGraphChart {
                 parameterManager.addColor(slice.getColor());
             }
         }
-        if (orientation != null) {
+        if (!Double.isNaN(orientation)) {
             parameterManager.addPieChartOrientation(orientation);
         }
         parameterManager.addData(Data.newData(d));
