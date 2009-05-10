@@ -51,6 +51,9 @@ import com.googlecode.charts4j.parameters.FillAreaType;
  */
 public class BarChart extends AbstractAxisChart {
 
+    /** Automatically resize bars to fit space. **/
+    public static final int AUTO_RESIZE = 0;
+
     /** Default space within groups of bars. **/
     private static final int          DEFAULT_SPACE_WINTHIN_GROUPS_OF_BARS = 4;
 
@@ -198,9 +201,11 @@ public class BarChart extends AbstractAxisChart {
      *
      * @param barWidth
      *            Bar width in pixels. If not set defaults to 23. Must be > 0.
+     *            To automatically resize bars to fit space use AUTO_RESIZE.
+     *            Example <code>chart.setBarWidth(BarChart.AUTO_RESIZE);</code>
      */
     public final void setBarWidth(final int barWidth) {
-        checkArgument(barWidth > 0, "barWidth must be > 0");
+        checkArgument(barWidth > -1, "barWidth must be > 0");
         this.barWidth = barWidth;
     }
 

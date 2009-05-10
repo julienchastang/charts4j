@@ -65,6 +65,6 @@ final class BarChartWidthAndSpacingParameter implements Parameter {
      * {@inheritDoc}
      */
     public String toURLParameterString() {
-        return URL_PARAMETER_KEY + "=" + width + "," + spaceBetweenBarsInGroup + "," + spaceBetweenGroups;
+        return URL_PARAMETER_KEY + "=" + (width < 1  ? "a" : width) + "," + spaceBetweenBarsInGroup + "," + spaceBetweenGroups;
     }
 }

@@ -211,4 +211,15 @@ public class BarChartTest {
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 
+    @Test
+    public void testAutoResize() {
+        BarChartPlot data1 = Plots.newBarChartPlot(Data.newData(5, 25, 50, 75, 100), BLUE);
+        BarChartPlot data2 = Plots.newBarChartPlot(Data.newData(5, 25, 50, 75, 100), RED);
+        BarChart chart = GCharts.newBarChart(data1, data2);
+        chart.setSize(400, 200);
+        chart.setBarWidth(BarChart.AUTO_RESIZE);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chbh=a,4,8&chco=0000FF,FF0000&chd=e:DNQAgAv...,DNQAgAv...&chs=400x200&cht=bvg";        
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
 }
