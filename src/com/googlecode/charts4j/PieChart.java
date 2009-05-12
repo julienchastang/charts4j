@@ -35,7 +35,8 @@ import com.googlecode.charts4j.parameters.ChartType;
  * If the number of colors specified in the {@link Slice} objects is less than
  * the number of slices, then colors are interpolated. If no colors are
  * specified, pie segment colors are interpolated from dark orange to pale
- * yellow.
+ * yellow. If slices do not add up to 100, slices will be proportional to the
+ * total of all slices.
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  *
