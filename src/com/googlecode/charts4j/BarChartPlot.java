@@ -144,7 +144,7 @@ public interface BarChartPlot extends Curve {
     }
 
     /**
-     * The Class BarColor.
+     * The BarColor inner class. Individual bars can be colored.
      */
     static class BarColor {
 
