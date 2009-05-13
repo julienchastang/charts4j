@@ -33,7 +33,7 @@ import static com.googlecode.charts4j.collect.Preconditions.*;
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  *
  */
-class AbstractMarker implements Marker {
+abstract class AbstractMarker implements Marker {
 
     /** Marker color.  **/
     private final Color    color;
