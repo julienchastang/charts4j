@@ -328,7 +328,7 @@ final class ChartMarkersParameter implements Parameter {
          *            Marker on every n-th data point.
          */
         private TextMarkerParam(final TextMarker textMarker, final int dataSetIndex, final int startIndex, final int endIndex, final int n) {
-            super("t" + ParameterUtil.utf8Encode(textMarker.getText()), textMarker.getColor(), dataSetIndex, startIndex, endIndex, n, textMarker.getSize(), textMarker.getPriority());
+            super((textMarker.isFlagged() ? "f" : "t") + ParameterUtil.utf8Encode(textMarker.getText()), textMarker.getColor(), dataSetIndex, startIndex, endIndex, n, textMarker.getSize(), textMarker.getPriority());
         }
     }
 
@@ -463,7 +463,7 @@ final class ChartMarkersParameter implements Parameter {
             final String s;
             if (marker instanceof TextMarker) {
                 final TextMarker m = (TextMarker) marker;
-                s = "@t" + m.getText() + "," + m.getColor() + ",0," + xPos / Data.MAX_VALUE + ":" + yPos / Data.MAX_VALUE  + "," + m.getSize()  + "," + m.getPriority();
+                s = "@" + (m.isFlagged() ? "f" : "t") + m.getText() + "," + m.getColor() + ",0," + xPos / Data.MAX_VALUE + ":" + yPos / Data.MAX_VALUE  + "," + m.getSize()  + "," + m.getPriority();
             } else if (marker instanceof ShapeMarker) {
                 final ShapeMarker m = (ShapeMarker) marker;
                 s = "@" + m.getShape().toString() + "," + m.getColor() + ",0," + xPos / Data.MAX_VALUE + ":" + yPos / Data.MAX_VALUE  + "," + m.getSize() + "," + m.getPriority();

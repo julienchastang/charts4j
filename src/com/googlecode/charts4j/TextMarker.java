@@ -42,20 +42,27 @@ public class TextMarker extends AbstractMarker {
     /** Text of marker. **/
     private final String text;
 
-    /**
-     * @see Markers#newTextMarker(String, Color, int)
-     */
-    TextMarker(final String text, final Color color, final int size) {
-        super(color, size, Priority.NORMAL);
-        this.text = text;
-    }
+    /** Is the text marker flagged. **/
+    private boolean flagged = false;
 
     /**
-     * @see Markers#newTextMarker(String, Color, int, Priority)
+     * Instantiates a new text marker.
+     * 
+     * @param text
+     *            the text
+     * @param color
+     *            the color
+     * @param size
+     *            the size
+     * @param priority
+     *            the priority
+     * @param flagged
+     *            the flagged
      */
-    TextMarker(final String text, final Color color, final int size, final Priority priority) {
+    TextMarker(final String text, final Color color, final int size, final Priority priority, final boolean flagged) {
         super(color, size, priority);
         this.text = text;
+        this.flagged = flagged;
     }
 
     /**
@@ -65,5 +72,14 @@ public class TextMarker extends AbstractMarker {
      */
     public final String getText() {
         return text;
+    }
+
+    /**
+     * Checks if is flagged.
+     * 
+     * @return true, if is flagged
+     */
+    public boolean isFlagged() {
+        return flagged;
     }
 }

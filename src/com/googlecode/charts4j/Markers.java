@@ -56,7 +56,25 @@ public final class Markers {
         checkNotNull(text, "text cannot be null");
         checkNotNull(color, "color cannot be null");
         checkArgument(size > 0, "The size of this marker has to be > 0");
-        return new TextMarker(text, color, size);
+        return new TextMarker(text, color, size, Priority.NORMAL, false);
+    }
+
+    /**
+     * Static factory method to instantiate new flagged {@link TextMarker}.
+     *
+     * @param text
+     *            The text of the marker. Cannot be null.
+     * @param color
+     *            The color of text marker. Cannot be null.
+     * @param size
+     *            The size of text marker. Must be > 0.
+     * @return The text marker.
+     */
+    public static Marker newFlaggedTextMarker(final String text, final Color color, final int size) {
+        checkNotNull(text, "text cannot be null");
+        checkNotNull(color, "color cannot be null");
+        checkArgument(size > 0, "The size of this marker has to be > 0");
+        return new TextMarker(text, color, size, Priority.NORMAL, true);
     }
 
     /**
@@ -95,7 +113,27 @@ public final class Markers {
         checkNotNull(text, "text cannot be null");
         checkNotNull(color, "color cannot be null");
         checkArgument(size > 0, "The size of this marker has to be > 0");
-        return new TextMarker(text, color, size, priority);
+        return new TextMarker(text, color, size, priority, false);
+    }
+
+    /**
+     * Static factory method to instantiate new flagged {@link TextMarker}.
+     *
+     * @param text
+     *            The text of the marker. Cannot be null.
+     * @param color
+     *            The color of text marker. Cannot be null.
+     * @param size
+     *            The size of text marker. Must be > 0.
+     * @param priority
+     *            The marker priority. Cannot be null.
+     * @return The text marker.
+     */
+    public static Marker newFlaggedTextMarker(final String text, final Color color, final int size, final Priority priority) {
+        checkNotNull(text, "text cannot be null");
+        checkNotNull(color, "color cannot be null");
+        checkArgument(size > 0, "The size of this marker has to be > 0");
+        return new TextMarker(text, color, size, priority, true);
     }
 
     /**

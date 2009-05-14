@@ -70,4 +70,14 @@ public class PlotTest {
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=x,FF0000,0,0,12,0|tfoo,000000,0,1,12,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+
+    @Test
+    public void testAddFlaggedMarkers() {
+        final Line line =  TestUtil.getBasicLine();
+        line.addMarker(Markers.newFlaggedTextMarker("foo", BLACK, 12), 1);
+        final LineChart chart = GCharts.newLineChart(line);
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=ffoo,000000,0,1,12,0&chs=200x125&cht=lc";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
 }
