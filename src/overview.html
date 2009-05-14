@@ -8,26 +8,29 @@
 
 <a href="http://charts4j.googlecode.com">charts4j</a>
 is a Java chart library that enables developers to
-<b>programmatically</b> generate nearly all<sup>1</sup>
+<b>programmatically</b>
+generate nearly all
+<sup>1</sup>
 the charts available in the
 <a href="http://code.google.com/apis/chart/">Google Chart API</a>
-. charts4j can be incorporated into any Internet enabled Java (e.g. Swing) or web application
-environment (e.g. JSPs / Servlets, Spring MVC, GWT, etc.)
+. charts4j can be incorporated into any Internet enabled Java (e.g.
+Swing) or web application environment (e.g. JSPs / Servlets, Spring MVC,
+GWT, etc.)
 
 <h3>Installation</h3>
 
-<p>Developers only need to include the charts4j.jar in their classpath. It is
-available in the <a href="http://code.google.com/p/charts4j/downloads/list">charts4j.zip</a>
+<p>Developers only need to include the charts4j.jar in their
+classpath. It is available in the <a
+	href="http://code.google.com/p/charts4j/downloads/list">charts4j.zip</a>
 file. The application must also be connected to the Internet because the
 charts are ultimately rendered by the Google Chart API server.</p>
 
 <h3>Usage</h3>
 
-<p>Developers who are using charts4j for the first time should
-start off by examining the {@link com.googlecode.charts4j.Data} and
-{@link com.googlecode.charts4j.DataUtil} classes. Next, they can build
-charts via the {@link com.googlecode.charts4j.GCharts} static factory
-class.</p>
+<p>Developers who are using charts4j for the first time should start
+off by examining the {@link com.googlecode.charts4j.Data} and {@link
+com.googlecode.charts4j.DataUtil} classes. Next, they can build charts
+via the {@link com.googlecode.charts4j.GCharts} static factory class.</p>
 
 <p>All data provided to charts4j is expressed as numbers between 0
 and 100. If your data does not fall in that range, you will have to
@@ -48,11 +51,13 @@ chart type. In particular, they can be incorporated into
 	<li>{@link com.googlecode.charts4j.LineChart}s</li>
 	<li>{@link com.googlecode.charts4j.XYLineChart}s</li>
 	<li>{@link com.googlecode.charts4j.BarChart}s</li>
-    <li>{@link com.googlecode.charts4j.ScatterPlot}s</li>
-    <li>{@link com.googlecode.charts4j.RadarChart}s</li>
+	<li>{@link com.googlecode.charts4j.ScatterPlot}s</li>
+	<li>{@link com.googlecode.charts4j.RadarChart}s</li>
 </ul>
-{@link com.googlecode.charts4j.Plot}s are created via the {@link com.googlecode.charts4j.Plots} static factory class.
-{@link com.googlecode.charts4j.GChart}s are created via the {@link com.googlecode.charts4j.GCharts} static factory class.
+{@link com.googlecode.charts4j.Plot}s are created via the {@link
+com.googlecode.charts4j.Plots} static factory class. {@link
+com.googlecode.charts4j.GChart}s are created via the {@link
+com.googlecode.charts4j.GCharts} static factory class.
 </p>
 
 <p>Chart URLs {@link com.googlecode.charts4j.GChart#toURLString()
@@ -61,22 +66,30 @@ application. In a JSP / Servlet environment, generate the URL in the
 servlet and insert that URL in the JSP for display of the chart.</p>
 
 <br>
-Code examples can be found <a href="http://charts4j.googlecode.com/">here</a>.
+Code examples can be found
+<a href="http://charts4j.googlecode.com/">here</a>
+.
 <br>
 <br>
 For additional information, see:
 <ul>
 	<li><a href="http://charts4j.googlecode.com">charts4j</a></li>
-	<li><a href="http://code.google.com/apis/chart/">Google Chart API</a></li>
-	<li><a href="http://groups.google.com/group/google-chart-api">Google Chart API Group</a></li>
+	<li><a href="http://code.google.com/apis/chart/">Google Chart
+	API</a></li>
+	<li><a href="http://groups.google.com/group/google-chart-api">Google
+	Chart API Group</a></li>
 </ul>
 
 <br>
 <br>
 @author Julien Chastang (julien.c.chastang at gmail dot com)
 <hr>
-<p>1. As of November 2008, the only chart types that are not
-supported are QR Codes, map pins, sticky notes, information bubbles,
-text with outline.</p>
+<p>1. As of May 2009, the chart types that are not supported are QR
+Codes, map pins, sticky notes, information bubbles, text with outline.
+There are also a few other Google Chart API features that have not been
+exposed in charts4j. If this is a problem for you please <a
+	href="http://code.google.com/p/charts4j/issues/list">submit an
+issue</a>, and we will look into it as soon as possible.</p>
 </body>
 </html>
+
