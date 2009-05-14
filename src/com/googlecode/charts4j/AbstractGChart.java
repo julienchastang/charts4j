@@ -40,7 +40,7 @@ import com.googlecode.charts4j.parameters.SolidFillType;
 abstract class AbstractGChart implements GChart {
 
     /** Contains accumulation of all parameters set by client. */
-    protected final ParameterManager parameterManager = new ParameterManager("http://chart.apis.google.com/chart");
+    protected final ParameterManager parameterManager = new ParameterManager();
 
     /** The largest possible area for all charts except maps is 300,000 pixels. */
     private static final int         MAX_PIXELS       = 300000;
@@ -90,6 +90,9 @@ abstract class AbstractGChart implements GChart {
     /** Margins for this chart.  */
     private Margins                  margins;
 
+    /** For configuration of the chart URL endpoint.  */
+    private String                   chartURLEndpoint = "http://chart.apis.google.com/chart";
+
     /**
      * AbstractGChart constructor.
      */
@@ -112,7 +115,7 @@ abstract class AbstractGChart implements GChart {
      * {@inheritDoc}
      */
     public final String toURLString() {
-        parameterManager.init();
+        parameterManager.init(chartURLEndpoint);
         prepareData();
         return parameterManager.toString();
     }
@@ -153,6 +156,22 @@ abstract class AbstractGChart implements GChart {
      */    
     public void setMargins(final int leftMargin, final int rightMargin, final int topMargin, final int bottomMargin) {
         this.margins = new Margins(leftMargin, rightMargin, topMargin, bottomMargin);
+    }
+
+    /**
+     * Sets the chart URL endpoint. The default end point chart URL is
+     * http://chart.apis.google.com/chart. This method is useful in situations
+     * where other Internet services support the Google Chart API. For instance,
+     * JFreeChart has a Google Chart API emulation called <a
+     * href="http://www.jfree.org/eastwood/">Eastwood</a>. API users can supply
+     * the Eastwood servlet address as the end point URL.
+     * 
+     * @param chartURLEndpoint
+     *            the new chart url endpoint
+     */
+    public void setChartURLEndpoint(final String chartURLEndpoint) {
+        checkNotNull(chartURLEndpoint, "The chart URL endpoint cannot be null");
+        this.chartURLEndpoint = chartURLEndpoint;
     }
 
     /**

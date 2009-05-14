@@ -57,7 +57,7 @@ public final class ParameterManager {
     private final Map<Class<? extends Parameter>, Parameter> parameterMap = Maps.newHashMap();
 
     /** The Google Chart API URL. */
-    private final String                                     url;
+    private String                                     url;
 
     /**
      * Instantiates a new parameter manager with the Google Chart API URL.
@@ -65,14 +65,14 @@ public final class ParameterManager {
      * @param url
      *            the url
      */
-    public ParameterManager(final String url) {
-        this.url = url;
+    public ParameterManager() {
     }
 
     /**
      * Inits the.
      */
-    public void init() {
+    public void init(final String url) {
+        this.url = url;
         parameterMap.clear();
     }
 

@@ -34,15 +34,16 @@ public class ParameterManagerTest {
 
     @Test
     public void test0() throws Exception {
-        final ParameterManager pm = new ParameterManager("http://chart.apis.google.com/chart");
+        final ParameterManager pm = new ParameterManager();
+        pm.init("http://chart.apis.google.com/chart");
         pm.setChartTypeParameter(ChartType.LINE_CHART);
         Logger.global.info(pm.toString());
     }
 
     @Test
     public void test1() throws Exception {
-        final ParameterManager pm = new ParameterManager("http://chart.apis.google.com/chart");
-        pm.init();
+        final ParameterManager pm = new ParameterManager();
+        pm.init("http://chart.apis.google.com/chart");
         pm.setChartTypeParameter(ChartType.LINE_CHART);
         pm.addMarker(Markers.newTextMarker("Hello", BLUE, 12), 0, 3, 4, 1);
         Logger.global.info(pm.toString());
