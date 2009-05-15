@@ -159,19 +159,11 @@ abstract class AbstractGChart implements GChart {
     }
 
     /**
-     * Sets the chart URL endpoint. The default end point chart URL is
-     * http://chart.apis.google.com/chart. This method is useful in situations
-     * where other Internet services support the Google Chart API. For instance,
-     * JFreeChart has a Google Chart API emulation called <a
-     * href="http://www.jfree.org/eastwood/">Eastwood</a>. API users can supply
-     * the Eastwood servlet address as the end point URL.
-     * 
-     * @param chartURLEndpoint
-     *            the new chart url endpoint
+     * {@inheritDoc}
      */
-    public void setChartURLEndpoint(final String chartURLEndpoint) {
-        checkNotNull(chartURLEndpoint, "The chart URL endpoint cannot be null");
-        this.chartURLEndpoint = chartURLEndpoint;
+    public void setURLEndpoint(final String urlEndpoint) {
+        checkNotNull(urlEndpoint, "The chart URL endpoint cannot be null");
+        this.chartURLEndpoint = urlEndpoint;
     }
 
     /**

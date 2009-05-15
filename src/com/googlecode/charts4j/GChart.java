@@ -119,4 +119,17 @@ public interface GChart {
      *            the bottom margin
      */
     void setMargins(final int leftMargin, final int rightMargin, final int topMargin, final int bottomMargin);
+
+    /**
+     * Sets the chart URL endpoint. The default end point chart URL is
+     * http://chart.apis.google.com/chart. This method is useful in situations
+     * where other Internet services support the Google Chart API. For instance,
+     * JFreeChart has a Google Chart API emulation called <a
+     * href="http://www.jfree.org/eastwood/">Eastwood</a>. API users can supply
+     * the Eastwood servlet address as the end point URL.
+     *
+     * @param urlEndpoint
+     *            the new chart url endpoint
+     */
+    public void setURLEndpoint(final String urlEndpoint);
 }

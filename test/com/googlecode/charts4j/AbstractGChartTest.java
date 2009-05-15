@@ -120,4 +120,13 @@ public class AbstractGChartTest {
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 
+    @Test
+    public void testSetURLEndpoint() {
+        final LineChart chart = getBasicChart();
+        chart.setDataEncoding(DataEncoding.SIMPLE);
+        chart.setURLEndpoint("http://localhost:8080/ChartServlet");
+        Logger.global.info(chart.toURLString());
+        String expectedString = "http://localhost:8080/ChartServlet?chd=s:Af9&chs=200x125&cht=lc";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
 }

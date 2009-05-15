@@ -201,4 +201,11 @@ public final class RadarChart implements GChart, GraphChart, TitledChart, GridCh
     public void setLegendMargins(final int legendWidth, final int legendHeight) {
         radarChart.setLegendMargins(legendWidth, legendHeight);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setURLEndpoint(final String urlEndpoint) {
+        radarChart.setURLEndpoint(urlEndpoint);
+    }
 }
