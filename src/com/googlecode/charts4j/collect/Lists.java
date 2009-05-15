@@ -57,7 +57,7 @@ public final class Lists {
     public static <E> List<E> newLinkedList() {
         return new LinkedList<E>();
     }
-    
+
     /**
      * Static factory method to instantiate an ArrayList.
      *

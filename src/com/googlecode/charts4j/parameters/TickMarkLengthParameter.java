@@ -32,7 +32,7 @@ import com.googlecode.charts4j.collect.Lists;
 /**
  * Class for building axis tick mark length parameter string for the Google
  * Chart API.
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class TickMarkLengthParameter implements Parameter {
@@ -45,7 +45,7 @@ public class TickMarkLengthParameter implements Parameter {
 
     /**
      * Add the tick mark length.
-     * 
+     *
      * @param index
      *            the axis index
      * @param tickMarkLength
@@ -80,7 +80,7 @@ public class TickMarkLengthParameter implements Parameter {
 
         /**
          * Instantiates a new axis tick mark length.
-         * 
+         *
          * @param index
          *            the index
          * @param tickMarkLength

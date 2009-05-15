@@ -54,7 +54,7 @@ public class GoogleOMeter extends AbstractGraphChart {
 
     /** Label that will sit atop the arrow. **/
     private final String               label;
-    
+
     /** Legend. **/
     private final String               legend;
 

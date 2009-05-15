@@ -104,7 +104,7 @@ final class AxisLabelsParameter implements Parameter {
                 int cnt = 0;
                 for (String label : labels) {
                     final String l = ParameterUtil.utf8Encode(label);
-                    sb.append(cnt++ > 0 ? "|" : "").append(l);                    
+                    sb.append(cnt++ > 0 ? "|" : "").append(l);
                 }
                 return sb.toString();
             }

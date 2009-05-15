@@ -28,9 +28,9 @@ package com.googlecode.charts4j;
 /**
  * Marked point(s) that describe data points to be decorated with a text or
  * shape marker.
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
- * 
+ *
  */
 class MarkedPoints {
     /** Text or shape marker. **/
@@ -62,10 +62,10 @@ class MarkedPoints {
         this.endIndex = index + 1;
         this.n = 1;
     }
-    
+
     /**
      * Marker point constructor.
-     * 
+     *
      * @param marker
      *            The shape or text marker for this series.
      * @param startIndex
@@ -84,7 +84,7 @@ class MarkedPoints {
 
     /**
      * Get the marker for this marker series.
-     * 
+     *
      * @return the marker
      */
     Marker getMarker() {
@@ -93,7 +93,7 @@ class MarkedPoints {
 
     /**
      * Get the start index of the point to decorate.
-     * 
+     *
      * @return the start index
      */
     int getStartIndex() {
@@ -102,7 +102,7 @@ class MarkedPoints {
 
     /**
      * Get the end index of the point to decorate.
-     * 
+     *
      * @return the end index
      */
     int getEndIndex() {
@@ -111,7 +111,7 @@ class MarkedPoints {
 
     /**
      * Get the periodicity.
-     * 
+     *
      * @return the periodicity
      */
     int getN() {

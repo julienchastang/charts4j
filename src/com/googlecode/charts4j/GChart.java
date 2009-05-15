@@ -108,7 +108,7 @@ public interface GChart {
      * Specify the chart margins. The overall size of the chart defined with the
      * {@link #setSize(int, int)} method will not change. The margin moves
      * inward. It is similar to a CSS padding.
-     * 
+     *
      * @param leftMargin
      *            the left margin
      * @param rightMargin
@@ -131,10 +131,10 @@ public interface GChart {
      * Eastwood is not a 100% emulation of the Google Chart API so
      * "your mileage may vary" in terms of what charts are supported by
      * Eastwood.
-     * 
+     *
      * @param urlEndpoint
      *            the new chart url endpoint
-     * 
+     *
      * @see <a href="http://www.jfree.org/eastwood/">JFreeChart Eastwood *
      *      Servlet< /a>
      */

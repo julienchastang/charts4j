@@ -43,7 +43,7 @@ import com.googlecode.charts4j.Priority;
 import com.googlecode.charts4j.Shape;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class ChartMarkersParameterTest {
@@ -129,7 +129,7 @@ public class ChartMarkersParameterTest {
         final String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-    
+
     @Test
     public void test7() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
@@ -139,7 +139,7 @@ public class ChartMarkersParameterTest {
         final String expectedString = "chm=o,CD853F,1,5:9:2,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-    
+
     @Test
     public void test8() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
@@ -149,7 +149,7 @@ public class ChartMarkersParameterTest {
         final String expectedString = "chm=o,CD853F,1,5,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-    
+
     @Test
     public void test9() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
@@ -159,7 +159,7 @@ public class ChartMarkersParameterTest {
         final String expectedString = "chm=o,CD853F,1,-1,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-    
+
     @Test
     public void addFreeShapeMarker() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
@@ -169,7 +169,7 @@ public class ChartMarkersParameterTest {
         final String expectedString = "chm=@o,CD853F,0,0.1:0.2,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-    
+
     @Test
     public void addFreeTextMarker() {
         final ChartMarkersParameter p = new ChartMarkersParameter();

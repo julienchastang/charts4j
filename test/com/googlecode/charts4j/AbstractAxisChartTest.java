@@ -43,7 +43,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class AbstractAxisChartTest {
@@ -131,7 +131,7 @@ public class AbstractAxisChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAgA..&chxt=r&chxl=0:|start|end&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void addFreeShapeMarkersToBarChart() {
         final BarChart chart = getBasicBarChart();
@@ -141,7 +141,7 @@ public class AbstractAxisChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chbh=23,4,8&chd=e:szgA..&chm=@a,FF0000,0,0.5:0.8,12,-1|@x,0000FF,0,0.5:0.8,12,1&chs=200x125&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void addFreeTextMarkerToLineChart() {
         final LineChart chart = getBasicChart();
@@ -149,5 +149,5 @@ public class AbstractAxisChartTest {
         Logger.global.info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=@tcharts4j,FF0000,0,0.1:0.8,20,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
-    }    
+    }
 }

@@ -37,7 +37,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class BarChartExample {
@@ -112,7 +112,7 @@ public class BarChartExample {
         medals.setAxisStyle(axisStyle);
         AxisLabels medalCount = AxisLabelsFactory.newNumericRangeAxisLabels(0, MAX_MEDALS);
         medalCount.setAxisStyle(axisStyle);
-        
+
 
         // Adding axis info to chart.
         chart.addXAxisLabels(medalCount);
@@ -123,7 +123,7 @@ public class BarChartExample {
         chart.setHorizontal(true);
         chart.setSize(450, 650);
         chart.setSpaceBetweenGroupsOfBars(30);
-        
+
         chart.setTitle("2008 Beijing Olympics Medal Count", BLACK, 16);
         ///51 is the max number of medals.
         chart.setGrid((50.0/MAX_MEDALS)*20, 600, 3, 2);

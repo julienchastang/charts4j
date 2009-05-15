@@ -48,7 +48,7 @@ public abstract class AbstractGraphChart extends AbstractGChart implements Graph
 
     /** The legend position which may be top, bottom, right, or left. **/
     private LegendPosition legendPosition;
-    
+
     /** The legend margins. */
     private LegendMargins legendMargins;
 
@@ -128,7 +128,7 @@ public abstract class AbstractGraphChart extends AbstractGChart implements Graph
             parameterManager.setLegendMargins(legendMargins.width, legendMargins.height);
         }
     }
-    
+
     /**
      * Private class to encapsulate legend margins.
      */
@@ -141,7 +141,7 @@ public abstract class AbstractGraphChart extends AbstractGChart implements Graph
 
         /**
          * Instantiates a new legend margins.
-         * 
+         *
          * @param height
          *            the legend height
          * @param width

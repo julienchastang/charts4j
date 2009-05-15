@@ -41,7 +41,7 @@ import com.googlecode.charts4j.AxisStyle;
 import com.googlecode.charts4j.AxisTextAlignment;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class AxisStylesParameterTest {
@@ -89,7 +89,7 @@ public class AxisStylesParameterTest {
         final String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-    
+
     @Test
     public void test4() {
         final AxisStylesParameter p = new AxisStylesParameter();
@@ -99,7 +99,7 @@ public class AxisStylesParameterTest {
         final String expectedString = "chxs=1,0000FF,12,0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-    
+
     @Test
     public void test5() {
         final AxisStylesParameter p = new AxisStylesParameter();
@@ -111,7 +111,7 @@ public class AxisStylesParameterTest {
         final String expectedString = "chxs=1,0000FF,12,0,lt,FF0000";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
-    
+
     @Test
     public void test6() {
         final AxisStylesParameter p = new AxisStylesParameter();

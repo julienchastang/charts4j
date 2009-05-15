@@ -62,7 +62,7 @@ public class LinearStripesFill extends AbstractLinearFill {
         super(linearStripesFill.getAngle());
         colorsAndWidths.addAll(linearStripesFill.colorsAndWidths);
     }
-    
+
     /**
      * {@inheritDoc}
      */

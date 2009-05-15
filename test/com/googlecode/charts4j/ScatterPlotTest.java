@@ -39,7 +39,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class ScatterPlotTest {
@@ -84,7 +84,7 @@ public class ScatterPlotTest {
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAGaMz..,AAczGa..,..gA..Ga&chm=d,0000FF,0,-1,20,0&chs=200x125&cht=s";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void test2() {
         final Data xData = Data.newData(0, 10, 20, 100);

@@ -37,7 +37,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class MapChartExample {
@@ -51,7 +51,7 @@ public class MapChartExample {
     public void example1() {
         // EXAMPLE CODE START
         MapChart chart = GCharts.newMapChart(GeographicalArea.USA);
-        
+
         PoliticalBoundary al = new USAState( AL, 10);
         PoliticalBoundary ak = new USAState( AK, 10);
         PoliticalBoundary az = new USAState( AZ, 10);

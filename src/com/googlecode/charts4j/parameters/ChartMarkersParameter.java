@@ -148,10 +148,10 @@ final class ChartMarkersParameter implements Parameter {
     void addHorizontalRangeMarker(final Color color, final double startPoint, final double endPoint) {
         markers.add(new RangeMarker(RangeType.HORIZONTAL, color, startPoint, endPoint));
     }
-    
+
     /**
      * Adds the free marker.
-     * 
+     *
      * @param marker
      *            the marker
      * @param xPos
@@ -197,10 +197,10 @@ final class ChartMarkersParameter implements Parameter {
 
         /** The start index. */
         private final int      startIndex;
-        
+
         /** The end index. */
         private final int      endIndex;
-        
+
         /** The periodicity. */
         private final int      n;
 
@@ -251,7 +251,7 @@ final class ChartMarkersParameter implements Parameter {
                 returnString =  marker + "," + color + "," + dataSetIndex + "," + startIndex + "," + size + "," + priority;
             }
             else if (startIndex == -1) {
-                returnString =  marker + "," + color + "," + dataSetIndex + "," + startIndex + "," + size + "," + priority;                
+                returnString =  marker + "," + color + "," + dataSetIndex + "," + startIndex + "," + size + "," + priority;
             }
             else {//(endIndex - 1)  ---> The GCA is end point inclusive.
                 returnString =  marker + "," + color + "," + dataSetIndex + "," + startIndex + ":" + (endIndex - 1) + ":" + n + "," + size + "," + priority;
@@ -424,24 +424,24 @@ final class ChartMarkersParameter implements Parameter {
             return rangeType + "," + color + ",0," + decimalFormatter.format(startPoint) + "," + decimalFormatter.format(endPoint);
         }
     }
-    
+
     /**
      * Private static inner class to encapsulate a FreeMarker.
      */
     private static class FreeMarker implements GoogleChartMarker {
-        
+
         /** The marker. */
         private final Marker marker;
-        
+
         /** The x pos. */
-        private final double xPos; 
-        
+        private final double xPos;
+
         /** The y pos. */
         private final double yPos;
 
         /**
          * Instantiates a new free marker.
-         * 
+         *
          * @param marker
          *            the marker
          * @param xPos
@@ -454,7 +454,7 @@ final class ChartMarkersParameter implements Parameter {
             this.xPos = xPos;
             this.yPos = yPos;
         }
-        
+
         /**
          * {@inheritDoc}
          */

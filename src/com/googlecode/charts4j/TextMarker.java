@@ -47,7 +47,7 @@ public class TextMarker extends AbstractMarker {
 
     /**
      * Instantiates a new text marker.
-     * 
+     *
      * @param text
      *            the text
      * @param color
@@ -76,7 +76,7 @@ public class TextMarker extends AbstractMarker {
 
     /**
      * Checks if is flagged.
-     * 
+     *
      * @return true, if is flagged
      */
     public boolean isFlagged() {

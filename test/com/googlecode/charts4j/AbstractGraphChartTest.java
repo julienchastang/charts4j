@@ -41,7 +41,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class AbstractGraphChartTest {
@@ -112,7 +112,7 @@ public class AbstractGraphChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chco=FF0000&chd=e:AAgA..&chdl=my+Legend&chdlp=t&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testSetMargins() {
         final Plot plot = Plots.newPlot(Data.newData(0, 50, 100), RED, "my Legend");
@@ -122,7 +122,7 @@ public class AbstractGraphChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chco=FF0000&chd=e:AAgA..&chdl=my+Legend&chma=20,20,20,20&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testSetLegendMargins() {
         final Plot plot = Plots.newPlot(Data.newData(0, 50, 100), RED, "my Legend");

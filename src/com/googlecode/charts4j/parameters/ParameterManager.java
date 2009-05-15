@@ -130,7 +130,7 @@ public final class ParameterManager {
 
     /**
      * Adds the tick mark length.
-     * 
+     *
      * @param index
      *            the axis index
      * @param tickMarkLength
@@ -277,10 +277,10 @@ public final class ParameterManager {
     public void addMarkers(final Marker marker, final int dataSetIndex) {
         getParameter(ChartMarkersParameter.class).addMarkers(marker, dataSetIndex);
     }
-    
+
     /**
      * Adds the free marker.
-     * 
+     *
      * @param marker
      *            the marker
      * @param xPos
@@ -367,7 +367,7 @@ public final class ParameterManager {
 
     /**
      * Adds the color.
-     * 
+     *
      * @param color
      *            the color
      */
@@ -526,7 +526,7 @@ public final class ParameterManager {
 
     /**
      * Add a pie chart orientation.
-     * 
+     *
      * @param orientation
      *            the orientation
      */

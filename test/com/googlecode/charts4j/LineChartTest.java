@@ -47,7 +47,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class LineChartTest {
@@ -217,7 +217,7 @@ public class LineChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chco=008000&chd=e:AAgA..&chdl=myLegend&chf=a,s,FFFFFF7F&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     /**
      * Testing plotting one point.
      */
@@ -229,32 +229,32 @@ public class LineChartTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chd=e:gA&chs=200x125";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void test10() {
         double d0[] = new double[100];
         double d1[] = new double[100];
-        
+
         for (int i = 0; i < d0.length; i++) {
             d0[i] = 5*Math.sin(i*0.2);
         }
-        
+
         for (int i = 0; i < d1.length; i++) {
             d1[i] = Math.cos(i*0.2);
         }
-        
-        List<Data> data = DataUtil.scale(new double[][]{d0,d1}); 
+
+        List<Data> data = DataUtil.scale(new double[][]{d0,d1});
         List<Plot> plots = new LinkedList<Plot>();
-        
+
         for (Data d : data) {
             plots.add(Plots.newPlot(d));
         }
-        
+
         final LineChart chart = GCharts.newLineChart(plots);
-        
+
         Logger.global.info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:gAmXsdyE296791.i...K9G541nwgqukheIX1R2MbHyEHBjANAIBUDvHRLzRIXEdWjvp-v01B5Z8w--.9.q-G7W3gyutMnIgzabUROmJnFhCeAnAAArClFrJ0O1UiathFnatcy83s7f-N.t.8-68o5O00vkptjddEWyQ4LlHGDmBPAGAPBpEQH-MpSGYGeakzq.wv116C,mamRl5lSkdjdiUhGf0ejdVcPbSahZ-ZqZnZ0aRa8b0c3eCfSgkh0jAkEk-lrmJmYmXmFlkk1j5i0hngWfEd1crbqa0aLZxZmZtaDaobbcadiewgChTihjpknlal-mUmZmOl0lKkTjSiHg4fmeWdJcEbJaaZ6ZpZoZ4aXbFb.dDePfggxiBjMkOlGlxmNmZmVmBldkrju&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
-        
+
     }
 }

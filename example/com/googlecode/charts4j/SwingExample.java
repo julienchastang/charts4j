@@ -39,15 +39,15 @@ import org.junit.Ignore;
 /**
  * Example code for displaying a chart via Swing. This is an alternative
  * to displaying charts via JSP and Servlet technology.
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 @Ignore("not a unit test, just a Java Swing example")
 public class SwingExample {
-    
+
     /**
      * main
-     * 
+     *
      * @param s
      *            args not read.
      * @throws IOException
@@ -57,11 +57,11 @@ public class SwingExample {
         LineChart chart = GCharts.newLineChart(plot);
         displayUrlString(chart.toURLString());
     }
-    
+
     /**
      * Display the chart in a swing window.
-     * 
-     * 
+     *
+     *
      * @param urlString
      *            the url string to display.
      * @throws IOException

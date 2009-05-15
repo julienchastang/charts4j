@@ -69,7 +69,7 @@ public interface BarChartPlot extends Curve {
 
     /**
      * Sets the color on an individual bar at a given index.
-     * 
+     *
      * @param color
      *            the color of the bar
      * @param index
@@ -156,7 +156,7 @@ public interface BarChartPlot extends Curve {
 
         /**
          * Instantiates a new bar color.
-         * 
+         *
          * @param color
          *            the color
          * @param index
@@ -170,7 +170,7 @@ public interface BarChartPlot extends Curve {
 
         /**
          * Get the colored bar index.
-         * 
+         *
          * @return the index
          */
         int getIndex() {
@@ -179,7 +179,7 @@ public interface BarChartPlot extends Curve {
 
         /**
          * Get the colored bar color.
-         * 
+         *
          * @return the color
          */
         Color getColor() {

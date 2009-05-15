@@ -37,7 +37,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class RadarChartExample {
@@ -109,5 +109,5 @@ public class RadarChartExample {
         Logger.global.info(url);
         String expectedString = "http://chart.apis.google.com/chart?cht=r&chxt=y,x&chls=4,1,0&chco=CC3366&chs=400x400&chts=000000,20&chxr=0,0.0,100.0&chd=e:zMgAgAzMmZzM&chtt=Simple+Radar+Chart&chxp=0,0,20,40,60,80,100&chxs=0,000000,12,1|1,000000,12,0&chxl=1:|Maths|Arts|French|German|Music&chm=s,CC3366,0,-1,12,0|s,FFFFFF,0,-1,8,0";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
-    }    
+    }
 }

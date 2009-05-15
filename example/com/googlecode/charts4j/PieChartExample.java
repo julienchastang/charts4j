@@ -36,7 +36,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class PieChartExample {
@@ -65,7 +65,7 @@ public class PieChartExample {
         String expectedString = "http://chart.apis.google.com/chart?cht=p3&chs=500x200&chts=000000,16&chd=e:TNTNTNGa&chtt=A+Better+Web&chco=CACACA,DF7417,951800,01A1DB&chdl=Apple|Mozilla|Google|Microsoft&chl=Safari|Firefox|Chrome|Internet+Explorer";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
-    
+
     @Test
     public void example2() {
         // EXAMPLE CODE START

@@ -54,7 +54,7 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
 
     /** List of right axis labels. **/
     private final List<AxisLabelsImpl> rightAxisLabels = Lists.newLinkedList();
-    
+
     /** List of free markers. **/
     private final List<FreeMarker> freeMarkers         = Lists.newLinkedList();
 
@@ -132,8 +132,8 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
         checkNotNull(axisLabels, "axisLabels cannnot be null");
         rightAxisLabels.add((AxisLabelsImpl) axisLabels.klone());
     }
-    
-    
+
+
     /**
      * Add a shape or text marker at any position in this chart. As is true for
      * the rest of the API, specify the position between 0 and 100 along the x
@@ -239,24 +239,24 @@ public abstract class AbstractAxisChart extends AbstractGraphChart implements Gr
         Collections.sort(doubleList);
         return doubleList;
     }
-    
+
     /**
      * Private static inner class to encapsulate a FreeMarker.
      */
     private static class FreeMarker {
-        
+
         /** The marker. */
         private final Marker marker;
-        
+
         /** The x pos. */
-        private final double xPos; 
-        
+        private final double xPos;
+
         /** The y pos. */
         private final double yPos;
 
         /**
          * Instantiates a new free marker.
-         * 
+         *
          * @param marker
          *            the marker
          * @param xPos

@@ -41,7 +41,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class AxisLabelsTest {
@@ -108,7 +108,7 @@ public class AxisLabelsTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chxt=x&chs=200x125&chd=e:AAgA..&chxr=0,0.0,10.0,1.0";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testNewAxisLabelsDoubleDouble1() {
         final LineChart chart = TestUtil.getBasicChart();

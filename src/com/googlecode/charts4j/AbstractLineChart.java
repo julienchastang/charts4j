@@ -63,7 +63,7 @@ abstract class AbstractLineChart extends AbstractMarkableChart {
     @Override
     protected void prepareData() {
         super.prepareData();
-        
+
         final List<Color> colors        = Lists.newLinkedList();
         final List<LineStyle> lStyles   = Lists.newLinkedList();
         final List<Priority> priorities = Lists.newLinkedList();
@@ -129,7 +129,7 @@ abstract class AbstractLineChart extends AbstractMarkableChart {
     protected final ImmutableList<Plot> getLines() {
         return Lists.copyOf(lines);
     }
-    
+
     /**
      * Private convenience method for setting priorities.
      *

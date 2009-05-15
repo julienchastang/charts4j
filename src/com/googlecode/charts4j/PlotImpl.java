@@ -297,7 +297,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
         checkArgument(index >= 0, "index must be >= 0");
         markedPointsList.add(new MarkedPoints(marker, index));
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -324,7 +324,7 @@ final class PlotImpl implements BarChartPlot, Line, RadarPlot, ScatterPlotData, 
     public void addMarkers(final Marker marker, final int n) {
         addMarkers(marker, 0, yData.getSize(), n);
     }
-    
+
     /**
      * {@inheritDoc}
      */

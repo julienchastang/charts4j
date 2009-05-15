@@ -123,7 +123,7 @@ public final class DataUtil {
     public static Data scale(final double... data) {
         checkNotNull(data, "data is null or contents of data is null.");
         final double min = Collections.min(PrimitiveArrays.asList(data));
-        final double max = Collections.max(PrimitiveArrays.asList(data));        
+        final double max = Collections.max(PrimitiveArrays.asList(data));
         checkArgument(min < max, "Cannot scale this data. It is ill conditioned.");
         return Data.newData(privateScale(data, min, max));
     }
@@ -145,7 +145,7 @@ public final class DataUtil {
         checkContentsNotNull(data, "data is null or contents of data is null.");
         return scale(toDoubleArray(Lists.copyOf(data)));
     }
-    
+
     /**
      * This method is for scaling multiple data series at once. It is useful in
      * situations where you have multiple plots in one chart, and you want the
@@ -153,11 +153,11 @@ public final class DataUtil {
      * the minimum and maximum data points found for all data. The returned
      * scaled {@link Data} list can be plotted with the guarantee that all the
      * plots will fit on the chart.
-     * 
+     *
      * @param data
      *            the data. The first index is the data series index. The second
      *            is the data series.
-     * 
+     *
      * @return the list of Data objects that can then be plotted.
      */
     public static List<Data> scale(final double data[][]) {
@@ -176,7 +176,7 @@ public final class DataUtil {
         }
         return list;
     }
-    
+
     /**
      * This method is for scaling multiple data series at once. It is useful in
      * situations where you have multiple plots in one chart, and you want the
@@ -184,10 +184,10 @@ public final class DataUtil {
      * the minimum and maximum data points found for all data. The returned
      * scaled {@link Data} list can be plotted with the guarantee that all the
      * plots will fit on the chart.
-     * 
+     *
      * @param data
      *            the data.
-     * 
+     *
      * @return the list of Data objects that can then be plotted.
      */
     public static List<Data> scale(final List<? extends List<? extends Number>> data) {

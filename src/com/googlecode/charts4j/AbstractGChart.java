@@ -34,7 +34,7 @@ import com.googlecode.charts4j.parameters.SolidFillType;
 
 /**
  * Contains code common to all charts.
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 abstract class AbstractGChart implements GChart {
@@ -150,10 +150,10 @@ abstract class AbstractGChart implements GChart {
         checkNotNull(dataEncoding, "The data encoding cannot be null");
         this.dataEncoding = dataEncoding;
     }
-    
+
     /**
      * {@inheritDoc}
-     */    
+     */
     public void setMargins(final int leftMargin, final int rightMargin, final int topMargin, final int bottomMargin) {
         this.margins = new Margins(leftMargin, rightMargin, topMargin, bottomMargin);
     }
@@ -194,22 +194,22 @@ abstract class AbstractGChart implements GChart {
      * Inner class that encapsulates the chart margins.
      */
     private static final class Margins {
-        
+
         /** The left margin. */
-        private final int leftMargin; 
-        
+        private final int leftMargin;
+
         /** The right margin. */
         private final int rightMargin;
-        
+
         /** The top margin. */
         private final int topMargin;
-        
+
         /** The bottom margin. */
         private final int bottomMargin;
-        
+
         /**
          * Define the chart margins.
-         * 
+         *
          * @param bottomMargin
          *            the bottom margin
          * @param leftMargin

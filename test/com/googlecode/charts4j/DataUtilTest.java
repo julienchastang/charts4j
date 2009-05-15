@@ -43,7 +43,7 @@ import com.googlecode.charts4j.collect.PrimitiveArrays;
 
 /**
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
- * 
+ *
  */
 public class DataUtilTest {
 
@@ -91,7 +91,7 @@ public class DataUtilTest {
         Logger.global.info(data.toString());
         assertEquals("Junit error", "[10.0, 20.0, 30.0, 40.0, 50.0, 60.0]", data.toString());
     }
-    
+
     @Test
     public void testScaleData4() {
         double d0[] = new double[] {4, 5, 6};
@@ -100,7 +100,7 @@ public class DataUtilTest {
         List<Data> data = DataUtil.scale(d);
         assertEquals("Junit error", "[[40.0, 50.0, 60.0], [0.0, 50.0, 100.0]]", data.toString());
     }
-    
+
     @Test
     public void testScaleData5() {
         double d0[] = new double[] {4, 5, 6};

@@ -29,24 +29,24 @@ import org.junit.Ignore;
 
 /**
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
- * 
+ *
  */
 @Ignore
 class TestUtil {
 
     /**
      * Get a basic chart.
-     * 
+     *
      * @return Get a basic chart.
      */
     static LineChart getBasicChart() {
         final Plot plot = Plots.newPlot(Data.newData(0, 50, 100));
         return GCharts.newLineChart(plot);
     }
-    
+
     /**
      * Get a basic bar chart.
-     * 
+     *
      * @return Get a basic bar chart.
      */
     static BarChart getBasicBarChart() {
@@ -57,7 +57,7 @@ class TestUtil {
 
     /**
      * Get a basic line.
-     * 
+     *
      * @return Get a basic line.
      */
     static Line getBasicLine() {

@@ -44,20 +44,20 @@ import com.googlecode.charts4j.parameters.ChartType;
  * @see GCharts
  */
 public class PieChart extends AbstractGraphChart {
-    
+
     /** Is this a 3D pie chart. */
     private boolean                    threeD = false;
 
     /** An immutable list of slices for this pie.  */
     private final ImmutableList<Slice> slices;
-        
+
     /** The pie chart orientation radians.  */
     private double orientation = Double.NaN;
 
     /**
      * Set the pie chart orientation in radians. Positive values will rotate the
      * chart clockwise.
-     * 
+     *
      * @param radians
      *            the orientation to set in radians
      */
@@ -114,7 +114,7 @@ public class PieChart extends AbstractGraphChart {
             }
             sum += slice.getPercentage();
         }
-        
+
         for (Slice slice : slices) {
             d[i++] = (slice.getPercentage()/sum)*100;
             parameterManager.addPieChartAndGoogleOMeterLegend(slice.getLabel() != null ? slice.getLabel() : "");

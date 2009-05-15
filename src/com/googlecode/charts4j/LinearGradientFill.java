@@ -63,7 +63,7 @@ public class LinearGradientFill extends AbstractLinearFill {
         super(linearGradientFill.getAngle());
         colorsAndOffsets.addAll(linearGradientFill.colorsAndOffsets);
     }
-    
+
     /**
      * {@inheritDoc}
      */

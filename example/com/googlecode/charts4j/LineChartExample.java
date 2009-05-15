@@ -37,7 +37,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class LineChartExample {
@@ -51,7 +51,7 @@ public class LineChartExample {
     public void example1() {
 
         // EXAMPLE CODE START
-        
+
         // Defining lines
         final int NUM_POINTS = 25;
         final double[] competition = new double[NUM_POINTS];
@@ -98,7 +98,7 @@ public class LineChartExample {
         chart.addXAxisLabels(xAxis3);
         chart.addYAxisLabels(yAxis);
         chart.addYAxisLabels(yAxis2);
-       
+
         // Defining background and chart fills.
         chart.setBackgroundFill(Fills.newSolidFill(Color.newColor("1F1D1D")));
         LinearGradientFill fill = Fills.newLinearGradientFill(0, Color.newColor("363433"), 100);
@@ -111,7 +111,7 @@ public class LineChartExample {
         String expectedString = "http://chart.apis.google.com/chart?chco=CA3D05,87CEEB&chd=e:AAB4DhEzFxGnHrJRLhOZRmUpXCYZYpYAXCWfXCZIczhmmtrKuE,..-H8e7M6O5Y4U2u0exmuZrWo9nmnWn.o9pgo9m3jMeZZSU1R7&chdl=My+Website.com|Competition.com&chf=bg,s,1F1D1D|c,lg,0,363433,1.0,2E2B2A,0.0&chg=25.0,25.0,3,2&chls=3,1,0|3,1,0&chm=r,FF00004C,0,0.40,0.60|R,0080004C,0,0.70,0.90|d,CA3D05,0,-1,12,0|d,FFFFFF,0,-1,8,0|d,87CEEB,1,-1,12,0|d,FFFFFF,1,-1,8,0&chs=600x450&cht=lc&chts=FFFFFF,14&chtt=Web+Traffic%7C%28in+billions+of+hits%29&chxl=0:||25|50|75|100|1:|Hits|2:|Nov|Dec|Jan|Feb|Mar|3:|2007|2007|2008|2008|2008|4:|Month&chxp=1,50.0|4,50.0&chxr=1,0.0,100.0|4,0.0,100.0&chxs=0,FFFFFF,12,0|1,FFFFFF,12,0|2,FFFFFF,12,0|3,FFFFFF,12,0|4,FFFFFF,14,0&chxt=y,y,x,x,x";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
-    
+
     @Test
     public void example2() {
         // EXAMPLE CODE START
@@ -119,13 +119,13 @@ public class LineChartExample {
         final double[] sp500 = { 62.960, 74.560, 84.300, 92.200, 95.890, 103.800, 91.600, 92.270, 96.870, 116.930, 97.540, 67.160, 89.770, 106.880, 94.750, 96.280, 107.840, 135.330, 122.300, 140.340, 164.860, 166.260, 210.680, 243.370,
                 247.840, 277.080, 350.680, 328.710, 415.140, 438.820, 468.660, 460.920, 614.120, 753.850, 970.840, 1231.93, 1464.47, 1334.22, 1161.02, 879.390, 1109.64, 1213.55, 1258.17, 1424.71, 1475.25 };
         final double INFLATION = 0.035;
-        
+
         final double[] inflation = new double[sp500.length];
         inflation[0] = sp500[0];
         for (int i = 1; i < inflation.length; i++) {
             inflation[i] = inflation[i-1] *INFLATION + inflation[i-1];
         }
-        
+
         Line line1 = Plots.newLine(DataUtil.scaleWithinRange(0,1500,sp500), YELLOW, "S & P 500");
         line1.setLineStyle(LineStyle.newLineStyle(3, 1, 0));
         line1.addShapeMarkers(Shape.CIRCLE, YELLOW, 10);
@@ -135,7 +135,7 @@ public class LineChartExample {
         line1.addShapeMarker(Shape.VERTICAL_LINE_PARTIAL, BLUE,3,24);
         line1.addShapeMarker(Shape.VERTICAL_LINE_PARTIAL, BLUE,3,40);
         line1.setFillAreaColor(LIGHTYELLOW);
-        
+
         Line line2 = Plots.newLine(DataUtil.scaleWithinRange(0,1500,inflation), LIMEGREEN, "Inflation");
         line2.setLineStyle(LineStyle.newLineStyle(3, 1, 0));
         line2.addShapeMarkers(Shape.CIRCLE, LIME, 10);

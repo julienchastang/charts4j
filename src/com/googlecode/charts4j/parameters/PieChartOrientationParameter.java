@@ -27,7 +27,7 @@ package com.googlecode.charts4j.parameters;
 
 /**
  * <b>For Charts4J internal use only.</b> Pie chart orientation.
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 final class PieChartOrientationParameter implements Parameter {
@@ -40,7 +40,7 @@ final class PieChartOrientationParameter implements Parameter {
 
     /**
      * Instantiates a new pie chart orientation.
-     * 
+     *
      * @param orientation
      *            the orientation in radians
      */

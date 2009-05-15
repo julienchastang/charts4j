@@ -46,7 +46,7 @@ public interface GraphChart {
 
     /**
      * Specify the legend margins.
-     * 
+     *
      * @param legendWidth
      *            the legend width
      * @param legendHeight

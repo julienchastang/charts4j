@@ -101,7 +101,7 @@ public interface Plot extends Kloneable<Plot> {
      *            0.
      */
     void addMarker(final Marker marker, final int index);
-    
+
     /**
      * Add a {@link Marker} to each point on a plot.
      *
@@ -109,20 +109,20 @@ public interface Plot extends Kloneable<Plot> {
      *            The text or shape marker. Cannot be null.
      */
     void addMarkers(final Marker marker);
-    
+
     /**
      * Add a {@link Marker}.
-     * 
+     *
      * @param marker
      *            The text or shape marker. Cannot be null.
      * @param n
      *            Marker on every n-th data point. Must be >= 1.
      */
     void addMarkers(final Marker marker, final int n);
-    
+
     /**
      * Add a {@link Marker}.
-     * 
+     *
      * @param marker
      *            The text or shape marker. Cannot be null.
      * @param startIndex
@@ -134,10 +134,10 @@ public interface Plot extends Kloneable<Plot> {
      *            Marker on every n-th data point. Must be >= 1.
      */
     void addMarkers(final Marker marker, final int startIndex, final int endIndex, final int n);
-    
+
     /**
      * Add {@link Marker}s.
-     * 
+     *
      * @param marker
      *            The text or shape marker. Cannot be null.
      * @param startIndex

@@ -74,7 +74,7 @@ final class AxisStylesParameter implements Parameter {
 
         /** Draw tick marks. */
         private static final String DRAW_TICK_MARKS = "t";
-        
+
         /** Draw axis lines. */
         private static final String DRAW_AXIS_LINE = "l";
 
@@ -107,13 +107,13 @@ final class AxisStylesParameter implements Parameter {
             sb.append(axisStyle.getTickMarkColor() != null ? "," + axisStyle.getTickMarkColor() : "");
             return sb.toString();
         }
-        
+
         /**
          * Build the drawing control string.
-         * 
+         *
          * @param axisStyle
          *            the axis style
-         * 
+         *
          * @return the drawing control string
          */
         private String getDrawingControlString(final AxisStyle axisStyle) {

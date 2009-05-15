@@ -41,7 +41,7 @@ interface LinePlot extends Curve{
      *            The line style to set. Cannot be null.
      */
     void setLineStyle(final LineStyle lineStyle);
-    
+
     /**
      * Set the priority.
      *

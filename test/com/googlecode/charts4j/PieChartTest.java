@@ -39,7 +39,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class PieChartTest {
@@ -105,7 +105,7 @@ public class PieChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chco=808080,0000FF&chd=e:czczGa&chdl=A||B&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+3";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void fillTest() {
         final Slice s1 = Slice.newSlice(45, GRAY, "Safari", "X");
@@ -122,7 +122,7 @@ public class PieChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chco=808080,FF4500,0000FF&chd=e:czczGa&chdl=X|Y|Z&chf=bg,s,D3D3D3|c,s,000000&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+1";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void orientationTest() {
         final Slice s1 = Slice.newSlice(450, "Safari");

@@ -39,7 +39,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class XYLineChartTest {
@@ -98,7 +98,7 @@ public class XYLineChartTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=lxy&chco=0000FF&chs=400x400&chd=e:GaHCHrgA,TNGaTNMz";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testLineStyle() {
 

@@ -47,10 +47,10 @@ final class MarginsParameter implements Parameter {
 
     /** The legend margins. */
     private LegendMargins       legendMargins;
-    
+
     /**
      * Set the chart margins.
-     * 
+     *
      * @param bottomMargin
      *            the bottom margin
      * @param leftMargin
@@ -70,7 +70,7 @@ final class MarginsParameter implements Parameter {
 
     /**
      * Sets the legend margins.
-     * 
+     *
      * @param width
      *            the legend width
      * @param height
@@ -100,7 +100,7 @@ final class MarginsParameter implements Parameter {
 
         /**
          * Instantiates a new legend margins.
-         * 
+         *
          * @param height
          *            the legend height
          * @param width

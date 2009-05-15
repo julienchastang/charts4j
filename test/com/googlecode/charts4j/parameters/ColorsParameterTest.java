@@ -44,7 +44,7 @@ import com.googlecode.charts4j.collect.ImmutableList;
 import com.googlecode.charts4j.collect.Lists;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class ColorsParameterTest {

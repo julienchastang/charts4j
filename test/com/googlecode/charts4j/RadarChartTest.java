@@ -39,7 +39,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class RadarChartTest {
@@ -82,7 +82,7 @@ public class RadarChartTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=r&chs=500x500&chd=e:GaMzTNZmgAmZszzM5m";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     /**
      * Testing radar charts with grids
      */
@@ -96,7 +96,7 @@ public class RadarChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chd=e:GaMzTNZmgAmZszzM5m&chg=10.0,10.0,2,2&chs=500x500&cht=r";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     /**
      * Testing radar charts with range markers
      */
@@ -177,7 +177,7 @@ public class RadarChartTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=rs&chs=500x500&chxt=x&chco=FF4500&chm=B,0000FF8C,0,0,0&chd=e:AAMzTNZmgAmZszzMAA&chxl=0:|0|45|90|135|180|225|270|315&chtt=A+shell";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     /**
      * Testing radar chart plot priorities.
      */

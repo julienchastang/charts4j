@@ -187,7 +187,7 @@ public final class RadarChart implements GChart, GraphChart, TitledChart, GridCh
     public void setDataEncoding(final DataEncoding dataEncoding) {
         radarChart.setDataEncoding(dataEncoding);
     }
-    
+
     /**
      * {@inheritDoc}
      */

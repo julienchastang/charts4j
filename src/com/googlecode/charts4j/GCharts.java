@@ -374,7 +374,7 @@ public final class GCharts {
     public static GoogleOMeter newGoogleOMeter(final double data) {
         return newGoogleOMeter(data, null, null, Lists.<Color>of());
     }
-    
+
     /**
      * Create a {@link GoogleOMeter}.
      *
@@ -403,14 +403,14 @@ public final class GCharts {
     public static GoogleOMeter newGoogleOMeter(final double data, final String label, final List<? extends Color> colors) {
         return newGoogleOMeter(data, label, null, colors);
     }
-    
+
     /**
      * @see GCharts#newGoogleOMeter(double, String, String, List)
      */
     public static GoogleOMeter newGoogleOMeter(final double data, final String label, final String legend, final Color... colors) {
         return newGoogleOMeter(data, label, legend, Lists.of(colors));
     }
-    
+
     /**
      * Create a {@link GoogleOMeter}.
      *

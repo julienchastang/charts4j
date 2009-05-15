@@ -39,7 +39,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class BarChartTest {
@@ -175,7 +175,7 @@ public class BarChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chbh=23,4,30&chco=0000FF,FF0000&chd=e:AAQAgAv...,AAQAgAv...&chs=400x200&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testSetBarWidth() {
         BarChartPlot data1 = Plots.newBarChartPlot(Data.newData(0, 25, 50, 75, 100), BLUE);
@@ -184,10 +184,10 @@ public class BarChartTest {
         chart.setSize(400, 200);
         chart.setBarWidth(30);
         Logger.global.info(chart.toURLString());
-        String expectedString = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAQAgAv...,AAQAgAv...&chco=0000FF,FF0000&chbh=30,4,8&cht=bvg";        
+        String expectedString = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAQAgAv...,AAQAgAv...&chco=0000FF,FF0000&chbh=30,4,8&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testSetSpaceWithinGroupsOfBars() {
         BarChartPlot data1 = Plots.newBarChartPlot(Data.newData(0, 25, 50, 75, 100), BLUE);
@@ -196,10 +196,10 @@ public class BarChartTest {
         chart.setSize(400, 200);
         chart.setSpaceWithinGroupsOfBars(30);
         Logger.global.info(chart.toURLString());
-        String expectedString = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAQAgAv...,AAQAgAv...&chco=0000FF,FF0000&chbh=23,30,8&cht=bvg";        
+        String expectedString = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAQAgAv...,AAQAgAv...&chco=0000FF,FF0000&chbh=23,30,8&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testDifferentColoredBars() {
         BarChartPlot data1 = Plots.newBarChartPlot(Data.newData(10, 25, 50, 75, 100), BLUE);
@@ -207,7 +207,7 @@ public class BarChartTest {
         data2.setColor(GREEN, 0);
         BarChart chart = GCharts.newBarChart(data1,data2);
         Logger.global.info(chart.toURLString());
-        String expectedString = "http://chart.apis.google.com/chart?cht=bvg&chbh=23,4,8&chs=200x125&chd=e:GaQAgAv...,..v.gAWZGa&chco=0000FF,008000|FF0000|FF0000|FF0000|FF0000";        
+        String expectedString = "http://chart.apis.google.com/chart?cht=bvg&chbh=23,4,8&chs=200x125&chd=e:GaQAgAv...,..v.gAWZGa&chco=0000FF,008000|FF0000|FF0000|FF0000|FF0000";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 
@@ -219,7 +219,7 @@ public class BarChartTest {
         chart.setSize(400, 200);
         chart.setBarWidth(BarChart.AUTO_RESIZE);
         Logger.global.info(chart.toURLString());
-        String expectedString = "http://chart.apis.google.com/chart?chbh=a,4,8&chco=0000FF,FF0000&chd=e:DNQAgAv...,DNQAgAv...&chs=400x200&cht=bvg";        
+        String expectedString = "http://chart.apis.google.com/chart?chbh=a,4,8&chco=0000FF,FF0000&chd=e:DNQAgAv...,DNQAgAv...&chs=400x200&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 }

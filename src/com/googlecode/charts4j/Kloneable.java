@@ -30,14 +30,14 @@ package com.googlecode.charts4j;
  * reference you do not want to escape. Implementors will supply a properly
  * written method for deep cloning. Internally you may wish to rely on the copy
  * constructor.
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public interface Kloneable<T> {
 
     /**
      * Deep clone of this object.
-     * 
+     *
      * @return the brand new object.
      */
     public T klone();

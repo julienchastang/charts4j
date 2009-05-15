@@ -70,7 +70,7 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
         this.range = axisLabels.range;
 
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -146,7 +146,7 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
 
         /** The maximum of the axis range. **/
         private final double max;
-        
+
         /** The numeric label interval. **/
         private final double interval;
 
@@ -183,7 +183,7 @@ class AxisLabelsImpl implements AxisLabels, RadialAxisLabels {
         double getMin() {
             return min;
         }
-        
+
         /**
          * Get the numeric interval
          *

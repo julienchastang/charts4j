@@ -62,7 +62,7 @@ public class Slice {
         this.percent = percent;
         this.color = color;
         this.label = sliceLabel;
-        this.legend = sliceLegend; 
+        this.legend = sliceLegend;
     }
 
     /**
@@ -92,7 +92,7 @@ public class Slice {
     public final String getLabel() {
         return label;
     }
-    
+
     /**
      * Get the pie slice legend.
      *

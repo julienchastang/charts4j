@@ -43,7 +43,7 @@ import com.googlecode.charts4j.collect.Lists;
 
 /**
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
- * 
+ *
  */
 public class GoogleOMeterTest {
 
@@ -83,7 +83,7 @@ public class GoogleOMeterTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=gom&chs=200x125&chd=e:..";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void basicTest2() {
         GoogleOMeter chart = GCharts.newGoogleOMeter(10, "Slow");
@@ -119,7 +119,7 @@ public class GoogleOMeterTest {
         }
         fail();// Should not happen
     }
-    
+
     @Test
     public void fillAndTitleTest() {
         GoogleOMeter chart = GCharts.newGoogleOMeter(100);
@@ -131,5 +131,5 @@ public class GoogleOMeterTest {
         Logger.global.info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:..&chf=bg,lg,0,FF0000,1.0,0000FF,0.0|c,s,D3D3D3&chs=200x125&cht=gom&chts=FFFFFF,12&chtt=Title+Test";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
-    }    
+    }
 }

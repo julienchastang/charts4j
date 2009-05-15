@@ -39,7 +39,7 @@ import org.junit.Test;
 import com.googlecode.charts4j.collect.Lists;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class AxisLabelPositionsParameterTest {

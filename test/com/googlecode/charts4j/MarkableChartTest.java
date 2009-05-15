@@ -40,7 +40,7 @@ import org.junit.Test;
 
 /**
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
- * 
+ *
  */
 public class MarkableChartTest {
 
@@ -158,7 +158,7 @@ public class MarkableChartTest {
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chs=400x300&chco=008000&chm=d,0000FF,0,1,20,1|o,FF0000,0,2,20,-1&chd=e:AAczWZv...";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testShapeMarkedPoints() {
         // Defining Line
@@ -172,7 +172,7 @@ public class MarkableChartTest {
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAczWZv...GaMzTN&chm=d,0000FF,0,0:7:1,20,1&chs=400x300&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
-    
+
     @Test
     public void testTextMarkedPoints() {
         // Defining Line

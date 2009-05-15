@@ -30,7 +30,7 @@ import static com.googlecode.charts4j.collect.Preconditions.checkNotNull;
 
 /**
  * Type for specifying axis styles.
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  * @see AxisLabels
  * @see AxisLabelsFactory
@@ -62,13 +62,13 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
         this.fontSize = fontSize;
         this.alignment = alignment;
     }
-    
+
     /**
      * Copy constructor.
-     * 
+     *
      * @param axisStyle
      *            the axis style
-     * 
+     *
      * @return the axis style
      */
     private AxisStyle (final AxisStyle axisStyle) {
@@ -77,7 +77,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
         this.tickMarkColor = axisStyle.tickMarkColor;
         this.tickMarkLength = axisStyle.tickMarkLength;
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -87,7 +87,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
 
     /**
      * Get the text color.
-     * 
+     *
      * @return the text color
      */
     public Color getTextColor() {
@@ -96,7 +96,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
 
     /**
      * Get the text font size.
-     * 
+     *
      * @return the text fontSize
      */
     public int getFontSize() {
@@ -105,7 +105,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
 
     /**
      * Get the text alignment with respect to the tick mark.
-     * 
+     *
      * @return the alignment
      */
     public AxisTextAlignment getAlignment() {
@@ -114,7 +114,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
 
     /**
      * Are the tick marks drawn?
-     * 
+     *
      * @return are the tick marks displayed? Can be null if it was never set.
      */
     public Boolean drawTickMarks() {
@@ -123,7 +123,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
 
     /**
      * The developer can override default tick mark behavior with this method.
-     * 
+     *
      * @param drawTickMarks
      *            Are the tick marks displayed?
      */
@@ -133,7 +133,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
 
     /**
      * Get the tick mark length. Can be negative.
-     * 
+     *
      * @return the tickMarkLength
      */
     public Integer getTickMarkLength() {
@@ -143,7 +143,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
     /**
      * Set the tick mark length. Can be negative. Will also implicitly call
      * {@link #setDrawTickMarks(boolean)} with true.
-     * 
+     *
      * @param tickMarkLength
      *            the tickMarkLength to set
      */
@@ -154,7 +154,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
 
     /**
      * Get the tick mark color.
-     * 
+     *
      * @return the tickMarkColor
      */
     public Color getTickMarkColor() {
@@ -164,7 +164,7 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
     /**
      * Set the tick mark color. Will also implicitly call
      * {@link #setDrawTickMarks(boolean)} with true.
-     * 
+     *
      * @param tickMarkColor
      *            the tickMarkColor to set
      */
@@ -193,8 +193,8 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
         checkNotNull(alignment, "alignment must not be null");
         return new AxisStyle(textColor, fontSize, alignment);
     }
-    
-    
+
+
     /**
      * Here is the deal with this very strange copy constructor. There is
      * currently a bug in the Google Chart API where the alignment is reversed
@@ -204,12 +204,12 @@ public final class AxisStyle implements Kloneable<AxisStyle> {
      * alignments are *correct* for the radar chart's concentric axis labels, so
      * there is no need for this adjustment with radar charts. For more
      * information, see the discussion here:
-     * 
+     *
      * http://groups.google.com/group/google-chart-api/browse_thread/thread/c70760a4437cf945/810fa2ef6dbddd1d?show_docid=810fa2ef6dbddd1d
-     * 
+     *
      * @param axisStyle
      *            the axis style
-     * 
+     *
      * @return the axis style
      */
     static AxisStyle correctAxisStyle(final AxisStyle axisStyle) {

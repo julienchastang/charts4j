@@ -40,7 +40,7 @@ import com.googlecode.charts4j.Data;
 import com.googlecode.charts4j.DataEncoding;
 
 /**
- * 
+ *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
 public class DataParameterTest {
