@@ -27,7 +27,6 @@ package com.googlecode.charts4j;
 
 import static com.googlecode.charts4j.collect.Preconditions.*;
 
-import java.util.Locale;
 
 /**
  * RGB Color for all charts. There are many predefined colors defined herein
@@ -534,7 +533,8 @@ public class Color {
         // Bit shifting 3 bytes should yield 0 for rgb colors.
         checkArgument((colorInt >> 24) == 0, "%s is not a valid color.", color);
         checkArgument(color.length() == 6, "%s is not a valid color. (Must be 6 charcters long).", color);
-        return color.toUpperCase(Locale.US);
+        // GWT doesnt support Locale.*
+        return color.toUpperCase();
     }
 
     /**
@@ -547,7 +547,8 @@ public class Color {
      */
     private String validateOpacity(final int opacityInt) {
         checkArgument((opacityInt >= MIN_OPACITY && opacityInt <= MAX_OPACITY), "%s is not a valid opacity.", opacityInt);
-        final String s = Integer.toHexString((int) (opacityInt / 100d * (0xff))).toUpperCase(Locale.US);
+        // GWT doesnt support Locale.*
+        final String s = Integer.toHexString((int) (opacityInt / 100d * (0xff))).toUpperCase();
         return (s.length() == 1) ? "0" + s : s;
     }
 

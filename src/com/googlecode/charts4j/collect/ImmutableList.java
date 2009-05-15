@@ -25,6 +25,7 @@
 
 package com.googlecode.charts4j.collect;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -199,7 +200,14 @@ public final class ImmutableList<E> implements List<E>, RandomAccess {
      * {@inheritDoc}
      */
     public List<E> subList(final int fromIndex, final int toIndex) {
-        return list.subList(fromIndex, toIndex);
+        
+	// GWT doesnt support .subList(from, to);
+	List<E> subList = new ArrayList<E>();
+	for (int i = fromIndex; i < toIndex; i++) {
+	    subList.add(list.get(i));
+	}
+	return subList;
+	
     }
 
     /**

@@ -54,7 +54,10 @@ import com.googlecode.charts4j.collect.Maps;
 public final class ParameterManager {
 
     /** The parameter map. */
-    private final Map<Class<? extends Parameter>, Parameter> parameterMap = Maps.newHashMap();
+    private final Map<Class<? extends Parameter>, Parameter> newParameterMap = Maps.newHashMap();
+
+    /** The parameter map. */
+    private final Map<Class<? extends Parameter>, Parameter> parameterMap    = Maps.newHashMap();
 
     /** The Google Chart API URL. */
     private String                                     url;
@@ -74,6 +77,23 @@ public final class ParameterManager {
     public void init(final String url) {
         this.url = url;
         parameterMap.clear();
+        newParameterMap.put(AxisLabelPositionsParameter.class, new AxisLabelPositionsParameter());
+        newParameterMap.put(AxisLabelsParameter.class, new AxisLabelsParameter());
+        newParameterMap.put(AxisRangesParameter.class, new AxisRangesParameter());
+        newParameterMap.put(AxisStylesParameter.class, new AxisStylesParameter());
+        newParameterMap.put(AxisTypesParameter.class, new AxisTypesParameter());
+        newParameterMap.put(BarChartZeroLinesParameter.class, new BarChartZeroLinesParameter());
+        newParameterMap.put(ChartFillsParameter.class, new ChartFillsParameter());
+        newParameterMap.put(ChartMarkersParameter.class, new ChartMarkersParameter());
+        newParameterMap.put(ColorsParameter.class, new ColorsParameter());
+        newParameterMap.put(DataLegendsParameter.class, new DataLegendsParameter());
+        newParameterMap.put(DataParameter.class, new DataParameter());
+        newParameterMap.put(GeoCodesParameter.class, new GeoCodesParameter());
+        newParameterMap.put(LineChartLineStylesParameter.class, new LineChartLineStylesParameter());
+        newParameterMap.put(MarginsParameter.class, new MarginsParameter());
+        newParameterMap.put(PieChartAndGoogleOMeterLegendParameter.class, new PieChartAndGoogleOMeterLegendParameter());
+        newParameterMap.put(TickMarkLengthParameter.class, new TickMarkLengthParameter());
+
     }
 
     /**
@@ -575,18 +595,12 @@ public final class ParameterManager {
      * @throws ParameterInstantiationException
      *             if the parameter could not be instantiated
      */
+    @SuppressWarnings("unchecked")
     private <T extends Parameter> T getParameter(final Class<T> clazz) throws ParameterInstantiationException {
         // Should always be safe.
-        @SuppressWarnings("unchecked")
         T p = (T) parameterMap.get(clazz);
         if (p == null) {
-            try {
-                p = clazz.newInstance();
-            } catch (InstantiationException e) {
-                throw new ParameterInstantiationException("Internal error: Could not instatiate " + clazz.getName(), e);
-            } catch (IllegalAccessException e) {
-                throw new ParameterInstantiationException("Internal error: Could not instatiate " + clazz.getName(), e);
-            }
+            p = (T) newParameterMap.get(clazz);
             parameterMap.put(clazz, p);
         }
         return p;
