@@ -127,9 +127,12 @@ public interface GChart {
      * JFreeChart has a Google Chart API emulation called <a
      * href="http://www.jfree.org/eastwood/">Eastwood</a>. API users can supply
      * the Eastwood servlet address as the end point URL.
-     *
+     * 
      * @param urlEndpoint
      *            the new chart url endpoint
+     * 
+     * @see <a href="http://www.jfree.org/eastwood/">See JFreeChart Eastwood
+     *      Servlet< /a>
      */
-    public void setURLEndpoint(final String urlEndpoint);
+   public void setURLEndpoint(final String urlEndpoint);
 }
