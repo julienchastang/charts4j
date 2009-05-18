@@ -65,10 +65,11 @@
 		<mkdir dir="${build.dir}/dist/${app.name}-${version}/lib" />
 		<jar jarfile="${build.dir}/dist/${app.name}-${version}/lib/${app.name}-${version}.jar">
 			<fileset dir="${build.dir}/classes" />
+			<fileset dir="${src.dir}" />
 		</jar>
 	</target>
 
-	<target name="dist" depends="clean,test, jar, javadoc" description="Build entire distribution.">
+	<target name="dist" depends="clean, jar, javadoc" description="Build entire distribution.">
 		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="COPYING" />
 		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="README" />
 		<copy toDir="${build.dir}/dist/${app.name}-${version}">
