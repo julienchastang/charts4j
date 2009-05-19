@@ -135,8 +135,7 @@ public interface GChart {
      * @param urlEndpoint
      *            the new chart url endpoint
      *
-     * @see <a href="http://www.jfree.org/eastwood/">JFreeChart Eastwood *
-     *      Servlet< /a>
+     * @see <a href="http://www.jfree.org/eastwood/">JFreeChart Eastwood Servlet</a>
      */
    public void setURLEndpoint(final String urlEndpoint);
 }
