@@ -3,20 +3,10 @@
 
 	<property environment="env" />
 	<property file="build.properties" />
-	<property name="junit.jar" value="lib/junit-4.4.jar" />
 	<property name="gwt.jar" value="lib/gwt-user-1.6.4.jar" />
 
 	<path id="compile.classpath">
-		<pathelement location="${junit.jar}" />
 		<pathelement location="${gwt.jar}" />
-	</path>
-
-	<path id="test.classpath">
-		<pathelement location="${junit.jar}" />
-		<pathelement location="${gwt.jar}" />
-		<pathelement location="${build.dir}/classes" />
-		<pathelement location="${build.dir}/test" />
-		<pathelement location="${build.dir}/example" />
 	</path>
 
 	<target name="compile" description="Compile Java source.">
@@ -24,37 +14,6 @@
 		<javac srcdir="${src.dir}" debug="on" destdir="${build.dir}/classes">
 			<classpath refid="compile.classpath" />
 		</javac>
-	</target>
-
-	<target name="test.compile" depends="compile" description="Compile test source.">
-		<mkdir dir="${build.dir}/test" />
-		<javac srcdir="${test.dir}" debug="on" destdir="${build.dir}/test">
-			<classpath refid="test.classpath" />
-		</javac>
-	</target>
-
-	<target name="example.compile" depends="compile" description="Compile example source.">
-		<mkdir dir="${build.dir}/example" />
-		<javac srcdir="${example.dir}" debug="on" destdir="${build.dir}/example">
-			<classpath refid="test.classpath" />
-		</javac>
-	</target>
-
-	<target name="test" depends="test.compile, example.compile" description="Tests">
-		<junit showoutput="no" fork="yes" printsummary="no" haltonerror="yes" haltonfailure="yes">
-			<classpath refid="test.classpath" />
-			<formatter usefile="no" type="brief" />
-			<batchtest fork="yes">
-				<fileset dir="${test.dir}">
-					<include name="**/*Test*.java" />
-					<exclude name="**/*Tests.java" />
-				</fileset>
-				<fileset dir="${example.dir}">
-					<include name="**/*Example*.java" />
-					<exclude name="**/*Examples.java" />
-				</fileset>
-			</batchtest>
-		</junit>
 	</target>
 
 	<target name="clean" description="Remove generated files.">
@@ -75,8 +34,6 @@
 		<copy toDir="${build.dir}/dist/${app.name}-${version}">
 			<fileset dir="${build.dir}" includes="javadoc/**/*" />
 			<fileset dir="${root.dir}" includes="src/**/*" />
-			<fileset dir="${root.dir}" includes="test/**/*" />
-			<fileset dir="${root.dir}" includes="example/**/*" />
 			<fileset dir="${root.dir}" includes="lib/**/*" />
 		</copy>
 
