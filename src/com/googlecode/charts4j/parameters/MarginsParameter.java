@@ -28,7 +28,7 @@ package com.googlecode.charts4j.parameters;
 /**
  * Class for defining chart margins.
  */
-final class MarginsParameter implements Parameter {
+final class MarginsParameter extends AbstractParameter {
 
     /** The Google Chart API chart margin parameter. */
     private static final String URL_PARAMETER_KEY = "chma";
@@ -83,9 +83,18 @@ final class MarginsParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
         final String legendMarginsString = legendMargins != null ? "|" + legendMargins.width + "," + legendMargins.height : "";
-        return URL_PARAMETER_KEY + "=" + leftMargin + "," + rightMargin + "," + topMargin + "," + bottomMargin + legendMarginsString;
+        return leftMargin + "," + rightMargin + "," + topMargin + "," + bottomMargin + legendMarginsString;
     }
 
     /**

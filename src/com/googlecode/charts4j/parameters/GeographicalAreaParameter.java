@@ -32,7 +32,7 @@ import com.googlecode.charts4j.GeographicalArea;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class GeographicalAreaParameter implements Parameter {
+final class GeographicalAreaParameter extends AbstractParameter {
 
     /** The Google Chart API geographical parameter. */
     private static final String    URL_PARAMETER_KEY = "chtm";
@@ -53,7 +53,16 @@ final class GeographicalAreaParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        return URL_PARAMETER_KEY + "=" + geographicalArea;
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        return geographicalArea + "";
     }
 }

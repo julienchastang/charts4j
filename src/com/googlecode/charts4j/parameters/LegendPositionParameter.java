@@ -32,7 +32,7 @@ import com.googlecode.charts4j.LegendPosition;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class LegendPositionParameter implements Parameter {
+final class LegendPositionParameter extends AbstractParameter {
 
     /** The Google Chart API legend position parameter. */
     private static final String  URL_PARAMETER_KEY = "chdlp";
@@ -53,7 +53,16 @@ final class LegendPositionParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        return URL_PARAMETER_KEY + "=" + legendPosition;
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        return legendPosition + "";
     }
 }

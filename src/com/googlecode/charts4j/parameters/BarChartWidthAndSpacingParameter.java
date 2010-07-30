@@ -31,7 +31,7 @@ package com.googlecode.charts4j.parameters;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class BarChartWidthAndSpacingParameter implements Parameter {
+final class BarChartWidthAndSpacingParameter extends AbstractParameter {
 
     /** The Google Chart API bar chart width and spacing parameter. */
     private static final String URL_PARAMETER_KEY = "chbh";
@@ -64,7 +64,16 @@ final class BarChartWidthAndSpacingParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        return URL_PARAMETER_KEY + "=" + (width < 1  ? "a" : width) + "," + spaceBetweenBarsInGroup + "," + spaceBetweenGroups;
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        return  (width < 1 ? "a" : width) + "," + spaceBetweenBarsInGroup + "," + spaceBetweenGroups;
     }
 }

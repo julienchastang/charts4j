@@ -28,6 +28,8 @@ package com.googlecode.charts4j;
 import static com.googlecode.charts4j.Color.WHITE;
 import static com.googlecode.charts4j.collect.Preconditions.*;
 
+import java.util.Map;
+
 import com.googlecode.charts4j.parameters.FillType;
 import com.googlecode.charts4j.parameters.ParameterManager;
 import com.googlecode.charts4j.parameters.SolidFillType;
@@ -109,6 +111,15 @@ abstract class AbstractGChart implements GChart {
         checkArgument(height > MIN_HEIGHT && height <= MAX_HEIGHT, "height must be > " + MIN_WIDTH + " and <= " + MAX_WIDTH + ": %s", height);
         this.width = width;
         this.height = height;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public final Map<String, String> getParameters() {
+        parameterManager.init(chartURLEndpoint);
+        prepareData();
+        return parameterManager.getParameterMap();
     }
 
     /**

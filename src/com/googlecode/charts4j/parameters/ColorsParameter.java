@@ -36,7 +36,7 @@ import com.googlecode.charts4j.collect.Lists;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class ColorsParameter implements Parameter {
+final class ColorsParameter extends AbstractParameter {
 
     /** The Google Chart API colors parameter. */
     private static final String URL_PARAMETER_KEY = "chco";
@@ -64,8 +64,17 @@ final class ColorsParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        final StringBuilder sb = new StringBuilder();
         int cnt = 0;
         for (List<Color> l : colors) {
             sb.append(cnt++ > 0 ? "," : "");

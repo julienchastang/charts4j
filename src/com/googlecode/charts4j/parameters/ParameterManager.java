@@ -292,7 +292,6 @@ public final class ParameterManager {
         getParameter(ChartMarkersParameter.class).addFreeMarker(marker, xPos, yPos);
     }
 
-
     /**
      * Adds the vertical range marker.
      *
@@ -532,6 +531,19 @@ public final class ParameterManager {
      */
     public void addPieChartOrientation(final double orientation) {
         parameterMap.put(PieChartOrientationParameter.class, new PieChartOrientationParameter(orientation));
+    }
+
+    /**
+     * Get the parameter map for generating the Google Chart API URL.
+     *
+     * @return the parameterMap
+     */
+    public final Map<String, String> getParameterMap() {
+        final Map<String, String> map = Maps.newHashMap();
+        for (Parameter p : parameterMap.values()) {
+            map.put(p.getKey(), p.getValue());
+        }
+        return Collections.unmodifiableMap(map);
     }
 
     /**

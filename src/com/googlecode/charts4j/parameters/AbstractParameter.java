@@ -26,31 +26,26 @@
 package com.googlecode.charts4j.parameters;
 
 /**
- * <b>For Charts4J internal use only.</b> All implementors of this interface
- * are responsible for creating one Google Chart API URL parameter string.
- *
+ * <b>For Charts4J internal use only.</b>
+ * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-interface Parameter {
+abstract class AbstractParameter implements Parameter {
 
     /**
-     * Get the Google Chart API URL parameter key.
-     * 
-     * @return the string
+     * {@inheritDoc}
      */
-    String getKey();
+    public abstract String getKey();
 
     /**
-     * Get the Google Chart API URL parameter value.
-     * 
-     * @return the string
+     * {@inheritDoc}
      */
-    String getValue();
+    public abstract String getValue();
 
     /**
-     * Creates the Google Chart API URL parameter string.
-     *
-     * @return the string
+     * {@inheritDoc}
      */
-    String toURLParameterString();
+    public String toURLParameterString() {
+        return getValue().length() == 0 ? "" : getKey() + "=" + getValue();
+    }
 }

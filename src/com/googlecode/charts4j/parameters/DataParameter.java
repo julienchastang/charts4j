@@ -39,7 +39,7 @@ import com.googlecode.charts4j.collect.Lists;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class DataParameter implements Parameter {
+final class DataParameter extends AbstractParameter {
 
     /** The Google Chart API data parameter. */
     private static final String   URL_PARAMETER_KEY       = "chd";
@@ -185,8 +185,17 @@ final class DataParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=" + dataEncoding);
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        final StringBuilder sb = new StringBuilder(dataEncoding + "");
         final String seperator = dataEncoding.equals(DataEncoding.TEXT) ? "|" : ",";
         int cnt = 0;
         for (Data data : datas) {

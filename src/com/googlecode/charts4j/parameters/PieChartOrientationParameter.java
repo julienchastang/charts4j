@@ -27,10 +27,10 @@ package com.googlecode.charts4j.parameters;
 
 /**
  * <b>For Charts4J internal use only.</b> Pie chart orientation.
- *
+ * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class PieChartOrientationParameter implements Parameter {
+final class PieChartOrientationParameter extends AbstractParameter {
 
     /** The Google Chart API pie chart orientation parameter. */
     private static final String URL_PARAMETER_KEY = "chp";
@@ -51,7 +51,16 @@ final class PieChartOrientationParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        return URL_PARAMETER_KEY + "=" + orientation;
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        return orientation + "";
     }
 }

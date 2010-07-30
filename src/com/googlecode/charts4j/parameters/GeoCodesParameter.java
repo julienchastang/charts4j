@@ -35,7 +35,7 @@ import com.googlecode.charts4j.collect.Lists;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class GeoCodesParameter implements Parameter {
+final class GeoCodesParameter extends AbstractParameter {
 
     /** The Google Chart API chart title color and size parameter. */
     private static final String URL_PARAMETER_KEY = "chld";
@@ -56,8 +56,17 @@ final class GeoCodesParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        final StringBuilder sb = new StringBuilder();
         for (String gc : geoCodes) {
             sb.append(gc);
         }

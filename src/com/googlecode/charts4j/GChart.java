@@ -25,6 +25,8 @@
 
 package com.googlecode.charts4j;
 
+import java.util.Map;
+
 /**
  * Top level interface for all charts. Herein is functionality common to all
  * charts.
@@ -45,6 +47,18 @@ public interface GChart {
      * @see <a href="http://code.google.com/apis/chart/#chart_size">Chart Size</a>
      */
     void setSize(final int width, final int height);
+
+    /**
+     * Get a map of all the parameters necessary to generate a Google Chart API
+     * request. This method is specifically (and perhaps only) useful in a POST
+     * request scenario. It is still up to the developers to take these parameters
+     * and generate a POST request. For instance, they may want to use JSON to pass 
+     * parameters to the browser in order to make the POST request. 
+     *
+     * @return
+     * @see <a href="http://code.google.com/apis/chart/docs/post_requests.html">POST Requests</a>
+     */
+    Map<String, String> getParameters();
 
     /**
      * Create a URL string given the information supplied to this chart. You can

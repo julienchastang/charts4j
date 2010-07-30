@@ -25,6 +25,8 @@
 
 package com.googlecode.charts4j;
 
+import java.util.Map;
+
 import com.googlecode.charts4j.collect.ImmutableList;
 
 /**
@@ -45,6 +47,13 @@ public final class RadarChart implements GChart, GraphChart, TitledChart, GridCh
      */
     RadarChart(final ImmutableList<? extends Plot> plots) {
         radarChart = new PrivateRadarChart(plots);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public final Map<String, String> getParameters() {
+        return radarChart.getParameters();
     }
 
     /**

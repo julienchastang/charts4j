@@ -36,7 +36,7 @@ import com.googlecode.charts4j.collect.Lists;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class AxisLabelPositionsParameter implements Parameter {
+final class AxisLabelPositionsParameter extends AbstractParameter {
 
     /** The Google Chart API axis label parameter. */
     private static final String            URL_PARAMETER_KEY = "chxp";
@@ -59,8 +59,17 @@ final class AxisLabelPositionsParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        final StringBuilder sb = new StringBuilder();
         int cnt = 0;
         for (AxisLabelPositions positions : labelPositions) {
             sb.append(cnt++ > 0 ? "|" : "").append(positions);

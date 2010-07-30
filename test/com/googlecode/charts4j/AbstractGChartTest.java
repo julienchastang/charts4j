@@ -129,4 +129,14 @@ public class AbstractGChartTest {
         String expectedString = "http://localhost:8080/eastwood-1.1.0/chart?chd=s:Af9&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
+
+    @Test
+    public void testGetParameters() {
+        final LineChart chart = getBasicChart();
+        Logger.global.info(chart.toURLString());
+        Map<String, String> parameters = chart.getParameters();
+        assertEquals("Junit error", "lc", parameters.get("cht"));
+        assertEquals("Junit error", "200x125", parameters.get("chs"));
+        assertEquals("Junit error", "e:AAgA..", parameters.get("chd"));
+    }
 }

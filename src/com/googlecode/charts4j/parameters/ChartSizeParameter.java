@@ -30,7 +30,7 @@ package com.googlecode.charts4j.parameters;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class ChartSizeParameter implements Parameter {
+final class ChartSizeParameter extends AbstractParameter {
 
     /** The Google Chart API chart size parameter. */
     private static final String URL_PARAMETER_KEY = "chs";
@@ -57,7 +57,16 @@ final class ChartSizeParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        return URL_PARAMETER_KEY + "=" + width + "x" + height;
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        return width + "x" + height;
     }
 }

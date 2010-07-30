@@ -32,10 +32,10 @@ import com.googlecode.charts4j.collect.Lists;
 
 /**
  * Class for building line style parameter string for the Google Chart API.
- *
+ * 
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class LineChartLineStylesParameter implements Parameter {
+final class LineChartLineStylesParameter extends AbstractParameter {
 
     /** The Google Chart API line style parameter. */
     private static final String          URL_PARAMETER_KEY = "chls";
@@ -56,8 +56,17 @@ final class LineChartLineStylesParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        final StringBuilder sb = new StringBuilder(URL_PARAMETER_KEY + "=");
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        final StringBuilder sb = new StringBuilder();
         int cnt = 0;
         for (LineStyleWrapper l : lineStyles) {
             sb.append(cnt++ > 0 ? "|" : "").append(l);

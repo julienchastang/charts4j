@@ -30,7 +30,7 @@ package com.googlecode.charts4j.parameters;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-final class ChartTypeParameter implements Parameter {
+final class ChartTypeParameter extends AbstractParameter {
 
     /** The Google Chart API chart type parameter. */
     private static final String URL_PARAMETER_KEY = "cht";
@@ -51,7 +51,16 @@ final class ChartTypeParameter implements Parameter {
     /**
      * {@inheritDoc}
      */
-    public String toURLParameterString() {
-        return URL_PARAMETER_KEY + "=" + chartType;
+    @Override
+    public String getKey() {
+        return URL_PARAMETER_KEY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getValue() {
+        return chartType + "";
     }
 }
