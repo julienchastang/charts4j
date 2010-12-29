@@ -111,7 +111,7 @@ public class DataUtilTest {
         List<List<Double>> d = new LinkedList<List<Double>>();
         d.add(l0);
         d.add(l1);
-        List<Data> data = DataUtil.scale(d);
+        List<Data> data = DataUtil.scaleDataList(d);
         assertEquals("Junit error", "[[40.0, 50.0, 60.0], [0.0, 50.0, 100.0]]", data.toString());
     }
 }

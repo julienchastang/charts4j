@@ -190,7 +190,7 @@ public final class DataUtil {
      *
      * @return the list of Data objects that can then be plotted.
      */
-    public static List<Data> scale(final List<? extends List<? extends Number>> data) {
+    public static List<Data> scaleDataList(final List<? extends List<? extends Number>> data) {
         checkContentsNotNull(data, "data is null or contents of data is null.");
         final double[][] d = new double[data.size()][];
         int j = 0;
