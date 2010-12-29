@@ -47,7 +47,7 @@ public class ChartFillsParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -66,7 +66,7 @@ public class ChartFillsParameterTest {
     public void test0() {
         final ChartFillsParameter p = new ChartFillsParameter();
         p.addLinearGradientFill(FillType.CHART_AREA, 45, Lists.of(new ColorAndOffset(RED, 50)));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chf=c,lg,45,FF0000,0.5";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -75,7 +75,7 @@ public class ChartFillsParameterTest {
     public void test1() {
         final ChartFillsParameter p = new ChartFillsParameter();
         p.addLinearStripeFill(FillType.BACKGROUND, 20, Lists.of(new ColorAndWidth(RED, 50)));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chf=bg,ls,20,FF0000,0.5";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -84,7 +84,7 @@ public class ChartFillsParameterTest {
     public void test2() {
         final ChartFillsParameter p = new ChartFillsParameter();
         p.addSolidFill(SolidFillType.TRANSPARENCY, BLUE);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chf=a,s,0000FF";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -92,7 +92,7 @@ public class ChartFillsParameterTest {
     @Test
     public void test3() {
         final ChartFillsParameter p = new ChartFillsParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -102,7 +102,7 @@ public class ChartFillsParameterTest {
         final ChartFillsParameter p = new ChartFillsParameter();
         p.addLinearStripeFill(FillType.CHART_AREA, 20, Lists.of(new ColorAndWidth(RED, 30)));
         p.addSolidFill(SolidFillType.BACKGROUND, BLUE);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chf=c,ls,20,FF0000,0.3|bg,s,0000FF";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

@@ -46,7 +46,7 @@ public class RadarChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     /**
@@ -78,7 +78,7 @@ public class RadarChartTest {
         Data data = Data.newData(10, 20, 30, 40, 50, 60, 70, 80, 90);
         final RadarChart chart = GCharts.newRadarChart(Plots.newRadarPlot(data));
         chart.setSize(500, 500);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=r&chs=500x500&chd=e:GaMzTNZmgAmZszzM5m";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -92,7 +92,7 @@ public class RadarChartTest {
         final RadarChart chart = GCharts.newRadarChart(Plots.newRadarPlot(data));
         chart.setSize(500, 500);
         chart.setGrid(10, 10, 2, 2);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:GaMzTNZmgAmZszzM5m&chg=10.0,10.0,2,2&chs=500x500&cht=r";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -107,7 +107,7 @@ public class RadarChartTest {
         chart.setSize(500, 500);
         chart.addRadialAxisRangeMarker(0, 50, RED);
         chart.addConcentricAxisRangeMarker(10, 90, GREEN);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:GaMzTNZmgAmZszzM5m&chm=r,008000,0,0.10,0.90|R,FF0000,0,0.00,4.00&chs=500x500&cht=r";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -123,7 +123,7 @@ public class RadarChartTest {
         chart.setSize(500, 500);
         chart.addRadialAxisLabels(AxisLabelsFactory.newRadialAxisLabels("0", "45", "90", "135", "180", "225", "270", "315"));
         chart.setTitle("Cardioid");
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=r&chs=500x500&chxt=x&chco=008000,FF0000&chd=e:GaMzTNZmgAmZszzM5m,5mzMszmZgAZmTNMzGa&chxl=0:|0|45|90|135|180|225|270|315&chtt=Cardioid";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -138,7 +138,7 @@ public class RadarChartTest {
         final RadarChart chart = GCharts.newRadarChart(plot1);
         chart.setSize(500, 500);
         chart.addConcentricAxisLabels(AxisLabelsFactory.newAxisLabels("0", "50", "100"));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=r&chs=500x500&chxt=y&chls=5,1,0&chco=800000&chd=e:AAGaMzTNZmgAmZszzM5m..&chxl=0:|0|50|100";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -155,7 +155,7 @@ public class RadarChartTest {
         chart.addConcentricAxisLabels(AxisLabelsFactory.newAxisLabels("0", "50", "100"));
         chart.setSpline(true);
         chart.setTitle("The Spiral Jetty");
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=rs&chs=500x500&chxt=y&chls=5,1,0&chco=800000&chd=e:AAGaMzTNZmgAmZszzM5m..&chxl=0:|0|50|100&chtt=The+Spiral+Jetty";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -173,7 +173,7 @@ public class RadarChartTest {
         chart.setTitle("A shell");
         chart.setSize(500, 500);
         chart.addRadialAxisLabels(AxisLabelsFactory.newRadialAxisLabels("0", "45", "90", "135", "180", "225", "270", "315"));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=rs&chs=500x500&chxt=x&chco=FF4500&chm=B,0000FF8C,0,0,0&chd=e:AAMzTNZmgAmZszzMAA&chxl=0:|0|45|90|135|180|225|270|315&chtt=A+shell";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -190,7 +190,7 @@ public class RadarChartTest {
         final RadarChart chart = GCharts.newRadarChart(plot0, plot1);
         chart.setSize(400, 400);
         chart.setGrid(20, 20, 5, 5);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=FF0000,008000&chd=e:AAgA..,AAgA..&chg=20.0,20.0,5,5&chm=D,FF0000,0,0,1,1|D,008000,1,0,1,-1&chs=400x400&cht=r";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

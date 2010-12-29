@@ -44,7 +44,7 @@ public class GridLineParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -62,7 +62,7 @@ public class GridLineParameterTest {
     @Test
     public void test0() {
         final GridLineParameter p = new GridLineParameter(20, 50, 1, 5);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chg=20.0,50.0,1,5";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

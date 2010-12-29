@@ -46,7 +46,7 @@ public class VennDiagramTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -77,7 +77,7 @@ public class VennDiagramTest {
         final VennDiagram chart = GCharts.newVennDiagram(100, 80, 60, 30, 30, 30, 10);
         chart.setCircleLegends("foo", "bar", "zap");
         chart.setCircleColors(PINK, BLUE, RED);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=v&chs=200x125&chco=FFC0CB,0000FF,FF0000&chdl=foo|bar|zap&chd=e:..zMmZTNTNTNGa";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

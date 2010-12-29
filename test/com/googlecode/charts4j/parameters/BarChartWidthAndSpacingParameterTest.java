@@ -44,7 +44,7 @@ public class BarChartWidthAndSpacingParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -62,7 +62,7 @@ public class BarChartWidthAndSpacingParameterTest {
     @Test
     public void test0() {
         final BarChartWidthAndSpacingParameter p = new BarChartWidthAndSpacingParameter(10, 5, 7);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chbh=10,5,7";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

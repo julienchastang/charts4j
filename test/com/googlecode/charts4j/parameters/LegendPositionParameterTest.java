@@ -45,7 +45,7 @@ public class LegendPositionParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -63,7 +63,7 @@ public class LegendPositionParameterTest {
     @Test
     public void test0() {
         final LegendPositionParameter p = new LegendPositionParameter(BOTTOM);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chdlp=b";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

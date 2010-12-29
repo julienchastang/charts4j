@@ -43,7 +43,7 @@ public class ScatterChartExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @Test
@@ -75,7 +75,7 @@ public class ScatterChartExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chf=bg,s,2F3E3E|c,lg,0,3783DB,1.0,9BD8F5,0.0&chs=600x450&chd=e:GagATNczpm8yMzzM,MzZmZmJm2Z8yzMMz,..TNgAv.ZmWZzM..&chtt=Scatter+Plot&chts=FFFFFF,16&chg=20.0,20.0,3,2&chxt=y,x&chxr=0,0.0,100.0|1,0.0,100.0&chxs=0,FFFFFF,13,0|1,FFFFFF,13,0&chco=FF471A&chdl=Diamond&chm=d,FF471A,0,-1,30,0&cht=s";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }

@@ -46,7 +46,7 @@ public class AxisLabelsParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -66,7 +66,7 @@ public class AxisLabelsParameterTest {
         final AxisLabelsParameter p = new AxisLabelsParameter();
         p.addAxisLabels(1, Lists.of("foo", "bar", "zap"));
         p.addAxisLabels(2, Lists.of("foo2", "bar2", "zap2"));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chxl=1:|foo|bar|zap|2:|foo2|bar2|zap2";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -74,7 +74,7 @@ public class AxisLabelsParameterTest {
     @Test
     public void test1() {
         final AxisLabelsParameter p = new AxisLabelsParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -82,9 +82,9 @@ public class AxisLabelsParameterTest {
     @Test
     public void test2() {
         final AxisLabelsParameter p = new AxisLabelsParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         p.addAxisLabels(2, Lists.of("foo", "bar", "zap"));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chxl=2:|foo|bar|zap";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

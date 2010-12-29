@@ -44,7 +44,7 @@ public class LineChartExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @Test
@@ -107,7 +107,7 @@ public class LineChartExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chco=CA3D05,87CEEB&chd=e:AAB4DhEzFxGnHrJRLhOZRmUpXCYZYpYAXCWfXCZIczhmmtrKuE,..-H8e7M6O5Y4U2u0exmuZrWo9nmnWn.o9pgo9m3jMeZZSU1R7&chdl=My+Website.com|Competition.com&chf=bg,s,1F1D1D|c,lg,0,363433,1.0,2E2B2A,0.0&chg=25.0,25.0,3,2&chls=3,1,0|3,1,0&chm=r,FF00004C,0,0.40,0.60|R,0080004C,0,0.70,0.90|d,CA3D05,0,-1,12,0|d,FFFFFF,0,-1,8,0|d,87CEEB,1,-1,12,0|d,FFFFFF,1,-1,8,0&chs=600x450&cht=lc&chts=FFFFFF,14&chtt=Web+Traffic%7C%28in+billions+of+hits%29&chxl=0:||25|50|75|100|1:|Hits|2:|Nov|Dec|Jan|Feb|Mar|3:|2007|2007|2008|2008|2008|4:|Month&chxp=1,50.0|4,50.0&chxr=1,0.0,100.0|4,0.0,100.0&chxs=0,FFFFFF,12,0|1,FFFFFF,12,0|2,FFFFFF,12,0|3,FFFFFF,12,0|4,FFFFFF,14,0&chxt=y,y,x,x,x";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
@@ -172,8 +172,8 @@ public class LineChartExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
-        Logger.global.info(url.length() + "");
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url.length() + "");
         String expectedString = "http://chart.apis.google.com/chart?chf=bg,s,000000|c,s,708090&chs=600x450&chd=e:CsDMDmD8EGEbD6D8EIE.EKC3D1EkEDEHEmFxFOF.HCHGI.KYKlL0O9OBRtSuT.TqaNgKpa0j-e46xilhvVzx1r8x-7,CsCyC4C.DFDMDTDbDiDqDyD7EEENEWEgEqE0E.FKFWFiFuF7GIGWGkGzHCHSHiHzIFIXIqI9JRJmJ7KSKpLALZLzMN&chtt=S+%26+P+500%7C1962+-+2008&chts=FFFFFF,14&chg=100.0,6.78,5,0&chxt=y,x,x,x&chxr=0,0.0,1475.25|1,0.0,100.0|2,1962.0,2008.0|3,0.0,100.0&chxs=0,FFFFFF,12,0|1,FFFFFF,12,0|2,FFFFFF,12,0|3,FFFFFF,14,0&chxl=1:|Fed+Chiefs%3A|Burns|Volcker|Greenspan|Bernanke|3:|Year&chxp=1,5,18,39,55,92|3,50.0&chdl=S+%26+P+500|Inflation&chco=FFFF00,32CD32&chm=o,FFFF00,0,-1,10,0|o,000000,0,-1,7,0|v,0000FF,0,8,3,0|v,0000FF,0,17,3,0|v,0000FF,0,24,3,0|v,0000FF,0,40,3,0|B,FFFFE0,0,0,0|o,00FF00,1,-1,10,0|o,000000,1,-1,7,0|B,90EE90,1,0,0&chls=3,1,0|3,1,0&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }

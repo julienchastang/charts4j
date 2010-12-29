@@ -47,7 +47,7 @@ public class AbstractMarkableChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -77,7 +77,7 @@ public class AbstractMarkableChartTest {
     public void testAddVerticalRangeMarker1() {
         final LineChart chart = getBasicChart();
         chart.addHorizontalRangeMarker(29, 30, RED);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=r,FF0000,0,0.29,0.30&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -97,7 +97,7 @@ public class AbstractMarkableChartTest {
     public void testAddHorizontalRangeMarker1() {
         final LineChart chart = getBasicChart();
         chart.addVerticalRangeMarker(29, 30, RED);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=R,FF0000,0,0.29,0.30&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

@@ -15,7 +15,7 @@ public class GeneralExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @Test
@@ -27,7 +27,7 @@ public class GeneralExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAqnVU..&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
@@ -45,7 +45,7 @@ public class GeneralExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAqnVU..&chg=33.3,33.3,3,3&chxt=y,x&chxp=0,0.0,33.3,66.6,100.0|1,33.3,66.6&chxr=0,0.0,100.0|1,0.0,100.0&chxl=1:|Peak|Valley&chm=r,ADD8E6,0,0.33,0.67&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
@@ -80,11 +80,11 @@ public class GeneralExample {
         // EXAMPLE CODE END. Use these URLs string in your web or
         // Internet application.
 
-        Logger.global.info(lineChartUrl);
-        Logger.global.info(barChartUrl);
-        Logger.global.info(radarChartUrl);
-        Logger.global.info(scatterChartUrl);
-        Logger.global.info(xyLineChartUrl);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(lineChartUrl);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(barChartUrl);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(radarChartUrl);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(scatterChartUrl);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(xyLineChartUrl);
 
 
         String expectedLineChartUrl    = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAGaMzTNZmgAmZszzM5m&chm=d,0000FF,0,-1,12,0&cht=lc";

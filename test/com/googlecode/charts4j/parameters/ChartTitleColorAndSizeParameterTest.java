@@ -45,7 +45,7 @@ public class ChartTitleColorAndSizeParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -63,7 +63,7 @@ public class ChartTitleColorAndSizeParameterTest {
     @Test
     public void test0() {
         final ChartTitleColorAndSizeParameter p = new ChartTitleColorAndSizeParameter(RED, 12);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chts=FF0000,12";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

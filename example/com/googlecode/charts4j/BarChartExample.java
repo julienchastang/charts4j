@@ -44,7 +44,7 @@ public class BarChartExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class BarChartExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chf=bg,s,F0F8FF|c,lg,0,E6E6FA,1.0,FFFFFF,0.0&chs=600x450&chd=e:QAbhHrTN,FIWZHCDN,GaMzTNTN&chtt=Team+Scores&chts=000000,16&chg=100.0,10.0,3,2&chxt=y,y,x,x&chxr=0,0.0,100.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Score|2:|2002|2003|2004|2005|3:|Year&chxp=1,50.0|3,50.0&chxs=1,000000,13,0|3,000000,13,0&chdl=Team+A|Team+B|Team+C&chco=8A2BE2,FF4500,32CD32&chbh=100,20,8&cht=bvs";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
@@ -135,7 +135,7 @@ public class BarChartExample {
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
 
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chf=bg,s,D3D3D3|c,lg,0,E37600,1.0,DC4800,0.0&chs=450x650&chd=e:..tLc3X2UF,aWvraWQUMj,jItLjIS0S0&chtt=2008+Beijing+Olympics+Medal+Count&chts=000000,16&chg=19.6078431372549,600.0,3,2&chxt=y,y,t,x,x&chxl=0:|Germany|United+Kingdom|Russia|USA|China|1:|Country|4:|Medals&chxs=0,000000,13,0|1,000000,13,0|2,000000,13,0|3,000000,13,0|4,000000,13,0&chxp=1,50.0|4,50.0&chxr=1,0.0,100.0|2,0.0,51.0|3,0.0,51.0|4,0.0,100.0&chdl=Gold|Silver|Bronze&chco=FFD700,C0C0C0,A52A2A&chbh=23,4,30&cht=bhg";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }

@@ -50,7 +50,7 @@ public class ChartMarkersParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -69,7 +69,7 @@ public class ChartMarkersParameterTest {
     public void test0() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         p.addFillAreaMarker(FillAreaType.FULL, RED, 1, 3);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=B,FF0000,1,3,0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -78,7 +78,7 @@ public class ChartMarkersParameterTest {
     public void test1() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         p.addLineStyleMarker(BLUE, 1, 3, 12, Priority.HIGH);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=D,0000FF,1,3,12,1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -87,7 +87,7 @@ public class ChartMarkersParameterTest {
     public void test2() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         p.addHorizontalRangeMarker(WHEAT, 0.1, 0.3);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=r,F5DEB3,0,0.10,0.30";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -97,7 +97,7 @@ public class ChartMarkersParameterTest {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
         p.addMarker(sm, 1, 5, 6, 1);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=o,CD853F,1,5,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -106,7 +106,7 @@ public class ChartMarkersParameterTest {
     public void test4() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         p.addMarker(Markers.newTextMarker("foobar", BLACK, 15), 7, 5, 6, 1);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=tfoobar,000000,7,5,15,0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -117,7 +117,7 @@ public class ChartMarkersParameterTest {
         final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
         p.addMarker(sm, 1, 5, 6, 1);
         p.addMarker(Markers.newTextMarker("foobar", BLACK, 15), 7, 5, 6, 1);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=o,CD853F,1,5,13,-1|tfoobar,000000,7,5,15,0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -125,7 +125,7 @@ public class ChartMarkersParameterTest {
     @Test
     public void test6() {
         final ChartMarkersParameter p = new ChartMarkersParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -135,7 +135,7 @@ public class ChartMarkersParameterTest {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
         p.addMarker(sm, 1, 5, 10 ,2);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=o,CD853F,1,5:9:2,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -145,7 +145,7 @@ public class ChartMarkersParameterTest {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
         p.addMarker(sm, 1, 5, 6 ,2);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=o,CD853F,1,5,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -155,7 +155,7 @@ public class ChartMarkersParameterTest {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
         p.addMarkers(sm, 1);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=o,CD853F,1,-1,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -165,7 +165,7 @@ public class ChartMarkersParameterTest {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         final Marker sm = Markers.newShapeMarker(Shape.CIRCLE, PERU, 13, Priority.LOW);
         p.addFreeMarker(sm, 10, 20);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=@o,CD853F,0,0.1:0.2,13,-1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -175,7 +175,7 @@ public class ChartMarkersParameterTest {
         final ChartMarkersParameter p = new ChartMarkersParameter();
         final Marker sm = Markers.newTextMarker("charts4j", PERU, 13, Priority.HIGH);
         p.addFreeMarker(sm, 20, 10);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chm=@tcharts4j,CD853F,0,0.2:0.1,13,1";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

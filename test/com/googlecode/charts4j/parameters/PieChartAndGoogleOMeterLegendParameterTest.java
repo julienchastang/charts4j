@@ -44,7 +44,7 @@ public class PieChartAndGoogleOMeterLegendParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -64,7 +64,7 @@ public class PieChartAndGoogleOMeterLegendParameterTest {
         final PieChartAndGoogleOMeterLegendParameter p = new PieChartAndGoogleOMeterLegendParameter();
         p.addLegend("foo");
         p.addLegend("bar");
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chl=foo|bar";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
 
@@ -73,7 +73,7 @@ public class PieChartAndGoogleOMeterLegendParameterTest {
     @Test
     public void test1() {
         final PieChartAndGoogleOMeterLegendParameter p = new PieChartAndGoogleOMeterLegendParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         assertEquals("Junit error", "", p.toURLParameterString());
     }
 }

@@ -44,7 +44,7 @@ public class ChartTitleParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -62,7 +62,7 @@ public class ChartTitleParameterTest {
     @Test
     public void test0() {
         final ChartTitleParameter p = new ChartTitleParameter("foo");
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chtt=foo";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

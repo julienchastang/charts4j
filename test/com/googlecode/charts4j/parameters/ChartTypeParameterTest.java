@@ -44,7 +44,7 @@ public class ChartTypeParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -62,7 +62,7 @@ public class ChartTypeParameterTest {
     @Test
     public void test0() {
         final ChartTypeParameter p = new ChartTypeParameter(ChartType.GOOGLE_O_METER);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "cht=gom";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

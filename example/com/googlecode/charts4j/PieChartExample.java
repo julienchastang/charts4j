@@ -43,7 +43,7 @@ public class PieChartExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class PieChartExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?cht=p3&chs=500x200&chts=000000,16&chd=e:TNTNTNGa&chtt=A+Better+Web&chco=CACACA,DF7417,951800,01A1DB&chdl=Apple|Mozilla|Google|Microsoft&chl=Safari|Firefox|Chrome|Internet+Explorer";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
@@ -78,7 +78,7 @@ public class PieChartExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chco=FFFF00,FF0000&chd=e:5mGa&chl=Ms.+Pac-Man|Red+Lips&chs=500x200&cht=p&chts=000000,16&chtt=2D+Pie+Chart";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }

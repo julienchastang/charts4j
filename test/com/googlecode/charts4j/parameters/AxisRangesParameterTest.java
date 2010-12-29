@@ -43,7 +43,7 @@ public class AxisRangesParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -63,7 +63,7 @@ public class AxisRangesParameterTest {
         final AxisRangesParameter p = new AxisRangesParameter();
         p.addAxisRange(1, 10, 30, Double.NaN);
         p.addAxisRange(2, 12, 15, 1);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chxr=1,10.0,30.0|2,12.0,15.0,1.0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -71,7 +71,7 @@ public class AxisRangesParameterTest {
     @Test
     public void test1() {
         final AxisRangesParameter p = new AxisRangesParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

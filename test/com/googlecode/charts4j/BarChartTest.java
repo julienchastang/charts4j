@@ -46,7 +46,7 @@ public class BarChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -67,7 +67,7 @@ public class BarChartTest {
         final BarChartPlot data2 = Plots.newBarChartPlot(Data.newData(10, 20, 30, 25), RED, "Q2");
         final BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=bvg&chbh=23,4,8&chs=400x200&chco=0000FF,FF0000&chdl=+|Q2&chd=e:WZgATNZm,GaMzTNQA";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -83,7 +83,7 @@ public class BarChartTest {
         chart.setTitle("Quarterly Revenue|(in billions of dollars)", GREEN, 15);
         chart.setBackgroundFill(Fills.newSolidFill(LIGHTGREY));
         chart.setAreaFill(Fills.newSolidFill(LIGHTSEAGREEN));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chbh=23,4,8&chco=0000FF,FF0000&chd=e:WZgATNZm,GaMzTNQA&chdl=Q1|Q2&chf=bg,s,D3D3D3|c,s,20B2AA&chs=400x200&cht=bvg&chts=008000,15&chtt=Quarterly+Revenue%7C%28in+billions+of+dollars%29&chxl=0:|%240|%24100|1:|2000|2001|2002|2003&chxt=y,x";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -94,7 +94,7 @@ public class BarChartTest {
         BarChartPlot data2 = Plots.newBarChartPlot(Data.newData(10, 20, 30, 25), RED, "Q2");
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=bvg&chbh=23,4,8&chs=400x200&chco=0000FF,FF0000&chdl=Q1|Q2&chd=e:WZgATNZm,GaMzTNQA";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -106,7 +106,7 @@ public class BarChartTest {
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(200, 300);
         chart.setHorizontal(true);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=bhg&chbh=23,4,8&chs=200x300&chco=0000FF,FF0000&chdl=Q1|Q2&chd=e:WZgATNZm,GaMzTNQA";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -118,7 +118,7 @@ public class BarChartTest {
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(200, 300);
         chart.setDataStacked(true);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=bvs&chbh=23,4,8&chs=200x300&chco=0000FF,FF0000&chdl=Q1|Q2&chd=e:WZgATNZm,GaMzTNQA";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -133,7 +133,7 @@ public class BarChartTest {
         data2.setFillAreaColor(YELLOW);
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=bvg&chbh=23,4,8&chs=400x200&chco=0000FF,FF0000&chdl=Q1|Q2&chm=D,FF0000,0,0,3,-1|B,008000,0,0,0|D,FFC0CB,1,0,3,1|B,FFFF00,1,0,0&chd=e:WZgATNZm,GaMzTNQA";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -147,7 +147,7 @@ public class BarChartTest {
         data2.addTextMarker("foo", BLACK, 12, 1);
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chbh=23,4,8&chco=0000FF,FF0000&chd=e:WZgATNZm,GaMzTNQA&chdl=Q1|Q2&chm=d,00FFFF,0,0,20,0|d,00FFFF,0,1,20,0|tfoo,000000,1,1,12,0&chs=400x200&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -159,7 +159,7 @@ public class BarChartTest {
         data2.setZeroLine(50);
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAQAgAv...,AAQAgAv...&chco=0000FF,FF0000&chp=0.0,0.5&chbh=23,4,8&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -171,7 +171,7 @@ public class BarChartTest {
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
         chart.setSpaceBetweenGroupsOfBars(30);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chbh=23,4,30&chco=0000FF,FF0000&chd=e:AAQAgAv...,AAQAgAv...&chs=400x200&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -183,7 +183,7 @@ public class BarChartTest {
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
         chart.setBarWidth(30);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAQAgAv...,AAQAgAv...&chco=0000FF,FF0000&chbh=30,4,8&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -195,7 +195,7 @@ public class BarChartTest {
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
         chart.setSpaceWithinGroupsOfBars(30);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=400x200&chd=e:AAQAgAv...,AAQAgAv...&chco=0000FF,FF0000&chbh=23,30,8&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -206,7 +206,7 @@ public class BarChartTest {
         BarChartPlot data2 = Plots.newBarChartPlot(Data.newData(100, 75, 50, 35, 10), RED);
         data2.setColor(GREEN, 0);
         BarChart chart = GCharts.newBarChart(data1,data2);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=bvg&chbh=23,4,8&chs=200x125&chd=e:GaQAgAv...,..v.gAWZGa&chco=0000FF,008000|FF0000|FF0000|FF0000|FF0000";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -218,7 +218,7 @@ public class BarChartTest {
         BarChart chart = GCharts.newBarChart(data1, data2);
         chart.setSize(400, 200);
         chart.setBarWidth(BarChart.AUTO_RESIZE);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chbh=a,4,8&chco=0000FF,FF0000&chd=e:DNQAgAv...,DNQAgAv...&chs=400x200&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

@@ -44,7 +44,7 @@ public class AxisTypesParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -64,7 +64,7 @@ public class AxisTypesParameterTest {
         final AxisTypesParameter p = new AxisTypesParameter();
         p.addAxisTypes(AxisTypes.BOTTOM_X_AXIS);
         p.addAxisTypes(AxisTypes.TOP_X_AXIS);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chxt=x,t";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -72,7 +72,7 @@ public class AxisTypesParameterTest {
     @Test
     public void test1() {
         final AxisTypesParameter p = new AxisTypesParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

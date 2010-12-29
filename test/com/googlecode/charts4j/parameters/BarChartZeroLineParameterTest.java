@@ -44,7 +44,7 @@ public class BarChartZeroLineParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -63,7 +63,7 @@ public class BarChartZeroLineParameterTest {
     public void test0() {
         final BarChartZeroLinesParameter p = new BarChartZeroLinesParameter();
         p.addZeroLine(10);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chp=10.0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -73,7 +73,7 @@ public class BarChartZeroLineParameterTest {
         final BarChartZeroLinesParameter p = new BarChartZeroLinesParameter();
         p.addZeroLine(10);
         p.addZeroLine(5);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chp=10.0,5.0";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

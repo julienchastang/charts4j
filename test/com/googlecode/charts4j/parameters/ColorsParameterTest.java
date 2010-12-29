@@ -51,7 +51,7 @@ public class ColorsParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -72,7 +72,7 @@ public class ColorsParameterTest {
         List<ImmutableList<Color>> colors = Lists.newLinkedList();
         colors.add(Lists.of(BLUE));
         p.addColors(Lists.copyOf(colors));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chco=0000FF";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -84,7 +84,7 @@ public class ColorsParameterTest {
         colors.add(Lists.of(BLUE));
         colors.add(Lists.of(RED));
         p.addColors(Lists.copyOf(colors));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chco=0000FF,FF0000";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

@@ -35,7 +35,7 @@ public class PlotTest {
         final Line line =  TestUtil.getBasicLine();
         line.addShapeMarkers(Shape.DIAMOND, BLUE, 12);
         final LineChart chart = GCharts.newLineChart(line);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=d,0000FF,0,-1,12,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -45,7 +45,7 @@ public class PlotTest {
         final Line line =  TestUtil.getBasicLine();
         line.addTextMarker("foo", BLACK, 12, 1);
         final LineChart chart = GCharts.newLineChart(line);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=tfoo,000000,0,1,12,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -55,7 +55,7 @@ public class PlotTest {
         final Line line =  TestUtil.getBasicLine();
         line.addShapeMarkers(Shape.DIAMOND, BLUE, 12);
         final LineChart chart = GCharts.newLineChart(line);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=d,0000FF,0,-1,12,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -66,7 +66,7 @@ public class PlotTest {
         line.addMarker(Markers.newShapeMarker(Shape.X, RED, 12), 0);
         line.addMarker(Markers.newTextMarker("foo", BLACK, 12), 1);
         final LineChart chart = GCharts.newLineChart(line);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=x,FF0000,0,0,12,0|tfoo,000000,0,1,12,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -76,7 +76,7 @@ public class PlotTest {
         final Line line =  TestUtil.getBasicLine();
         line.addMarker(Markers.newFlaggedTextMarker("foo", BLACK, 12), 1);
         final LineChart chart = GCharts.newLineChart(line);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=ffoo,000000,0,1,12,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

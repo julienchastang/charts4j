@@ -44,7 +44,7 @@ public class ChartSizeParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -62,7 +62,7 @@ public class ChartSizeParameterTest {
     @Test
     public void test0() {
         final ChartSizeParameter p = new ChartSizeParameter(200, 110);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chs=200x110";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

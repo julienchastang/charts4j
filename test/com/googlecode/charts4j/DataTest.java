@@ -16,7 +16,7 @@ public class DataTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -45,7 +45,7 @@ public class DataTest {
     @Test
     public void testData1() {
         Data data = new Data(-1, 0, 100);
-        Logger.global.info(data.toString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(data.toString());
         assertEquals("Junit error", "[-1.0, 0.0, 100.0]", data.toString());
 
     }
@@ -53,7 +53,7 @@ public class DataTest {
     @Test
     public void testNewDataListOfQextendsNumber() {
         Data data = Data.newData(Arrays.asList(-1, 0, 100));
-        Logger.global.info(data.toString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(data.toString());
         assertEquals("Junit error", "[-1.0, 0.0, 100.0]", data.toString());
     }
 }

@@ -47,7 +47,7 @@ public class AxisStyleTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -70,7 +70,7 @@ public class AxisStyleTest {
         as.setDrawTickMarks(false);
         axisLabels.setAxisStyle(as);
         chart.addRightAxisLabels(axisLabels);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxp=0,0,1,2,3,4,5&chxr=0,0.0,5.0&chxs=0,FF0000,16,0,l&chxt=r";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -84,7 +84,7 @@ public class AxisStyleTest {
         AxisLabels axisLabels = AxisLabelsFactory.newNumericAxisLabels(Arrays.asList(0, 1, 2, 3, 4, 5));
         axisLabels.setAxisStyle(axisStyle);
         chart.addXAxisLabels(axisLabels);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxp=0,0,1,2,3,4,5&chxr=0,0.0,5.0&chxs=0,FF0000,16,0,lt,FF0000&chxt=x&chxtc=0,-50";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -94,7 +94,7 @@ public class AxisStyleTest {
         final LineChart chart = TestUtil.getBasicChart();
         AxisLabels axisLabels = AxisLabelsFactory.newNumericRangeAxisLabels(10, 90);
         chart.addYAxisLabels(axisLabels);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxr=0,10.0,90.0&chxt=y";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -108,7 +108,7 @@ public class AxisStyleTest {
         AxisLabels axisLabels = AxisLabelsFactory.newAxisLabels("Foo", 50);
         axisLabels.setAxisStyle(axisStyle);
         chart.addXAxisLabels(axisLabels);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chg=50.0,50.0,5,0&chs=200x125&cht=lc&chxl=0:|Foo&chxp=0,50.0&chxr=0,0.0,100.0&chxs=0,FF0000,16,1&chxt=x";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

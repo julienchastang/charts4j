@@ -43,7 +43,7 @@ public class GoogleOMeterExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class GoogleOMeterExample {
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
 
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?cht=gom&chd=e:5m&chl=Fast&chs=600x250&chdl=VELOCITY&chts=000000,14&chtt=How+Fast%3F&chco=1148D4,5766DE,DB3270,D41111&chf=bg,lg,0,0000FF,1.0,FF0000,0.0|c,s,808080B2";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }

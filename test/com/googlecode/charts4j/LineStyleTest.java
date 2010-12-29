@@ -45,7 +45,7 @@ public class LineStyleTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -76,7 +76,7 @@ public class LineStyleTest {
         final Line line = TestUtil.getBasicLine();
         line.setLineStyle(LineStyle.THICK_DOTTED_LINE);
         LineChart chart = GCharts.newLineChart(line);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAgA..&chls=5,5,3&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

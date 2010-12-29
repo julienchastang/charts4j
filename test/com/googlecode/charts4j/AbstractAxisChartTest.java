@@ -50,7 +50,7 @@ public class AbstractAxisChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -80,7 +80,7 @@ public class AbstractAxisChartTest {
     public void testSetGrid1() {
         final LineChart chart = getBasicChart();
         chart.setGrid(10, 10, 1, 0);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chg=10.0,10.0,1,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -89,7 +89,7 @@ public class AbstractAxisChartTest {
     public void testXAxisLabels0() {
         final LineChart chart = getBasicChart();
         chart.addXAxisLabels(AxisLabelsFactory.newAxisLabels("start", "end"));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAgA..&chxt=x&chxl=0:|start|end&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -100,7 +100,7 @@ public class AbstractAxisChartTest {
         final AxisLabels ai = AxisLabelsFactory.newAxisLabels("start", "end");
         ai.setAxisStyle(AxisStyle.newAxisStyle(RED, 14, AxisTextAlignment.RIGHT));
         chart.addXAxisLabels(ai);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chs=200x125&cht=lc&chxl=0:|start|end&chxs=0,FF0000,14,-1&chxt=x";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -109,7 +109,7 @@ public class AbstractAxisChartTest {
     public void testYAxisLabels() {
         final LineChart chart = getBasicChart();
         chart.addYAxisLabels(AxisLabelsFactory.newAxisLabels("start", "end"));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAgA..&chxt=y&chxl=0:|start|end&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -118,7 +118,7 @@ public class AbstractAxisChartTest {
     public void testTopAxisLabels() {
         final LineChart chart = getBasicChart();
         chart.addTopAxisLabels(AxisLabelsFactory.newAxisLabels("start", "end"));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAgA..&chxt=t&chxl=0:|start|end&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -127,7 +127,7 @@ public class AbstractAxisChartTest {
     public void testRightAxisLabels() {
         final LineChart chart = getBasicChart();
         chart.addRightAxisLabels(AxisLabelsFactory.newAxisLabels("start", "end"));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:AAgA..&chxt=r&chxl=0:|start|end&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -137,7 +137,7 @@ public class AbstractAxisChartTest {
         final BarChart chart = getBasicBarChart();
         chart.addMarker(Markers.newShapeMarker(Shape.ARROW, RED, 12,Priority.LOW), 50, 80);
         chart.addMarker(Markers.newShapeMarker(Shape.X, BLUE, 12,Priority.HIGH), 50, 80);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chbh=23,4,8&chd=e:szgA..&chm=@a,FF0000,0,0.5:0.8,12,-1|@x,0000FF,0,0.5:0.8,12,1&chs=200x125&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -146,7 +146,7 @@ public class AbstractAxisChartTest {
     public void addFreeTextMarkerToLineChart() {
         final LineChart chart = getBasicChart();
         chart.addMarker(Markers.newTextMarker("charts4j", RED, 20), 10, 80);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chm=@tcharts4j,FF0000,0,0.1:0.8,20,0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

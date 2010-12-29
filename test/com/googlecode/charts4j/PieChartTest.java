@@ -46,7 +46,7 @@ public class PieChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -71,7 +71,7 @@ public class PieChartTest {
         chart.setTitle("A Better World 1");
         chart.setSize(500, 200);
         chart.setThreeD(true);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=808080,FF4500,0000FF&chd=e:czczGa&chdl=X|Y|Z&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+1";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -86,7 +86,7 @@ public class PieChartTest {
         chart.setTitle("A Better World 2");
         chart.setSize(500, 200);
         chart.setThreeD(true);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=p3&chs=500x200&chl=Safari|Firefox|Internet+Explorer&chd=e:czczGa&chtt=A+Better+World+2";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -101,7 +101,7 @@ public class PieChartTest {
         chart.setTitle("A Better World 3");
         chart.setSize(500, 200);
         chart.setThreeD(true);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=808080,0000FF&chd=e:czczGa&chdl=A||B&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+3";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -118,7 +118,7 @@ public class PieChartTest {
         chart.setAreaFill(Fills.newSolidFill(BLACK));
         chart.setBackgroundFill(Fills.newSolidFill(LIGHTGREY));
         chart.setThreeD(true);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=808080,FF4500,0000FF&chd=e:czczGa&chdl=X|Y|Z&chf=bg,s,D3D3D3|c,s,000000&chl=Safari|Firefox|Internet+Explorer&chs=500x200&cht=p3&chtt=A+Better+World+1";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -131,7 +131,7 @@ public class PieChartTest {
 
         PieChart chart = GCharts.newPieChart(s1, s2, s3);
         chart.setOrientation(3.14/2);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:czczGa&chl=Safari|Firefox|Internet+Explorer&chp=1.57&chs=200x125&cht=p";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
 

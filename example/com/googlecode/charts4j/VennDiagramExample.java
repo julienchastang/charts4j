@@ -43,7 +43,7 @@ public class VennDiagramExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class VennDiagramExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?cht=v&chs=600x450&chts=FFFFFF,16&chf=bg,s,000000&chco=FFFF00,FF0000,0000FF&chdl=Set+A|Set+B|Set+C&chd=e:..zMmZTNTNTNGa&chtt=Mr.+Venn";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }

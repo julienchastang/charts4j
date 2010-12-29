@@ -46,7 +46,7 @@ public class GeographicalAreaParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -64,7 +64,7 @@ public class GeographicalAreaParameterTest {
     @Test
     public void test0() {
         final GeographicalAreaParameter p = new GeographicalAreaParameter(GeographicalArea.AFRICA);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chtm=africa";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

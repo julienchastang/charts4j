@@ -44,7 +44,7 @@ public class MapChartExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class MapChartExample {
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
 
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chf=bg,s,F0F8FF&chs=440x220&chd=e:GaGaGaGa5mgA5m5mgAGa5mGa5mgAgAGaGaGagA5m5m5m5mGaGa5mGa5m5m5mgA5mgA5m5mGa5mgA5mgAGaGaGaGa5mgA5mGa5mGa&chtm=usa&chco=FFFFFF,FF0000,0000FF&chld=ALAKAZARCACOCTDEFLGAHIIDILINIAKSKYLAMEMDMAMIMNMSMOMTNENVNHNJNMNYNCNDOHOKORPARISCSDTNTXUTVTVAWAWVWIWY&cht=t";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }

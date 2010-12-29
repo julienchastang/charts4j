@@ -54,7 +54,7 @@ public class LineChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -90,7 +90,7 @@ public class LineChartTest {
         final LinearGradientFill fill = Fills.newLinearGradientFill(0, LIGHTBLUE, 100);
         fill.addColorAndOffset(WHITE, 0);
         chart.setAreaFill(fill);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=FF0000&chd=e:AAczWZv...&chf=bg,s,D3D3D3|c,lg,0,ADD8E6,1.0,FFFFFF,0.0&chls=3,1,0&chs=400x300&cht=lc&chts=FF0000,14&chtt=Web+Traffic%7C%28in+billions+of+hits%29&chxl=0:||25|50|75|100|1:|Nov|Dec|Jan|Feb|Mar|2:|2008|2007|2008|2008|2008&chxt=y,x,x";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -106,7 +106,7 @@ public class LineChartTest {
         final Line line2 = Plots.newLine(Data.newData(0, 10, 20), RED, "my legend 2");
         final LineChart chart = GCharts.newLineChart(line, line2);
         chart.setTitle("Foobar");
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chs=200x125&chls=3,6,3|1,1,0&chco=008000,FF0000&chdl=+|my+legend+2&chd=e:AAgA..,AAGaMz&chtt=Foobar";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -121,7 +121,7 @@ public class LineChartTest {
         chart.setTitle("Foobar");
         chart.setBackgroundFill(Fills.newSolidFill(AZURE));
         chart.setAreaFill(Fills.newSolidFill(BLACK));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chs=200x125&chco=008000&chf=bg,s,F0FFFF|c,s,000000&chd=e:AAgA..&chtt=Foobar";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -141,7 +141,7 @@ public class LineChartTest {
         final LinearStripesFill ls = Fills.newLinearStripesFill(0, LIGHTGREY, 20);
         ls.addColorAndWidth(WHITE, 20);
         chart.setBackgroundFill(ls);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=008000&chd=e:AAgA..&chdl=foo&chf=bg,ls,0,D3D3D3,0.2,FFFFFF,0.2&chls=3,6,3&chs=200x125&cht=lc&chtt=Foobar&chxr=0,20.0,30.0&chxt=y";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -155,7 +155,7 @@ public class LineChartTest {
         final LineChart chart = GCharts.newLineChart(line);
         chart.setSparkline(true);
         chart.setTitle("Foobar");
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=ls&chs=200x125&chco=008000&chd=e:AAgA..&chtt=Foobar";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -169,7 +169,7 @@ public class LineChartTest {
         final LineChart chart = GCharts.newLineChart(line);
         chart.setSize(400, 400);
         chart.setGrid(20, 20, 5, 5);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=008000&chd=e:AAgA..&chg=20.0,20.0,5,5&chs=400x400&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -186,7 +186,7 @@ public class LineChartTest {
         final LineChart chart = GCharts.newLineChart(line0, line1);
         chart.setSize(400, 400);
         chart.setGrid(20, 20, 5, 5);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=FF0000,008000&chd=e:AAgA..,AAgA..&chg=20.0,20.0,5,5&chm=D,FF0000,0,0,1,-1|D,008000,1,0,1,1&chs=400x400&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -199,7 +199,7 @@ public class LineChartTest {
         final Line line = Plots.newLine(Data.newData(0, 50, 100), GREEN, "myLegend");
         final LineChart chart = GCharts.newLineChart(line);
         chart.setLegendPosition(LegendPosition.BOTTOM);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=008000&chd=e:AAgA..&chdl=myLegend&chdlp=b&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -213,7 +213,7 @@ public class LineChartTest {
         final Line line = Plots.newLine(Data.newData(0, 50, 100), GREEN, "myLegend");
         final LineChart chart = GCharts.newLineChart(line);
         chart.setTransparency(50);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=008000&chd=e:AAgA..&chdl=myLegend&chf=a,s,FFFFFF7F&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -225,7 +225,7 @@ public class LineChartTest {
     public void test9() {
         final Line line = Plots.newLine(Data.newData(50));
         final LineChart chart = GCharts.newLineChart(line);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chd=e:gA&chs=200x125";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -252,7 +252,7 @@ public class LineChartTest {
 
         final LineChart chart = GCharts.newLineChart(plots);
 
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:gAmXsdyE296791.i...K9G541nwgqukheIX1R2MbHyEHBjANAIBUDvHRLzRIXEdWjvp-v01B5Z8w--.9.q-G7W3gyutMnIgzabUROmJnFhCeAnAAArClFrJ0O1UiathFnatcy83s7f-N.t.8-68o5O00vkptjddEWyQ4LlHGDmBPAGAPBpEQH-MpSGYGeakzq.wv116C,mamRl5lSkdjdiUhGf0ejdVcPbSahZ-ZqZnZ0aRa8b0c3eCfSgkh0jAkEk-lrmJmYmXmFlkk1j5i0hngWfEd1crbqa0aLZxZmZtaDaobbcadiewgChTihjpknlal-mUmZmOl0lKkTjSiHg4fmeWdJcEbJaaZ6ZpZoZ4aXbFb.dDePfggxiBjMkOlGlxmNmZmVmBldkrju&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
 

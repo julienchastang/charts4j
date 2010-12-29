@@ -48,7 +48,7 @@ public class AbstractGChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -89,7 +89,7 @@ public class AbstractGChartTest {
     public void testSetBackgroundFill() {
         final LineChart chart = getBasicChart();
         chart.setBackgroundFill(Fills.newSolidFill(BLUE));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chf=bg,s,0000FF&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -98,7 +98,7 @@ public class AbstractGChartTest {
     public void testSetTransparency() {
         final LineChart chart = getBasicChart();
         chart.setTransparency(10);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAgA..&chf=a,s,FFFFFF19&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -107,7 +107,7 @@ public class AbstractGChartTest {
     public void testSetDataEncoding0() {
         final LineChart chart = getBasicChart();
         chart.setDataEncoding(DataEncoding.TEXT);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=t:0.0,50.0,100.0&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -116,7 +116,7 @@ public class AbstractGChartTest {
     public void testSetDataEncoding1() {
         final LineChart chart = getBasicChart();
         chart.setDataEncoding(DataEncoding.SIMPLE);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=s:Af9&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -126,7 +126,7 @@ public class AbstractGChartTest {
         final LineChart chart = getBasicChart();
         chart.setDataEncoding(DataEncoding.SIMPLE);
         chart.setURLEndpoint("http://localhost:8080/eastwood-1.1.0/chart");
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://localhost:8080/eastwood-1.1.0/chart?chd=s:Af9&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -134,7 +134,7 @@ public class AbstractGChartTest {
     @Test
     public void testGetParameters() {
         final LineChart chart = getBasicChart();
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         Map<String, String> parameters = chart.getParameters();
         assertEquals("Junit error", "lc", parameters.get("cht"));
         assertEquals("Junit error", "200x125", parameters.get("chs"));

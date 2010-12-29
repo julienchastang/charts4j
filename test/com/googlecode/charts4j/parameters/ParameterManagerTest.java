@@ -17,7 +17,7 @@ public class ParameterManagerTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -37,7 +37,7 @@ public class ParameterManagerTest {
         final ParameterManager pm = new ParameterManager();
         pm.init("http://chart.apis.google.com/chart");
         pm.setChartTypeParameter(ChartType.LINE_CHART);
-        Logger.global.info(pm.toString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(pm.toString());
     }
 
     @Test
@@ -46,6 +46,6 @@ public class ParameterManagerTest {
         pm.init("http://chart.apis.google.com/chart");
         pm.setChartTypeParameter(ChartType.LINE_CHART);
         pm.addMarker(Markers.newTextMarker("Hello", BLUE, 12), 0, 3, 4, 1);
-        Logger.global.info(pm.toString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(pm.toString());
     }
 }

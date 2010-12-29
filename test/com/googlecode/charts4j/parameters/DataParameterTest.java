@@ -47,7 +47,7 @@ public class DataParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -67,7 +67,7 @@ public class DataParameterTest {
         final Data data = new Data(1, 2, 3);
         final DataParameter p = new DataParameter();
         p.addData(data);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chd=e:ApBSB7";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -78,7 +78,7 @@ public class DataParameterTest {
         final DataParameter p = new DataParameter();
         p.setDataEncoding(DataEncoding.SIMPLE);
         p.addData(data);
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chd=s:BBC";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

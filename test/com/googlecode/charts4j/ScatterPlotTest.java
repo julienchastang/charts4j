@@ -46,7 +46,7 @@ public class ScatterPlotTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -67,7 +67,7 @@ public class ScatterPlotTest {
         final Data yData = Data.newData(0, 45, 10, 100);
         final ScatterPlotData data = Plots.newScatterPlotData(xData, yData);
         final GChart chart = GCharts.newScatterPlot(data);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAGaMz..,AAczGa..&chm=o,000000,0,0,10,0&chs=200x125&cht=s";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -80,7 +80,7 @@ public class ScatterPlotTest {
         data.addShapeMarkers(Shape.DIAMOND, BLUE, 20);
         data.setPointSizes(Data.newData(100, 50, 100, 10));
         final ScatterPlot chart = GCharts.newScatterPlot(data);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAGaMz..,AAczGa..,..gA..Ga&chm=d,0000FF,0,-1,20,0&chs=200x125&cht=s";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -92,7 +92,7 @@ public class ScatterPlotTest {
         final ScatterPlotData data = Plots.newScatterPlotData(xData, yData);
         data.addShapeMarker(Shape.DIAMOND, BLUE, 20,2);
         final ScatterPlot chart = GCharts.newScatterPlot(data);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAGaMz..,AAczGa..&chm=o,000000,0,0,10,0|d,0000FF,0,2,20,0&chs=200x125&cht=s";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

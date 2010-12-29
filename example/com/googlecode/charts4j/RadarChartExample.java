@@ -44,7 +44,7 @@ public class RadarChartExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     /**
@@ -80,7 +80,7 @@ public class RadarChartExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?chco=3D5593,000000&chd=s:fmtz479962xqjbUNHDBABEJPWdlsz479973yrkcVOIEBABEIOVckry379973ysldWPJEBABDINUbjqx269974ztmeXQKFBABDHMTaipw2689850unfYRKFCAACGMSZhpv1589851vogZRLGCAACGLRYgou0589861vphaSMGDAACFKQXfnu0489862wqibTNHDBABFJPWe,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM&chf=bg,s,504227&chm=B,8FA3D6,0,0,0|o,FFC0CB,1,0,20,0|o,FFC0CB,1,20,20,0|o,FFC0CB,1,40,20,0|o,FFC0CB,1,60,20,0|o,FFC0CB,1,80,20,0|o,FFC0CB,1,100,20,0|o,FFC0CB,1,120,20,0|o,FFC0CB,1,140,20,0|o,FFC0CB,1,160,20,0|o,FFC0CB,1,180,20,0|o,FFC0CB,1,200,20,0|B,3D5593,1,0,0&chs=500x500&cht=rs&chts=FFFFFF,16&chtt=Radar+Chart";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
@@ -106,7 +106,7 @@ public class RadarChartExample {
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-        Logger.global.info(url);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
         String expectedString = "http://chart.apis.google.com/chart?cht=r&chxt=y,x&chls=4,1,0&chco=CC3366&chs=400x400&chts=000000,20&chxr=0,0.0,100.0&chd=e:zMgAgAzMmZzM&chtt=Simple+Radar+Chart&chxp=0,0,20,40,60,80,100&chxs=0,000000,12,1|1,000000,12,0&chxl=1:|Maths|Arts|French|German|Music&chm=s,CC3366,0,-1,12,0|s,FFFFFF,0,-1,8,0";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }

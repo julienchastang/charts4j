@@ -46,7 +46,7 @@ public class AxisLabelPositionsParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -66,7 +66,7 @@ public class AxisLabelPositionsParameterTest {
         final AxisLabelPositionsParameter p = new AxisLabelPositionsParameter();
         p.addLabelPosition(1, Lists.of(1, 2, 3));
         p.addLabelPosition(2, Lists.of(7, 8, 9));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chxp=1,1,2,3|2,7,8,9";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -74,7 +74,7 @@ public class AxisLabelPositionsParameterTest {
     @Test
     public void test1() {
         AxisLabelPositionsParameter p = new AxisLabelPositionsParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -82,9 +82,9 @@ public class AxisLabelPositionsParameterTest {
     @Test
     public void test2() {
         AxisLabelPositionsParameter p = new AxisLabelPositionsParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         p.addLabelPosition(2, Lists.of(1, 2, 3));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chxp=2,1,2,3";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

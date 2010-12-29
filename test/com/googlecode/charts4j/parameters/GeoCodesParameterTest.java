@@ -46,7 +46,7 @@ public class GeoCodesParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -67,7 +67,7 @@ public class GeoCodesParameterTest {
         p.addGeoCode(UNITED_STATES + "");
         p.addGeoCode(AFGHANISTAN + "");
         p.addGeoCode(COLORADO + "");
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chld=USAFCO";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }
@@ -75,7 +75,7 @@ public class GeoCodesParameterTest {
     @Test
     public void test1() {
         final GeoCodesParameter p = new GeoCodesParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

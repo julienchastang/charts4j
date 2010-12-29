@@ -46,7 +46,7 @@ public class MarkableChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     /**
@@ -82,7 +82,7 @@ public class MarkableChartTest {
         // Defining chart.
         final LineChart chart = GCharts.newLineChart(line, line2);
         chart.setSize(400, 300);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=400x300&chd=e:GaMzTN,AAczWZv...&chco=000000,FF0000&chm=d,0000FF,1,1,20,0|o,FF0000,1,2,20,0|tHello+There,000000,1,3,20,0&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -94,7 +94,7 @@ public class MarkableChartTest {
         final ScatterPlotData data = Plots.newScatterPlotData(xData, yData);
         data.addShapeMarker(Shape.DIAMOND, RED, 20, 0);
         final ScatterPlot chart = GCharts.newScatterPlot(data);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:GaMzTN,GaMzTN&chm=o,000000,0,0,10,0|d,FF0000,0,0,20,0&chs=200x125&cht=s";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -110,7 +110,7 @@ public class MarkableChartTest {
         data.addShapeMarker(Shape.CIRCLE, BLUE, 20, 1);
         data.addShapeMarker(Shape.DIAMOND, RED, 10, 2);
         final ScatterPlot chart = GCharts.newScatterPlot(data);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:GaMzTN,GaMzTN&chm=o,000000,0,0,10,0|a,008000,0,0,5,0|o,0000FF,0,1,20,0|d,FF0000,0,2,10,0&chs=200x125&cht=s";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -122,7 +122,7 @@ public class MarkableChartTest {
         chart.addHorizontalRangeMarker(20, 80, RED);
         chart.addVerticalRangeMarker(20, 80, BLUE);
         // Defining background and chart fills.
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:GaMzTN&chm=r,FF0000,0,0.20,0.80|R,0000FF,0,0.20,0.80&chs=200x125&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -137,7 +137,7 @@ public class MarkableChartTest {
         line3.setFillAreaColor(RED);
         final LineChart chart = GCharts.newLineChart(line1, line2, line3);
         // Defining background and chart fills.
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chs=200x125&chm=B,008000,0,0,0|B,0000FF,1,0,0|B,FF0000,2,0,0&chd=e:szzM5m,ZmgAmZ,GaMzTN";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -154,7 +154,7 @@ public class MarkableChartTest {
         // Defining chart.
         final LineChart chart = GCharts.newLineChart(line);
         chart.setSize(400, 300);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lc&chs=400x300&chco=008000&chm=d,0000FF,0,1,20,1|o,FF0000,0,2,20,-1&chd=e:AAczWZv...";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -168,7 +168,7 @@ public class MarkableChartTest {
         // Defining chart.
         final LineChart chart = GCharts.newLineChart(line);
         chart.setSize(400, 300);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAczWZv...GaMzTN&chm=d,0000FF,0,0:7:1,20,1&chs=400x300&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -182,7 +182,7 @@ public class MarkableChartTest {
         // Defining chart.
         final LineChart chart = GCharts.newLineChart(line);
         chart.setSize(400, 300);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chd=e:AAczWZv...GaMzTN&chm=tZ,0000FF,0,2:6:2,12,0&chs=400x300&cht=lc";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

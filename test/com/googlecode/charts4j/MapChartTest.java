@@ -49,7 +49,7 @@ public class MapChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -69,7 +69,7 @@ public class MapChartTest {
         MapChart chart = GCharts.newMapChart(GeographicalArea.AFRICA);
         chart.addPoliticalBoundaries(new Country(MADAGASCAR, 90));
         chart.addPoliticalBoundaries(new Country(MOROCCO, 10));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=t&chtm=africa&chs=440x220&chld=MGMA&chco=FFFFFF,F5F5DC,228B22&chd=e:5mGa";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -81,7 +81,7 @@ public class MapChartTest {
         chart.addPoliticalBoundaries(new USAState(COLORADO, 50));
         chart.addPoliticalBoundaries(new USAState(NY, 90));
         chart.addPoliticalBoundaries(new USAState(ID, 10));
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=t&chtm=usa&chs=440x220&chld=CONYID&chco=FFFFFF,FF0000,0000FF&chd=e:gA5mGa";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

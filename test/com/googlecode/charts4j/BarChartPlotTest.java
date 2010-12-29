@@ -46,7 +46,7 @@ public class BarChartPlotTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -66,7 +66,7 @@ public class BarChartPlotTest {
         BarChartPlot plot = Plots.newBarChartPlot(Data.newData(35, 50, 30, 40), BLUE, "Q1");
         plot.setDataLine(3, RED, Priority.NORMAL);
         BarChart chart = GCharts.newBarChart(plot);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:WZgATNZm&chdl=Q1&chco=0000FF&chm=D,FF0000,0,0,3,0&chbh=23,4,8&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -76,7 +76,7 @@ public class BarChartPlotTest {
         BarChartPlot plot = Plots.newBarChartPlot(Data.newData(35, 50, 30, 40), BLUE, "Q1");
         plot.setZeroLine(45);
         BarChart chart = GCharts.newBarChart(plot);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chs=200x125&chd=e:WZgATNZm&chdl=Q1&chco=0000FF&chp=0.45&chbh=23,4,8&cht=bvg";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }

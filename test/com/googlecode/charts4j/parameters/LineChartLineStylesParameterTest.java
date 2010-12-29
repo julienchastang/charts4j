@@ -46,7 +46,7 @@ public class LineChartLineStylesParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -66,7 +66,7 @@ public class LineChartLineStylesParameterTest {
         final LineChartLineStylesParameter p = new LineChartLineStylesParameter();
         p.addLineStyle(LineStyle.newLineStyle(5, 3, 1));
         p.addLineStyle(LineStyle.newLineStyle(1, 4, 2));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chls=5,3,1|1,4,2";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
 
@@ -75,7 +75,7 @@ public class LineChartLineStylesParameterTest {
     @Test
     public void test1() {
         LineChartLineStylesParameter p = new LineChartLineStylesParameter();
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

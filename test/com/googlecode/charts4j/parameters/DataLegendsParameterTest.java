@@ -46,7 +46,7 @@ public class DataLegendsParameterTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -65,7 +65,7 @@ public class DataLegendsParameterTest {
     public void test0() {
         final DataLegendsParameter p = new DataLegendsParameter();
         p.addLegends(Lists.of("foo", "bar"));
-        Logger.global.info(p.toURLParameterString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(p.toURLParameterString());
         final String expectedString = "chdl=foo|bar";
         assertEquals("Junit error", expectedString, p.toURLParameterString());
     }

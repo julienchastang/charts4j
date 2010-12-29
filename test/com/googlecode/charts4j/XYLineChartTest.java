@@ -46,7 +46,7 @@ public class XYLineChartTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        Logger.global.setLevel(Level.ALL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(Level.ALL);
     }
 
     @AfterClass
@@ -79,7 +79,7 @@ public class XYLineChartTest {
         line.setColor(BLUE);
         XYLineChart chart = GCharts.newXYLineChart(line);
         chart.setSize(400, 400);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lxy&chco=0000FF&chs=400x400&chd=e:gAhvjelMm6omqQr4tevB,.W.U.M.A-u-Y989c848O";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
 
@@ -94,7 +94,7 @@ public class XYLineChartTest {
         line.setColor(BLUE);
         XYLineChart chart = GCharts.newXYLineChart(line);
         chart.setSize(400, 400);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lxy&chco=0000FF&chs=400x400&chd=e:GaHCHrgA,TNGaTNMz";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
@@ -109,7 +109,7 @@ public class XYLineChartTest {
         line.setColor(BLUE);
         XYLineChart chart = GCharts.newXYLineChart(line);
         chart.setSize(400, 400);
-        Logger.global.info(chart.toURLString());
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?cht=lxy&chls=3,5,3&chco=0000FF&chs=400x400&chd=e:GaHCHrgA,TNGaTNMz";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
