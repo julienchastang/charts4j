@@ -30,6 +30,7 @@ import static com.googlecode.charts4j.TestUtil.getBasicChart;
 import static com.googlecode.charts4j.UrlUtil.normalize;
 import static org.junit.Assert.*;
 
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
