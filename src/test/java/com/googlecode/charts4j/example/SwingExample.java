@@ -36,6 +36,12 @@ import javax.swing.JLabel;
 
 import org.junit.Ignore;
 
+import com.googlecode.charts4j.Data;
+import com.googlecode.charts4j.GCharts;
+import com.googlecode.charts4j.LineChart;
+import com.googlecode.charts4j.Plot;
+import com.googlecode.charts4j.Plots;
+
 /**
  * Example code for displaying a chart via Swing. This is an alternative
  * to displaying charts via JSP and Servlet technology.
