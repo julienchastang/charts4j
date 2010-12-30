@@ -22,9 +22,6 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  <prerequisites>
-    <maven>2.0.9</maven>
-  </prerequisites>
   <scm>
     <connection>scm:svn:http://charts4j.googlecode.com/svn/trunk/</connection>
     <developerConnection>scm:svn:https://charts4j.googlecode.com/svn/trunk/</developerConnection>
@@ -63,7 +60,6 @@
         </configuration>
       </plugin>
     </plugins>
-    <finalName>${project.artifactId}-${project.version}</finalName>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
   </build>
