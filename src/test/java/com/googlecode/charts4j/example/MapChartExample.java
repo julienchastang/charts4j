@@ -25,9 +25,9 @@
 
 package com.googlecode.charts4j.example;
 
-import static com.googlecode.charts4j.example.Color.*;
-import static com.googlecode.charts4j.example.USAState.Code.*;
-import static com.googlecode.charts4j.example.UrlUtil.normalize;
+import static com.googlecode.charts4j.Color.*;
+import static com.googlecode.charts4j.USAState.Code.*;
+import static com.googlecode.charts4j.UrlUtil.normalize;
 import static org.junit.Assert.assertEquals;
 
 import java.util.logging.Level;
