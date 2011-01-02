@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-package com.googlecode.charts4j;
+package com.googlecode.charts4j.example;
 
 import static com.googlecode.charts4j.Color.WHITE;
 import static com.googlecode.charts4j.UrlUtil.normalize;
@@ -34,6 +34,14 @@ import java.util.logging.Logger;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.googlecode.charts4j.Color;
+import com.googlecode.charts4j.Data;
+import com.googlecode.charts4j.Fills;
+import com.googlecode.charts4j.GCharts;
+import com.googlecode.charts4j.Plots;
+import com.googlecode.charts4j.XYLine;
+import com.googlecode.charts4j.XYLineChart;
 
 /**
  *

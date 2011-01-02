@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-package com.googlecode.charts4j;
+package com.googlecode.charts4j.example;
 
 import static com.googlecode.charts4j.Color.*;
 import static com.googlecode.charts4j.UrlUtil.normalize;
@@ -35,11 +35,16 @@ import java.util.logging.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.googlecode.charts4j.Color;
+import com.googlecode.charts4j.GCharts;
+import com.googlecode.charts4j.PieChart;
+import com.googlecode.charts4j.Slice;
+
 /**
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-public class GoogleOMeterExample {
+public class PieChartExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -49,19 +54,38 @@ public class GoogleOMeterExample {
     @Test
     public void example1() {
         // EXAMPLE CODE START
-        GoogleOMeter chart = GCharts.newGoogleOMeter(90, "Fast", "VELOCITY", Color.newColor("1148D4"), Color.newColor("5766DE"), Color.newColor("DB3270"), Color.newColor("D41111"));
-        chart.setTitle("How Fast?", BLACK, 14);
-        chart.setSize(600, 250);
-        final LinearGradientFill fill = Fills.newLinearGradientFill(0, BLUE, 100);
-        fill.addColorAndOffset(RED, 0);
-        chart.setBackgroundFill(fill);
-        chart.setAreaFill(Fills.newSolidFill(Color.newColor(GRAY, 70)));
+        Slice s1 = Slice.newSlice(30, Color.newColor("CACACA"), "Safari", "Apple");
+        Slice s2 = Slice.newSlice(30, Color.newColor("DF7417"), "Firefox", "Mozilla");
+        Slice s3 = Slice.newSlice(30, Color.newColor("951800"), "Chrome", "Google");
+        Slice s4 = Slice.newSlice(10, Color.newColor("01A1DB"), "Internet Explorer", "Microsoft");
+
+        PieChart chart = GCharts.newPieChart(s1, s2, s3, s4);
+        chart.setTitle("A Better Web", BLACK, 16);
+        chart.setSize(500, 200);
+        chart.setThreeD(true);
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
-
         Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
-        String expectedString = "http://chart.apis.google.com/chart?cht=gom&chd=e:5m&chl=Fast&chs=600x250&chdl=VELOCITY&chts=000000,14&chtt=How+Fast%3F&chco=1148D4,5766DE,DB3270,D41111&chf=bg,lg,0,0000FF,1.0,FF0000,0.0|c,s,808080B2";
+        String expectedString = "http://chart.apis.google.com/chart?cht=p3&chs=500x200&chts=000000,16&chd=e:TNTNTNGa&chtt=A+Better+Web&chco=CACACA,DF7417,951800,01A1DB&chdl=Apple|Mozilla|Google|Microsoft&chl=Safari|Firefox|Chrome|Internet+Explorer";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
+
+    @Test
+    public void example2() {
+        // EXAMPLE CODE START
+        Slice s1 = Slice.newSlice(90, YELLOW, "Ms. Pac-Man");
+        Slice s2 = Slice.newSlice(10, RED, "Red Lips");
+
+        PieChart chart = GCharts.newPieChart(s1, s2);
+        chart.setTitle("2D Pie Chart", BLACK, 16);
+        chart.setSize(500, 200);
+        String url = chart.toURLString();
+        // EXAMPLE CODE END. Use this url string in your web or
+        // Internet application.
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
+        String expectedString = "http://chart.apis.google.com/chart?chco=FFFF00,FF0000&chd=e:5mGa&chl=Ms.+Pac-Man|Red+Lips&chs=500x200&cht=p&chts=000000,16&chtt=2D+Pie+Chart";
+        assertEquals("Junit error", normalize(expectedString), normalize(url));
+    }
+
 }

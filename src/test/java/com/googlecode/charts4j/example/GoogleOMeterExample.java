@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-package com.googlecode.charts4j;
+package com.googlecode.charts4j.example;
 
 import static com.googlecode.charts4j.Color.*;
 import static com.googlecode.charts4j.UrlUtil.normalize;
@@ -35,11 +35,17 @@ import java.util.logging.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.googlecode.charts4j.Color;
+import com.googlecode.charts4j.Fills;
+import com.googlecode.charts4j.GCharts;
+import com.googlecode.charts4j.GoogleOMeter;
+import com.googlecode.charts4j.LinearGradientFill;
+
 /**
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-public class VennDiagramExample {
+public class GoogleOMeterExample {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -49,17 +55,19 @@ public class VennDiagramExample {
     @Test
     public void example1() {
         // EXAMPLE CODE START
-        final VennDiagram chart = GCharts.newVennDiagram(100, 80, 60, 30, 30, 30, 10);
-        chart.setTitle("Mr. Venn", WHITE, 16);
-        chart.setSize(600, 450);
-        chart.setCircleLegends("Set A", "Set B", "Set C");
-        chart.setCircleColors(YELLOW, RED, BLUE);
-        chart.setBackgroundFill(Fills.newSolidFill(BLACK));
+        GoogleOMeter chart = GCharts.newGoogleOMeter(90, "Fast", "VELOCITY", Color.newColor("1148D4"), Color.newColor("5766DE"), Color.newColor("DB3270"), Color.newColor("D41111"));
+        chart.setTitle("How Fast?", BLACK, 14);
+        chart.setSize(600, 250);
+        final LinearGradientFill fill = Fills.newLinearGradientFill(0, BLUE, 100);
+        fill.addColorAndOffset(RED, 0);
+        chart.setBackgroundFill(fill);
+        chart.setAreaFill(Fills.newSolidFill(Color.newColor(GRAY, 70)));
         String url = chart.toURLString();
         // EXAMPLE CODE END. Use this url string in your web or
         // Internet application.
+
         Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(url);
-        String expectedString = "http://chart.apis.google.com/chart?cht=v&chs=600x450&chts=FFFFFF,16&chf=bg,s,000000&chco=FFFF00,FF0000,0000FF&chdl=Set+A|Set+B|Set+C&chd=e:..zMmZTNTNTNGa&chtt=Mr.+Venn";
+        String expectedString = "http://chart.apis.google.com/chart?cht=gom&chd=e:5m&chl=Fast&chs=600x250&chdl=VELOCITY&chts=000000,14&chtt=How+Fast%3F&chco=1148D4,5766DE,DB3270,D41111&chf=bg,lg,0,0000FF,1.0,FF0000,0.0|c,s,808080B2";
         assertEquals("Junit error", normalize(expectedString), normalize(url));
     }
 }

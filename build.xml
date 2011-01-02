@@ -13,7 +13,6 @@
 		<pathelement location="${junit.jar}" />
 		<pathelement location="${build.dir}/classes" />
 		<pathelement location="${build.dir}/test" />
-		<pathelement location="${build.dir}/example" />
 	</path>
 
 	<target name="compile" description="Compile Java source.">
@@ -29,15 +28,8 @@
 			<classpath refid="test.classpath" />
 		</javac>
 	</target>
-
-	<target name="example.compile" depends="compile" description="Compile example source.">
-		<mkdir dir="${build.dir}/example" />
-		<javac srcdir="${example.dir}" debug="on" destdir="${build.dir}/example">
-			<classpath refid="test.classpath" />
-		</javac>
-	</target>
-
-	<target name="test" depends="test.compile, example.compile" description="Tests">
+	
+	<target name="test" depends="test.compile" description="Tests">
 		<junit showoutput="no" fork="yes" printsummary="no" haltonerror="yes" haltonfailure="yes">
 			<classpath refid="test.classpath" />
 			<formatter usefile="no" type="brief" />
@@ -45,10 +37,6 @@
 				<fileset dir="${test.dir}">
 					<include name="**/*Test*.java" />
 					<exclude name="**/*Tests.java" />
-				</fileset>
-				<fileset dir="${example.dir}">
-					<include name="**/*Example*.java" />
-					<exclude name="**/*Examples.java" />
 				</fileset>
 			</batchtest>
 		</junit>
@@ -66,13 +54,12 @@
 	</target>
 
 	<target name="dist" depends="clean,test, jar, javadoc" description="Build entire distribution.">
-		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="COPYING" />
-		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="README" />
+		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="LICENSE.txt" />
+		<copy toDir="${build.dir}/dist/${app.name}-${version}" file="README.txt" />
 		<copy toDir="${build.dir}/dist/${app.name}-${version}">
 			<fileset dir="${build.dir}" includes="javadoc/**/*" />
 			<fileset dir="${root.dir}" includes="src/**/*" />
 			<fileset dir="${root.dir}" includes="test/**/*" />
-			<fileset dir="${root.dir}" includes="example/**/*" />
 			<fileset dir="${root.dir}" includes="lib/**/*" />
 		</copy>
 

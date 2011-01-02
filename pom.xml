@@ -1,66 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.googlecode.charts4j</groupId>
-  <artifactId>charts4j</artifactId>
-  <version>1.2</version>
-  <packaging>jar</packaging>
-  <name>charts4j</name>
-  <description>charts4j is a free, lightweight charts and graphs Java API. It enables developers to programmatically create the charts available in the Google Chart API through a straightforward and intuitive Java API.
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.googlecode.charts4j</groupId>
+	<artifactId>charts4j</artifactId>
+	<version>1.2</version>
+	<packaging>jar</packaging>
+	<name>charts4j</name>
+	<description>charts4j is a free, lightweight charts and graphs Java API. It enables developers to programmatically create the charts available in the Google Chart API through a straightforward and intuitive Java API.
   </description>
-  <url>http://charts4j.googlecode.com</url>
-  <issueManagement>
-  	<system>code.google.com</system>
-  	<url>http://code.google.com/p/charts4j/issues/list</url>
-  </issueManagement>
-  <inceptionYear>2008</inceptionYear>
-  <licenses>
-    <license>
-      <name>The MIT License</name>
-      <url>http://www.opensource.org/licenses/mit-license.php</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  <scm>
-    <connection>scm:svn:http://charts4j.googlecode.com/svn/trunk/</connection>
-    <developerConnection>scm:svn:https://charts4j.googlecode.com/svn/trunk/</developerConnection>
-    <url>http://code.google.com/p/charts4j/source/browse</url>
-  </scm>
-  <developers>
-    <developer>
-      <id>chastang</id>
-      <name>Julien Chastang</name>
-      <email>julien.c.chastang@gmail.com</email>
-      <organization>charts4j</organization>
-      <organizationUrl>http://charts4j.googlecode.com</organizationUrl>
-      <roles>
-        <role>owner</role>
-        <role>developer</role>
-      </roles>
-      <timezone>-7</timezone>
-    </developer>
-  </developers>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.5</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-    </plugins>
-    <sourceDirectory>src</sourceDirectory>
-    <testSourceDirectory>test</testSourceDirectory>
-  </build>
+	<url>http://charts4j.googlecode.com</url>
+	<issueManagement>
+		<system>code.google.com</system>
+		<url>http://code.google.com/p/charts4j/issues/list</url>
+	</issueManagement>
+	<inceptionYear>2008</inceptionYear>
+	<licenses>
+		<license>
+			<name>The MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:svn:http://charts4j.googlecode.com/svn/trunk/</connection>
+		<developerConnection>scm:svn:https://charts4j.googlecode.com/svn/trunk/</developerConnection>
+		<url>http://code.google.com/p/charts4j/source/browse</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>chastang</id>
+			<name>Julien Chastang</name>
+			<email>julien.c.chastang@gmail.com</email>
+			<organization>charts4j</organization>
+			<organizationUrl>http://charts4j.googlecode.com</organizationUrl>
+			<roles>
+				<role>owner</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-7</timezone>
+		</developer>
+	</developers>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.5</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
