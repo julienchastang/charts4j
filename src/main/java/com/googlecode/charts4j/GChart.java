@@ -55,7 +55,7 @@ public interface GChart {
      * and generate a POST request. For instance, they may want to use JSON to pass 
      * parameters to the browser in order to make the POST request. 
      *
-     * @return
+     * @return a map of all the parameters
      * @see <a href="http://code.google.com/apis/chart/docs/post_requests.html">POST Requests</a>
      */
     Map<String, String> getParameters();
