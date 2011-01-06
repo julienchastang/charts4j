@@ -104,12 +104,23 @@ public class AbstractGraphChartTest {
     }
 
     @Test
-    public void testSetLegendPosition() {
+    public void testSetLegendPosition0() {
         final Plot plot = Plots.newPlot(Data.newData(0, 50, 100), RED, "my Legend");
         final LineChart chart = GCharts.newLineChart(plot);
         chart.setLegendPosition(LegendPosition.TOP);
         Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
         String expectedString = "http://chart.apis.google.com/chart?chco=FF0000&chd=e:AAgA..&chdl=my+Legend&chdlp=t&chs=200x125&cht=lc";
+        assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
+    }
+
+    @Test
+    public void testSetLegendPosition1() {
+        final Plot plot0 = Plots.newPlot(Data.newData(0, 50, 100), RED, "legend 0");
+        final Plot plot1 = Plots.newPlot(Data.newData(100, 50, 0), BLUE, "legend 1");
+        final LineChart chart = GCharts.newLineChart(plot0, plot1);
+        chart.setLegendPosition(LegendPosition.TOP_VERTICAL);
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(chart.toURLString());
+        String expectedString = "http://chart.apis.google.com/chart?cht=lc&chdlp=tv&chs=200x125&chco=FF0000,0000FF&chd=e:AAgA..,..gAAA&chdl=legend+0|legend+1";
         assertEquals("Junit error", normalize(expectedString), normalize(chart.toURLString()));
     }
 

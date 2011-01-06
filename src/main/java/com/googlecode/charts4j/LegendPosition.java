@@ -32,16 +32,22 @@ package com.googlecode.charts4j;
  *
  */
 public enum LegendPosition {
-    /** Legend position at top. **/
+    /** Horizontal legend position at top. **/
     TOP("t"),
 
-    /** Legend position at bottom. **/
+    /** Vertical legend position at top. **/
+    TOP_VERTICAL("tv"),
+
+    /** Horizontal legend position at bottom. **/
     BOTTOM("b"),
 
-    /** Legend position at right. **/
+    /** Vertical legend position at bottom. **/
+    BOTTOM_VERTICAL("bv"),
+
+    /** Vertical legend position at right. **/
     RIGHT("r"),
 
-    /** Legend position at left. **/
+    /** Vertical legend position at left. **/
     LEFT("l");
 
     /** String for Google Chart API. **/
