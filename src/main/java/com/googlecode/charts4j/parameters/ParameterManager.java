@@ -498,16 +498,16 @@ public final class ParameterManager {
     /**
      * Sets the margins.
      *
-     * @param bottomMargin
-     *            the bottom margin
      * @param leftMargin
      *            the left margin
      * @param rightMargin
      *            the right margin
      * @param topMargin
      *            the top margin
+     * @param bottomMargin
+     *            the bottom margin
      */
-    public void setMargins(final int bottomMargin, final int leftMargin, final int rightMargin, final int topMargin) {
+    public void setMargins(final int leftMargin, final int rightMargin, final int topMargin, final int bottomMargin) {
         getParameter(MarginsParameter.class).setMargins(bottomMargin, leftMargin, rightMargin, topMargin);
     }
 

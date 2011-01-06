@@ -197,7 +197,7 @@ abstract class AbstractGChart implements GChart {
         parameterManager.setChartSizeParameter(width, height);
         parameterManager.setDataEncoding(dataEncoding);
         if (margins != null) {
-            parameterManager.setMargins(margins.bottomMargin, margins.leftMargin, margins.rightMargin, margins.topMargin);
+            parameterManager.setMargins(margins.leftMargin, margins.rightMargin, margins.topMargin, margins.bottomMargin);
         }
     }
 

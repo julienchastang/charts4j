@@ -51,20 +51,20 @@ final class MarginsParameter extends AbstractParameter {
     /**
      * Set the chart margins.
      *
-     * @param bottomMargin
-     *            the bottom margin
      * @param leftMargin
      *            the left margin
      * @param rightMargin
      *            the right margin
      * @param topMargin
      *            the top margin
+     * @param bottomMargin
+     *            the bottom margin
      */
-    void setMargins(final int bottomMargin, final int leftMargin, final int rightMargin, final int topMargin) {
-        this.bottomMargin = bottomMargin;
+    void setMargins(final int leftMargin, final int rightMargin, final int topMargin, final int bottomMargin) {
         this.leftMargin = leftMargin;
         this.rightMargin = rightMargin;
         this.topMargin = topMargin;
+        this.bottomMargin = bottomMargin;
     }
 
 
