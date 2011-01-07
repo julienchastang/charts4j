@@ -70,9 +70,9 @@ public class VennDiagram extends AbstractGraphChart {
      * @see GCharts#newVennDiagram(double, double, double, double, double,
      *      double, double)
      */
-    VennDiagram(final double circle1Size, final double circle2Size, final double circle3Size, final double abIntersect, final double bcIntersect, final double caIntersect, final double abcIntersect) {
+    VennDiagram(final double circle1Size, final double circle2Size, final double circle3Size, final double abIntersect, final double caIntersect, final double bcIntersect, final double abcIntersect) {
         super();
-        final double[] data = {circle1Size, circle2Size, circle3Size, abIntersect, bcIntersect, caIntersect, abcIntersect};
+        final double[] data = {circle1Size, circle2Size, circle3Size, abIntersect, caIntersect, bcIntersect, abcIntersect};
         for (double d : data) {
             checkArgument(d >= Data.MIN_VALUE && d <= Data.MAX_VALUE, "Venn diagram values must be between 0 and 100: %s", d);
         }

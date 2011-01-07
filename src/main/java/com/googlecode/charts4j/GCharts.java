@@ -351,17 +351,17 @@ public final class GCharts {
      *            circles, A, B, and C
      * @param abIntersect
      *            the fourth value specifies the area of A intersecting B
-     * @param bcIntersect
-     *            the fifth value specifies the area of B intersecting C
      * @param caIntersect
      *            the sixth value specifies the area of C intersecting A
+     * @param bcIntersect
+     *            the fifth value specifies the area of B intersecting C
      * @param abcIntersect
      *            the seventh value specifies the area of A intersecting B
      *            intersecting C
      * @return a VennDiagram
      */
-    public static VennDiagram newVennDiagram(final double circle1Size, final double circle2Size, final double circle3Size, final double abIntersect, final double bcIntersect, final double caIntersect, final double abcIntersect) {
-        return new VennDiagram(circle1Size, circle2Size, circle3Size, abIntersect, bcIntersect, caIntersect, abcIntersect);
+    public static VennDiagram newVennDiagram(final double circle1Size, final double circle2Size, final double circle3Size, final double abIntersect, final double caIntersect, final double bcIntersect, final double abcIntersect) {
+        return new VennDiagram(circle1Size, circle2Size, circle3Size, abIntersect, caIntersect, bcIntersect, abcIntersect);
     }
 
     /**
