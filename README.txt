@@ -2,7 +2,7 @@ To use the charts4j API, put the jar in your classpath:
 
 charts4j-[VERSION].jar
 
-To run the unit tests you will also need junit jar
+To run the unit tests you will also need the junit jar.
 
 For Maven, include this XML snippet in your pom.xml.
 
