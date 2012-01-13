@@ -30,7 +30,7 @@ package com.googlecode.charts4j;
  *
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  */
-interface Curve extends Plot {
+public interface Curve extends Plot {
 
     /**
      * Define a fill area color below this plot. Order is important! If you have

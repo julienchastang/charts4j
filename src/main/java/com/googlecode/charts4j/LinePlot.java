@@ -32,7 +32,7 @@ package com.googlecode.charts4j;
  * @author Julien Chastang (julien.c.chastang at gmail dot com)
  * @see Plots
  */
-interface LinePlot extends Curve{
+public interface LinePlot extends Curve {
 
     /**
      * Set the line style.
